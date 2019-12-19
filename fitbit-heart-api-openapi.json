@@ -1,0 +1,16 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1",
+        "title": "Fitbit Heart API",
+        "description": "The Fitbit API allows developers to interact with Fitbit data in their own applications, products and services.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsapi.fitbit.com\/1"
+    ],
+    "paths": [],
+    "components": {
+        "schemas": []
+    }
+}
