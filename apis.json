@@ -1,0 +1,341 @@
+{
+    "name": "Fitbit",
+    "description": "Find your fit with Fitbit's family of fitness products that help you stay motivated and improve your health by tracking your activity, exercise, food, weight and sleep.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+    "tags": [
+        "api provider",
+        "devices",
+        "excercise",
+        "fitness",
+        "have api",
+        "have swagger",
+        "relative data",
+        "service api",
+        "wearables"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Fitbit Activities API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-activities-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-activities-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Foods API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-foods-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-foods-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Body API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-body-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-body-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Heart Rate API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-heart-rate-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-heart-rate-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Device API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-device-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-device-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Friends API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-friends-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-friends-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Glucose API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-glucose-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-glucose-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Heart API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-heart-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-heart-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Meals API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-meals-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-meals-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Profile API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-profile-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-profile-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Sleep API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-sleep-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-sleep-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Subscription API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-subscription-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-subscription-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit Badges API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-badges-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-badges-api-openapi.json"
+                }
+            ]
+        },
+        {
+            "name": "Fitbit",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/200-fitbit.jpg",
+            "humanURL": "http:\/\/fitbit.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "API.json - Authoritative",
+            "url": "https:\/\/www.fitbit.com\/apis.json"
+        },
+        {
+            "type": "Apigee Console",
+            "url": "https:\/\/wiki.fitbit.com\/display\/API\/API+Explorer"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blog.fitbit.com"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blog.fitbit.com\/feed\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/fitbit"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/fitbit"
+        },
+        {
+            "type": "Email",
+            "url": "privacy@fitbit.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/fitbit"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/200-2019-09-02-21-00-00.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/200-2019-09-04-09-56-49.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/200-2019-09-02-21-03-16.json"
+        },
+        {
+            "type": "Swagger",
+            "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-definitions\/swagger\/200-2019-09-02-20-38-47.json"
+        },
+        {
+            "type": "Rate Limits",
+            "url": "https:\/\/wiki.fitbit.com\/display\/API\/Rate+Limit"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/fitbit"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/fitbit.com"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/dev.fitbit.com"
+        }
+    ]
+}
