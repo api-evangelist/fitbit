@@ -1,5 +1,5 @@
 {
-    "id": "f752da32f8578d1798ed06777bad3b85",
+    "id": "85b1c96cf1cf04deb2fd0f00f497656a",
     "name": "Fitbit",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "967ff6e5fad508ec4ef49f9a08b430d3",
+            "id": "a58a5ac61bed8c9d96c775caeae18ab4",
             "name": "Get User Collection Path Apisubscriptions.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-{collection-path}apiSubscriptions.json",
             "description": "Get a list of user's subscriptions for your application in the format requested.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "47c8292a4506f66545023a284117ae78",
+            "id": "8ab1fe62f100a555cc1a786a2100c2bf",
             "name": "Delete User Collection Path Apisubscriptions Subscription .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-{collection-path}apiSubscriptions\/{subscription-id}.json",
             "description": "Delete a subscription for the user and get a response in the format requested.",
@@ -52,11 +52,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "730b83c7ed851a0a96cbd9e2046bcd41",
+            "id": "2afa575b2a1cb70df88df8d865438df0",
             "name": "Post User Collection Path Apisubscriptions Subscription .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-{collection-path}apiSubscriptions\/{subscription-id}.json",
             "description": "Add a subscription for the user to get notifications and get a response in the format requested.",
@@ -75,11 +75,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "d44e81ae160611da909a8322e191cef4",
+            "id": "8a14bf5a3b1caa1205b8401fda458604",
             "name": "Get User Friends Invitations.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/friends\/invitations.json",
             "description": "Retrieve the list of invites to become freinds for a user in the format requested.",
@@ -98,11 +98,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "ed755d55de2cb15590e6c7b8b5ed4ad9",
+            "id": "15a9058c010fcb9f9e4d43ff888416c5",
             "name": "Get Foods Units.json",
             "url": "httpsapi.fitbit.com\/1\/foods\/units.json",
             "description": "Get list of all valid Fitbit food units in the format requested.",
@@ -121,11 +121,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "d80e2af446cf545c78046878d7b8b7dd",
+            "id": "7d37c8a915050b34c5a997145bcc7f52",
             "name": "Get Foods Food .json",
             "url": "httpsapi.fitbit.com\/1\/foods\/{food-id}.json",
             "description": "Get the details of a specific food in Fitbit Food database (or private food for the user) in the format requested. Note, that nutritional values currently included in response only for the private foods.",
@@ -144,11 +144,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "ea40aabd2d4064bda5591e0bb9fd8c6e",
+            "id": "e6040977d35db25df86730b5189bcb17",
             "name": "Get Activities .json",
             "url": "httpsapi.fitbit.com\/1\/activities\/{id}.json",
             "description": "Get the details of a specific activity in Fitbit activities database in the format requested. If activity has levels, also get list of activity level details.",
@@ -167,11 +167,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "5d7dc9843b8ac5d6666d574b28364e69",
+            "id": "b6fa779b5955374ce193b7d894ca9eb4",
             "name": "Get Activities.json",
             "url": "httpsapi.fitbit.com\/1\/activities.json",
             "description": "Get a tree of all valid Fitbit public activities from the activities catalog as well as private custom activities the user created in the format requested. If activity has levels, also get a list of activity level details.",
@@ -190,11 +190,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "0b99b15ef3b7cae5e317f1c499a11c96",
+            "id": "2141ab1f8133562b5de2d9be162499e0",
             "name": "Get User Devices.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/devices.json",
             "description": "Retrieve the list of Fitbit devices for a user in the format requested.",
@@ -213,11 +213,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "10fd4b723c9e2b667e20ddb702c56ebc",
+            "id": "bed5e092fa60c3b210ec0cd582654372",
             "name": "Post User Foods Log Goal.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/goal.json",
             "description": "Update (create) a user's daily calorie consumption goal or Food Plan and get a response in the format requested. Food Plan could not be created unless user already has active goal (Update-Weight-Goal). Depending on the weight goal setup only either MAINTENANCE (in case start weight is close to target weight or smaller) or one of the four other \"lose\" food plans could be created via intensity POST parameter.",
@@ -236,11 +236,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "c978510dd98d0ae94bd81d3dc1444751",
+            "id": "28312a403da08ddd7df604e60ab6e1b2",
             "name": "Get User Foods Log Goal.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/goal.json",
             "description": "Get a user's current daily calorie consumption goal and\/or Food Plan in the format requested.",
@@ -259,11 +259,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "b18555245a4edb41307a1e3cdbbf734c",
+            "id": "db7ee16c4df8ebaefbbb891562c747b5",
             "name": "Get User Meals.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/meals.json",
             "description": "Get a list of meals user created in his food log in the format requested.",
@@ -282,11 +282,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "a635c908f2576aacef49a363e9f4dc63",
+            "id": "67d851298b96f54d5a55882541617ed5",
             "name": "Post Foods.json",
             "url": "httpsapi.fitbit.com\/1\/foods.json",
             "description": "Create new private food for a user and get a response in a format requested. Created private food could be found in results of Search Foods call.",
@@ -305,11 +305,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "6b1038db051daea8830ec3f9ed544ecc",
+            "id": "17cbf6fc5107547b73ef1cfd27c89723",
             "name": "Delete User Foods Log Water Water Log .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/water\/{water-log-id}.json",
             "description": "Delete user's water log entry with the given id.",
@@ -328,11 +328,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "04f9a2e67cd69794d695a61a1c7c3a88",
+            "id": "918363bdb45b4d788b3da5a4732b9da9",
             "name": "Post User Foods Log Water.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/water.json",
             "description": "Create log entry for a water using units in the unit system that corresponds to the Accept-Language header provided (or waterUnit) and get a response in the format requested.",
@@ -351,11 +351,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "998b826d8e16fb12ed901174067d519c",
+            "id": "415c882b819b3319c18366315c5e322b",
             "name": "Get User Foods Log Water Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/water\/date\/{date}.json",
             "description": "Get a summary and list of a user's water log entries for a given day in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -374,11 +374,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "b4f9cd10d3f1e6e1baaa517afc0cf11c",
+            "id": "55eec9e3d12f0ad42a7f7cecb2e75e10",
             "name": "Delete User Foods Log Favorite .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/favorite\/{id}.json",
             "description": "Delete the food with the given id from user's list of favorite foods.",
@@ -397,11 +397,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "d20bab2d08d5cd54dd1325c78c4346fb",
+            "id": "e0db2b558522960dd08481a8da9bafd2",
             "name": "Post User Foods Log Favorite .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/favorite\/{id}.json",
             "description": "Add the food with the given id to user's list of favorite foods.",
@@ -420,11 +420,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "d740bb4444463de031fee0b3f34d70e6",
+            "id": "c793c08e673c755a240058d17c84052b",
             "name": "Get User Activities Goals Weekly.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities\/goals\/weekly.json",
             "description": "Get a user's current weekly activity goals in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -443,11 +443,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "36632691b854de614cd33bba84490017",
+            "id": "418ec37723763791ec10d6c5512246a6",
             "name": "Get User Activities Goals Daily.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities\/goals\/daily.json",
             "description": "Get a user's current daily activity goals in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -466,11 +466,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "32875e11933927bb3ab294aeca64ca6b",
+            "id": "41bedaaea7d1eb5380f2ae362543f467",
             "name": "Delete User Activities Log Favorite .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities\/log\/favorite\/{id}.json",
             "description": "Delete the activity with the given id from user's list of favorite activities.",
@@ -489,11 +489,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "5b4c09d4a0f581ca2f2d55658491d70b",
+            "id": "69a78d7af52ffd49b8f0160c02e69d14",
             "name": "Post User Activities Log Favorite .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities\/log\/favorite\/{id}.json",
             "description": "Adds the activity with the given id to user's list of favorite activities.",
@@ -512,11 +512,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "4d1fd2bb8778beb0e232165f3963b54a",
+            "id": "61aa7ae926591e06dfc04f42fc09f4fa",
             "name": "Get User Foods Log Favorite.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/favorite.json",
             "description": "Get a list of a user's favorite foods in the format requested. A user marks a food as favorite on the user's Food Tab tab. A favorite food in the list provides a quick way to log the food via the Log Food endpoint.",
@@ -535,11 +535,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "09a446112d89d52a1b9e0fb9ac80730a",
+            "id": "f7be28db52f3fce5d57995fb29886e6e",
             "name": "Get User Foods Log Frequent.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/frequent.json",
             "description": "Get a list of a user's frequent foods in the format requested. A frequent food in the list provides a quick way to log the food via the Log Food endpoint.",
@@ -558,11 +558,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "62848125d19a66a9e90797424829e614",
+            "id": "4661c5ee7282f8d24ec46e71e51d8272",
             "name": "Get User Foods Log Recent.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/recent.json",
             "description": "Get a list of a user's recent foods in the format requested. A recent food provides a quick way to log the food via the Log Food endpoint.",
@@ -581,11 +581,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "59eb8d50a5fc93deac6d2858f5f0f816",
+            "id": "78974dead0a49f7d14ac91e571b9548a",
             "name": "Get User Activities Favorite.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities\/favorite.json",
             "description": "Get a list of a user's favorite activities in the format requested. A user marks an activity as favorite on the user's Activities Tab. The activity ids in the list can be used to create a new activity log entry via the Log Activity.",
@@ -604,11 +604,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "750c3cd2ac4fe5cd6908cbcd116c109c",
+            "id": "eab4aa25e864305caa82fd06de96d8a3",
             "name": "Get User Activities Frequent.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities\/frequent.json",
             "description": "Get a list of a user's frequent activities in the format requested using units in the unit system which corresponds to the Accept-Language header provided. A frequent activity record contains the distance and duration values recorded the last time the activity was logged. The record retrieved can therefore be used to log the activity via the Log Activity with the same or adjusted values for distance and duration.",
@@ -627,11 +627,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "20f96a47c309c6d364d481e425367c99",
+            "id": "d07815c006d93140c9eabf0f5e17454b",
             "name": "Get User Activities Recent.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities\/recent.json",
             "description": "Get a list of a user's recent activities in the format requested using units in the unit system which corresponds to the Accept-Language header provided. A recent activity record contains the distance and duration values recorded the last time the activity was logged. The record retrieved can therefore be used to log the activity via the Log Activity with the same or adjusted values for distance and duration.",
@@ -650,11 +650,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "dc2c71418233d9ee4ab73e7f821a37c3",
+            "id": "840dc2c74627917603fdbca1ffebdb06",
             "name": "Get User User Sleep Minutesasleep Date Start Date Or End Date End Date Or Period .json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/sleep\/minutesAsleep\/date\/{start-date-or-end-date}\/{end-date-or-period}.json",
             "description": "Get time series in the specified range for a given resource in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -673,11 +673,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "215a9f823fe2d88ea061de0c61e24beb",
+            "id": "4861fcec0b0ecad642bc298e03491303",
             "name": "Get User User Foods Log Caloriesin Date Start Date Or End Date End Date Or Period .json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/foods\/log\/caloriesIn\/date\/{start-date-or-end-date}\/{end-date-or-period}.json",
             "description": "Get time series in the specified range for a given resource in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -696,11 +696,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "fc75b4c2506fa092f79d5acd90842de6",
+            "id": "272922fb0c5be28c061a373333d6fd22",
             "name": "Post User Body Log Fat Goal.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/fat\/goal.json",
             "description": "Create or updates user's fat goal and get a response in the format requested.",
@@ -719,11 +719,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "8476437abd43d4ab0277b16c16d17434",
+            "id": "027e24863fea596a039d8ed034c4e250",
             "name": "Get User Body Log Fat Goal.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/fat\/goal.json",
             "description": "Get a user's current fat goal in the format requested.",
@@ -742,11 +742,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "078269032cdf3a0ca98e32b9268363b7",
+            "id": "0d86c535b4a8c9723bc83cdacbaa84b3",
             "name": "Post User Body Log Weight Goal.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/weight\/goal.json",
             "description": "Create or update user's weight goal using units in the unit system that corresponds to the Accept-Language header provided and get a response in the format requested.",
@@ -765,11 +765,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "b24fddc3a794538520d7c565f38bce37",
+            "id": "f681e40cdbe69c71c281c226bfb1998b",
             "name": "Get User Body Log Weight Goal.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/weight\/goal.json",
             "description": "Get a user's current weight goal using units in the unit system that corresponds to the Accept-Language header provided in the format requested.",
@@ -788,11 +788,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "209e340816938e99c618df108cd542e1",
+            "id": "4e8241832e0ebc49433c6b3455a8a2fd",
             "name": "Delete User Body Log Fat Body Fat Log .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/fat\/{body-fat-log-id}.json",
             "description": "Delete user's body fat log entry with the given id.",
@@ -811,11 +811,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "c1e9fbcb43e76b787cff3370ecc2aa7a",
+            "id": "f39f3777504c53e78a596fd1b8d288a2",
             "name": "Delete User Body Log Fat Body Weight Log .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/fat\/{body-weight-log-id}.json",
             "description": "Delete user's body weight log entry with the given id.",
@@ -834,11 +834,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "26d296b079d1a1dc7aa66e46804f6758",
+            "id": "bc0b8af80c68dc790a0cd7f9aabc353b",
             "name": "Post User Body Log Fat.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/fat.json",
             "description": "Create log entry for a body fat and get a response in the format requested.",
@@ -857,11 +857,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "d40ceb64e5fa4ba5e2ed483f5347b409",
+            "id": "e652f17f053a8956182ebe6b2d7fddb7",
             "name": "Post User Body Log Weight.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/weight.json",
             "description": "Create log entry for a body weight using units in the unit system that corresponds to the Accept-Language header provided and get a response in the format requested.",
@@ -880,11 +880,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "9bc5a7fd0243105d540b6a6af33f51fe",
+            "id": "ff661dcd1b2a47418659ed89f4e1a200",
             "name": "Post User Body.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body.json",
             "description": "Log body measurements using units in the unit system that corresponds to the Accept-Language header provided.",
@@ -903,11 +903,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "68aaff9f7dab4c4e2ce0d48ab2f6e536",
+            "id": "6cb3ccf5c8cf5878efd66360dbc36335",
             "name": "Get User User Body Weight Date Start Date Or End Date End Date Or Period .json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/body\/weight\/date\/{start-date-or-end-date}\/{end-date-or-period}.json",
             "description": "Get time series in the specified range for a given resource in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -926,11 +926,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "33c038c83e3b9c2b4e7101d134cfa585",
+            "id": "dd6c842db170a2e4e1f92591cc7c7ac5",
             "name": "Get User User Activities Calories Date Start Date Or End Date End Date Or Period .json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/activities\/calories\/date\/{start-date-or-end-date}\/{end-date-or-period}.json",
             "description": "Get time series in the specified range for a given resource in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -949,11 +949,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "776afce5fcc9022aa34035d562c66a05",
+            "id": "4c29b12d217a22823553a79c088d654b",
             "name": "Delete User Bp Bp Log .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/bp\/{bp-log-id}.json",
             "description": "Delete user's blood pressure log entry with the given id.",
@@ -972,11 +972,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "bedd204393f21f19ebfa76f0e739f8c9",
+            "id": "19ce46d85dc9e4d3ac9c036f2f8f3721",
             "name": "Delete User Heart Heart Log .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/heart\/{heart-log-id}.json",
             "description": "Delete user's heart rate log entry with the given id.",
@@ -995,11 +995,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "78ef9ba4beabe43ecc611d93ab15bc6a",
+            "id": "5fbd3d4b60cf8c563e04cba54de64d33",
             "name": "Delete User Sleep Sleep Log .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/sleep\/{sleep-log-id}.json",
             "description": "Delete user's sleep log entry with the given id.",
@@ -1018,11 +1018,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "c034328aef90af366115f72e4369dc12",
+            "id": "62cbc016bde8786a76c4e706cd1339b2",
             "name": "Get User User Badges.json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/badges.json",
             "description": "Get user's badges in the format requested. Response includes all badges for the user as seen on the Fitbit website badge locker (both activity and weight related). We return weight and distance badges based on the user's unit profile preference as on the website.",
@@ -1041,11 +1041,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "ebe34d3edf24e4e0fd40f2d0a2f18432",
+            "id": "8bf56c1687eab35552a4da1242ce50f8",
             "name": "Delete User Activities Activity Log .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities\/{activity-log-id}.json",
             "description": "Delete user's activity log entry with the given id.",
@@ -1064,11 +1064,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "53c0c47544dddf07cbdbdf6c040bb3a1",
+            "id": "56957847f08c9acdcc5bb71c13051739",
             "name": "Delete User Foods Log Food Log .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log\/{food-log-id}.json",
             "description": "Delete the user's food log entry with the given id.",
@@ -1087,11 +1087,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "160a7325473ed2522f85f3c40a5c6f0e",
+            "id": "9bb43caa798af3bb8b539377efaa577c",
             "name": "Post User Glucose.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/glucose.json",
             "description": "Create log entry for a blood glucose measurement and\/or HbA1c using units in the unit system which corresponds to the Accept-Language header provided and get a response in the format requested.",
@@ -1110,11 +1110,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "8a85df49a6d57939b7ed53f75ad653ed",
+            "id": "fdf88717d98d9088a5a03687090ab4f7",
             "name": "Post User Bp.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/bp.json",
             "description": "Create log entry for a blood pressure measurement and get a response in the format requested.",
@@ -1133,11 +1133,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "aaf81d521f036399e613aa885ef9d9d3",
+            "id": "1929297bedd5e2888301843e3d06f301",
             "name": "Post User Heart.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/heart.json",
             "description": "Create log entry for a heart rate measurement and get a response in the format requested.",
@@ -1156,11 +1156,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "f1426ae51d0a81058f8d0ac9363ce448",
+            "id": "2fe67d116ec827c6f00b277ec40f9ec9",
             "name": "Post User Sleep.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/sleep.json",
             "description": "Create log entry for a sleep and get a response in the format requested.",
@@ -1179,11 +1179,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "1d2ff5e717e11c175cf61315cc756e62",
+            "id": "07cde10b6782e57405f8866a4e1cc32a",
             "name": "Post User Foods Log.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/foods\/log.json",
             "description": "Create log entry for a food. You need to select one of the unit ids to create a food log entry. It is possible to fetch unit ids allowed for specific food via previous calls to endpoints that retrieve food lists of the user. Each unit id maps to a unit in the list returned via the Get Food Units API call.",
@@ -1202,11 +1202,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "2bd14926aeb5d35aff09af25ab9abab3",
+            "id": "71feee14166bff35d2b7b92aae60ebdc",
             "name": "Get User Activities.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities.json",
             "description": "Get user's activity statistics in the format requested using units in the unit system which corresponds to the Accept-Language header provided. Response contains both lifetime statistics from the tracker device and total numbers including the manual activity log entries as seen on the Fitbit website dashboard.",
@@ -1225,11 +1225,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "ba69b4db094f93cf5e0671120ecd8240",
+            "id": "6a28ecfcff3d9f0631d2a5ac1911ac19",
             "name": "Post User Activities.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/activities.json",
             "description": "Create log entry for an activity using units in the unit system which corresponds to the Accept-Language header provided (or using optional custom distanceUnit).",
@@ -1248,11 +1248,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "b55ff2ae0063bcc4213011f81656b5da",
+            "id": "7f169d4a065963de35340a1201d33924",
             "name": "Get User Friends Leaderboard.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/friends\/leaderboard.json",
             "description": "Get a leaderboard of user's friends progress in the format requested using units in the unit system which corresponds to the Accept-Language header provided. Authorized user himself is also included in the response.",
@@ -1271,11 +1271,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "a631e72de560024da8fb4d8dfcff3924",
+            "id": "b9adbb718168c36ab7eeae3051dc7e8c",
             "name": "Get User User Friends.json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/friends.json",
             "description": "Get user's friends in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -1294,11 +1294,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "1865b79bfac00497aa0c80bbd664d0b7",
+            "id": "c0e0af5c1d9887b96b155c1f13e25db6",
             "name": "Get User Glucose Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/glucose\/date\/{date}.json",
             "description": "Get a list of user's blood glucose and HbA1C measurements for a given day in the format requested using units in the unit system which corresponds to the Accept-Language header provided. Glucose measurement log entries are available only to authorized user. We always include all glucose trackers in the response body (with zero glucose value for the days with no measurements) to allow to seamlessly fetch a list of all additional user created custom trackers.",
@@ -1317,11 +1317,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "8335dad925438d077cb59930da4a6dbd",
+            "id": "83bf67c751c39020f8bdaa5b746107c1",
             "name": "Get User Bp Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/bp\/date\/{date}.json",
             "description": "Get an average value and a list of user's blood pressure log entries for a given day in the format requested. Blood pressure log entries are available only to authorized user. Blood pressure log entries in response are sorted exactly the same as they are presented on the Fitbit website.",
@@ -1340,11 +1340,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "b7a6827a8ec40f439bb06e86fdb20785",
+            "id": "7b9b5c5bee87614abae9faa9ad75e7ca",
             "name": "Get User Heart Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/heart\/date\/{date}.json",
             "description": "Get an average values and a list of user's heart rate log entries for a given day in the format requested. Heart rate data available only to the authorized user. Heart rate log entries in response are sorted exactly the same as they are presented on the Fitbit website. We always include all heart rate trackers in the \"average\" section of the response body (with zero average values for the days with no measurements) to allow to seamlessly fetch a list of all additional user created custom tracker",
@@ -1363,11 +1363,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "60bbfda468061ab0bfc21225011f298c",
+            "id": "3b2c74d73d205882abcc393fd712a155",
             "name": "Get User User Sleep Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/sleep\/date\/{date}.json",
             "description": "Get a summary and list of a user's sleep log entries for a given day in the format requested. Endpoint returns summary for all sleep log entries for the given day (including naps). If you need data only for the main sleep you can fetch entry with \"isMainSleep\" = true or use Get-Time-Series calls.",
@@ -1386,11 +1386,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "8a9f0f035b957d795c59318f0c2fb25b",
+            "id": "db7e5307277bdeca377bcecf121a7e9a",
             "name": "Get User User Foods Log Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/foods\/log\/date\/{date}.json",
             "description": "Get a summary and list of a user's food log entries for a given day in the format requested.",
@@ -1409,11 +1409,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "89e2fa1dbce2b98139d1fe576242681e",
+            "id": "53b114416c481788f861704f0ea53b5d",
             "name": "Get User User Activities Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/activities\/date\/{date}.json",
             "description": "Get a summary and list of a user's activities and activity log entries for a given day in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -1432,11 +1432,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "0b44c5822d7cd35729476847c5c25bef",
+            "id": "0a29d13490a10769f32ebff051257d53",
             "name": "Get User Body Log Fat Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/fat\/date\/{date}.json",
             "description": "Get a list of all user's body fat log entries for a given day in the format requested.",
@@ -1455,11 +1455,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "cf1f6e06c9e3a8fd1163e7d975b2e2dc",
+            "id": "57222954c0ccdc02444d6ed50a60d3ba",
             "name": "Get User Body Log Weight Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/body\/log\/weight\/date\/{date}.json",
             "description": "Get a list of all user's body weight log entries for a given day in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -1478,11 +1478,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "23b5b060d254509b17f584ee19f9661c",
+            "id": "d66a82a02527a1c63fb3afbf0aea4483",
             "name": "Get User User Body Date Date .json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/body\/date\/{date}.json",
             "description": "Get a summary of a user's body measurements for a given day in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -1501,11 +1501,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "564b08235367deced27d462a1f17b730",
+            "id": "da03d1927aeb1675aaba6eab6bd7386c",
             "name": "Post User Profile.json",
             "url": "httpsapi.fitbit.com\/1\/user\/-\/profile.json",
             "description": "Update user's profile using units in the unit system that corresponds to the Accept-Language header provided and get a response in the format requested.",
@@ -1524,11 +1524,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         },
         {
-            "id": "da8e7184dc56300c43f90f9705ce1187",
+            "id": "bc371ab40a38c5cfa979681d46c10a7f",
             "name": "Get User User Profile.json",
             "url": "httpsapi.fitbit.com\/1\/user\/{user-id}\/profile.json",
             "description": "Get user's profile in the format requested using units in the unit system which corresponds to the Accept-Language header provided.",
@@ -1547,7 +1547,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "f752da32f8578d1798ed06777bad3b85",
+            "collectionId": "85b1c96cf1cf04deb2fd0f00f497656a",
             "rawModeData": ""
         }
     ]
