@@ -13,8 +13,8 @@
         "service api",
         "wearables"
     ],
-    "created": "2019-12-19",
-    "modified": "2019-12-19",
+    "created": "2019-12-21",
+    "modified": "2019-12-21",
     "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/apis.json",
     "specificationVersion": "0.14",
     "apis": [
@@ -31,8 +31,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-activities-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-activities-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-activities-api-postman-collection.json"
                 }
             ]
         },
@@ -49,8 +49,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-foods-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-foods-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-foods-api-postman-collection.json"
                 }
             ]
         },
@@ -67,8 +67,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-body-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-body-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-body-api-postman-collection.json"
                 }
             ]
         },
@@ -85,8 +85,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-heart-rate-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-heart-rate-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-heart-rate-api-postman-collection.json"
                 }
             ]
         },
@@ -103,8 +103,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-device-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-device-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-device-api-postman-collection.json"
                 }
             ]
         },
@@ -121,8 +121,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-friends-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-friends-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-friends-api-postman-collection.json"
                 }
             ]
         },
@@ -139,8 +139,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-glucose-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-glucose-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-glucose-api-postman-collection.json"
                 }
             ]
         },
@@ -157,8 +157,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-heart-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-heart-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-heart-api-postman-collection.json"
                 }
             ]
         },
@@ -175,8 +175,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-meals-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-meals-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-meals-api-postman-collection.json"
                 }
             ]
         },
@@ -193,8 +193,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-profile-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-profile-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-profile-api-postman-collection.json"
                 }
             ]
         },
@@ -211,8 +211,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-sleep-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-sleep-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-sleep-api-postman-collection.json"
                 }
             ]
         },
@@ -229,8 +229,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-subscription-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-subscription-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-subscription-api-postman-collection.json"
                 }
             ]
         },
@@ -247,8 +247,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit-badges-api.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-badges-api-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-badges-api-postman-collection.json"
                 }
             ]
         },
@@ -265,8 +265,8 @@
                     "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/fitbit.json"
                 },
                 {
-                    "type": "x-openapi",
-                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/fitbit-openapi.json"
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/fitbit\/master\/fitbit-postman-collection.json"
                 }
             ]
         }
@@ -276,6 +276,10 @@
         {
             "type": "API.json - Authoritative",
             "url": "https:\/\/www.fitbit.com\/apis.json"
+        },
+        {
+            "type": "APIs.json",
+            "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/apis.json"
         },
         {
             "type": "Apigee Console",
