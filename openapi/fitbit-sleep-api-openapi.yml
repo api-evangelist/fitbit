@@ -1,0 +1,274 @@
+openapi: 3.0.3
+info:
+  title: Fitbit Sleep API
+  description: |
+    Retrieve and log Fitbit sleep data. Returns sleep log entries with stage
+    breakdowns (light, deep, REM, wake), sleep efficiency, time in bed,
+    minutes asleep, restless and awake counts. Supports sleep goal management
+    and date-range queries.
+  version: '1.2'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/sleep/
+servers:
+- url: https://api.fitbit.com
+security:
+- OAuth2:
+  - sleep
+paths:
+  /1.2/user/{user-id}/sleep/date/{date}.json:
+    get:
+      summary: Get Sleep Log By Date
+      description: Retrieves a list of a user's sleep log entries for a given date.
+      operationId: getSleepLogByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Sleep log.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepLog'
+  /1.2/user/{user-id}/sleep/date/{base-date}/{end-date}.json:
+    get:
+      summary: Get Sleep Log By Date Range
+      description: Retrieves a list of a user's sleep log entries over a date range.
+      operationId: getSleepLogByDateRange
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: base-date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end-date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Sleep log.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepLog'
+  /1.2/user/{user-id}/sleep/list.json:
+    get:
+      summary: Get Sleep Log List
+      description: Retrieves a list of sleep log entries before or after a given date with offset, limit, and sort order.
+      operationId: getSleepLogList
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: beforeDate
+        in: query
+        schema:
+          type: string
+      - name: afterDate
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum: [asc, desc]
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          maximum: 100
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sleep log list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepLog'
+  /1.2/user/{user-id}/sleep.json:
+    post:
+      summary: Log Sleep
+      description: Creates a sleep log entry for the user.
+      operationId: logSleep
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: startTime
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: duration
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      responses:
+        '201':
+          description: Sleep log created.
+  /1.2/user/{user-id}/sleep/{log-id}.json:
+    delete:
+      summary: Delete Sleep Log
+      description: Deletes a user's sleep log entry with the given ID.
+      operationId: deleteSleepLog
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: log-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Sleep log deleted.
+  /1/user/{user-id}/sleep/goal.json:
+    get:
+      summary: Get Sleep Goal
+      description: Retrieves the user's current sleep goal.
+      operationId: getSleepGoal
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: Sleep goal.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepGoal'
+    post:
+      summary: Update Sleep Goal
+      description: Creates or updates the user's sleep goal.
+      operationId: updateSleepGoal
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: minDuration
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sleep goal updated.
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            sleep: Sleep data
+  schemas:
+    SleepLog:
+      type: object
+      properties:
+        sleep:
+          type: array
+          items:
+            $ref: '#/components/schemas/SleepEntry'
+        summary:
+          type: object
+          properties:
+            stages:
+              type: object
+              properties:
+                deep:
+                  type: integer
+                light:
+                  type: integer
+                rem:
+                  type: integer
+                wake:
+                  type: integer
+            totalMinutesAsleep:
+              type: integer
+            totalSleepRecords:
+              type: integer
+            totalTimeInBed:
+              type: integer
+    SleepEntry:
+      type: object
+      properties:
+        dateOfSleep:
+          type: string
+          format: date
+        duration:
+          type: integer
+        efficiency:
+          type: integer
+        endTime:
+          type: string
+        infoCode:
+          type: integer
+        isMainSleep:
+          type: boolean
+        levels:
+          type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                properties:
+                  dateTime:
+                    type: string
+                  level:
+                    type: string
+                  seconds:
+                    type: integer
+            summary:
+              type: object
+        logId:
+          type: integer
+          format: int64
+        minutesAfterWakeup:
+          type: integer
+        minutesAsleep:
+          type: integer
+        minutesAwake:
+          type: integer
+        minutesToFallAsleep:
+          type: integer
+        startTime:
+          type: string
+        timeInBed:
+          type: integer
+        type:
+          type: string
+          enum: [stages, classic]
+    SleepGoal:
+      type: object
+      properties:
+        goal:
+          type: object
+          properties:
+            minDuration:
+              type: integer
+            updatedOn:
+              type: string
+        consistency:
+          type: object

@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Fitbit SpO2 / Breathing Rate / Temperature / HRV / VO2 Max API
+  description: |
+    Advanced sensor readings collected by supported Fitbit devices: SpO2
+    (blood oxygen saturation) overnight and intraday, Breathing Rate during
+    sleep, Skin and Core Temperature variation, Heart Rate Variability (RMSSD)
+    during sleep, and Cardio Fitness Score (VO2 Max).
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/spo2/
+servers:
+- url: https://api.fitbit.com
+security:
+- OAuth2:
+  - oxygen_saturation
+  - respiratory_rate
+  - temperature
+  - heartrate
+  - cardio_fitness
+paths:
+  /1/user/{user-id}/spo2/date/{date}.json:
+    get:
+      summary: Get SpO2 Summary By Date
+      description: Returns the daily summary of SpO2 measurements for the user.
+      operationId: getSpo2SummaryByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SpO2 summary.
+  /1/user/{user-id}/spo2/date/{base-date}/{end-date}.json:
+    get:
+      summary: Get SpO2 Summary By Date Range
+      description: Returns daily SpO2 summary for a date range.
+      operationId: getSpo2SummaryByDateRange
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: base-date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end-date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SpO2 summary.
+  /1/user/{user-id}/br/date/{date}.json:
+    get:
+      summary: Get Breathing Rate Summary By Date
+      description: Returns average breathing rate (breaths per minute) during sleep for the date.
+      operationId: getBreathingRateByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Breathing rate summary.
+  /1/user/{user-id}/temp/skin/date/{date}.json:
+    get:
+      summary: Get Skin Temperature Summary By Date
+      description: Returns skin temperature variation relative to the user's baseline.
+      operationId: getSkinTemperatureByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Skin temperature summary.
+  /1/user/{user-id}/temp/core/date/{date}.json:
+    get:
+      summary: Get Core Temperature Summary By Date
+      description: Returns core temperature readings.
+      operationId: getCoreTemperatureByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Core temperature summary.
+  /1/user/{user-id}/hrv/date/{date}.json:
+    get:
+      summary: Get Heart Rate Variability By Date
+      description: Returns daily Heart Rate Variability (RMSSD) values measured during the deep sleep stage.
+      operationId: getHrvByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: HRV summary.
+  /1/user/{user-id}/cardioscore/date/{date}.json:
+    get:
+      summary: Get VO2 Max Summary By Date
+      description: Returns the Cardio Fitness Score (VO2 Max) for the user.
+      operationId: getVo2MaxByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cardio fitness score.
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            oxygen_saturation: SpO2 data
+            respiratory_rate: Breathing rate data
+            temperature: Skin and core body temperature data
+            heartrate: Heart rate and HRV data
+            cardio_fitness: Cardio fitness (VO2 Max) data

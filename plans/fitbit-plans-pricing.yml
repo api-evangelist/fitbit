@@ -1,0 +1,132 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Fitbit
+providerId: fitbit
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Wearable
+  - Health
+  - Fitness
+  - Fitbit
+  - Google
+description: |
+  Plans surface for the Fitbit developer platform. The Fitbit Web API itself
+  is free for registered Personal, Client, and Server applications, gated by
+  request quotas rather than dollar pricing. Consumer plans (Fitbit base /
+  Fitbit Premium) and the device hardware sit upstream of the API surface and
+  are documented here for context. Note that the legacy Fitbit Web API is
+  scheduled for deprecation in September 2026; commercial-track API access is
+  shifting to the Google Health API on Google's developer platform.
+sources:
+  - https://dev.fitbit.com/build/reference/web-api/
+  - https://www.fitbit.com/global/us/products/premium
+  - https://developers.google.com/health
+plans:
+  - id: fitbit-web-api-personal
+    name: Web API — Personal Application
+    type: free
+    description: Free developer access for an individual's own Fitbit data, including intraday access for the developer themselves.
+    entries:
+      - label: Application
+        name: app
+        type: included
+        metric: application
+        limit: 1
+        timeFrame: lifetime
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+  - id: fitbit-web-api-client
+    name: Web API — Client Application
+    type: free
+    description: Free developer access for client-side apps. End-user intraday access requires case-by-case approval.
+    entries:
+      - label: Application
+        name: app
+        type: included
+        metric: application
+        limit: -1
+        timeFrame: lifetime
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+  - id: fitbit-web-api-server
+    name: Web API — Server Application
+    type: free
+    description: Free developer access for server-side apps storing OAuth tokens for many users. End-user intraday access requires case-by-case approval.
+    entries:
+      - label: Application
+        name: app
+        type: included
+        metric: application
+        limit: -1
+        timeFrame: lifetime
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+  - id: fitbit-consumer-free
+    name: Fitbit (Free)
+    type: subscription
+    description: Free Fitbit account included with every Fitbit device; basic activity, sleep, and heart-rate tracking surfaced through the Fitbit mobile app.
+    entries:
+      - label: Account
+        name: account
+        type: included
+        metric: user
+        limit: 1
+        timeFrame: month
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+  - id: fitbit-premium
+    name: Fitbit Premium
+    type: subscription
+    description: Optional paid consumer tier; adds advanced sleep analysis, daily readiness score, guided workouts, mindfulness content, and Health Metrics dashboard.
+    entries:
+      - label: Monthly
+        name: monthly
+        type: subscription
+        metric: user
+        limit: 1
+        timeFrame: month
+        geo: US
+        unit: 1
+        price: '9.99'
+        userMultiplied: false
+      - label: Annual
+        name: annual
+        type: subscription
+        metric: user
+        limit: 1
+        timeFrame: year
+        geo: US
+        unit: 1
+        price: '79.99'
+        userMultiplied: false
+  - id: google-health-api
+    name: Google Health API (successor)
+    type: free
+    description: |
+      The Google Health API replaces the Fitbit Web API for new and migrated
+      integrations and runs on Google Cloud infrastructure with Google OAuth 2.0.
+      Pricing for the Google Health API is not separately published on the
+      Fitbit pricing surface; consult Google Cloud pricing for the underlying
+      services. Legacy Fitbit Web API turndown is scheduled for September 2026.
+    entries:
+      - label: Application
+        name: app
+        type: included
+        metric: application
+        limit: -1
+        timeFrame: lifetime
+        geo: global
+        unit: 1
+        price: '0.00'
+        userMultiplied: false

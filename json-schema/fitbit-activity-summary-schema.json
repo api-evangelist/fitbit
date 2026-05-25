@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fitbit/main/json-schema/fitbit-activity-summary-schema.json",
+  "title": "Fitbit Activity Daily Summary",
+  "type": "object",
+  "properties": {
+    "activities": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ActivityLog" }
+    },
+    "goals": {
+      "type": "object",
+      "properties": {
+        "activeMinutes": { "type": "integer" },
+        "caloriesOut": { "type": "integer" },
+        "distance": { "type": "number" },
+        "floors": { "type": "integer" },
+        "steps": { "type": "integer" },
+        "activeZoneMinutes": { "type": "integer" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "activeScore": { "type": "integer" },
+        "activityCalories": { "type": "integer" },
+        "caloriesBMR": { "type": "integer" },
+        "caloriesOut": { "type": "integer" },
+        "distances": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "activity": { "type": "string" },
+              "distance": { "type": "number" }
+            }
+          }
+        },
+        "elevation": { "type": "number" },
+        "fairlyActiveMinutes": { "type": "integer" },
+        "floors": { "type": "integer" },
+        "heartRateZones": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/HeartRateZone" }
+        },
+        "lightlyActiveMinutes": { "type": "integer" },
+        "marginalCalories": { "type": "integer" },
+        "restingHeartRate": { "type": "integer" },
+        "sedentaryMinutes": { "type": "integer" },
+        "steps": { "type": "integer" },
+        "veryActiveMinutes": { "type": "integer" }
+      }
+    }
+  },
+  "$defs": {
+    "ActivityLog": {
+      "type": "object",
+      "properties": {
+        "activityId": { "type": "integer" },
+        "activityParentId": { "type": "integer" },
+        "calories": { "type": "integer" },
+        "description": { "type": "string" },
+        "distance": { "type": "number" },
+        "duration": { "type": "integer" },
+        "hasStartTime": { "type": "boolean" },
+        "isFavorite": { "type": "boolean" },
+        "logId": { "type": "integer" },
+        "name": { "type": "string" },
+        "startDate": { "type": "string", "format": "date" },
+        "startTime": { "type": "string" },
+        "steps": { "type": "integer" }
+      }
+    },
+    "HeartRateZone": {
+      "type": "object",
+      "properties": {
+        "caloriesOut": { "type": "number" },
+        "max": { "type": "integer" },
+        "min": { "type": "integer" },
+        "minutes": { "type": "integer" },
+        "name": { "type": "string" }
+      }
+    }
+  }
+}

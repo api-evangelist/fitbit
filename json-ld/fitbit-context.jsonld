@@ -1,0 +1,150 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://schema.org/",
+    "fitbit": "https://api.fitbit.com/1/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "User": {
+      "@id": "fitbit:User",
+      "@context": {
+        "encodedId": { "@id": "fitbit:User/encodedId", "@type": "xsd:string" },
+        "displayName": { "@id": "schema:name", "@type": "xsd:string" },
+        "fullName": { "@id": "fitbit:User/fullName", "@type": "xsd:string" },
+        "age": { "@id": "fitbit:User/age", "@type": "xsd:integer" },
+        "dateOfBirth": { "@id": "schema:birthDate", "@type": "xsd:date" },
+        "gender": { "@id": "schema:gender", "@type": "xsd:string" },
+        "height": { "@id": "schema:height", "@type": "xsd:decimal" },
+        "weight": { "@id": "schema:weight", "@type": "xsd:decimal" },
+        "timezone": { "@id": "fitbit:User/timezone", "@type": "xsd:string" },
+        "locale": { "@id": "fitbit:User/locale", "@type": "xsd:string" }
+      }
+    },
+
+    "ActivityDailySummary": {
+      "@id": "fitbit:ActivityDailySummary",
+      "@context": {
+        "steps": { "@id": "fitbit:ActivityDailySummary/steps", "@type": "xsd:integer" },
+        "caloriesOut": { "@id": "fitbit:ActivityDailySummary/caloriesOut", "@type": "xsd:integer" },
+        "activityCalories": { "@id": "fitbit:ActivityDailySummary/activityCalories", "@type": "xsd:integer" },
+        "floors": { "@id": "fitbit:ActivityDailySummary/floors", "@type": "xsd:integer" },
+        "elevation": { "@id": "fitbit:ActivityDailySummary/elevation", "@type": "xsd:decimal" },
+        "sedentaryMinutes": { "@id": "fitbit:ActivityDailySummary/sedentaryMinutes", "@type": "xsd:integer" },
+        "lightlyActiveMinutes": { "@id": "fitbit:ActivityDailySummary/lightlyActiveMinutes", "@type": "xsd:integer" },
+        "fairlyActiveMinutes": { "@id": "fitbit:ActivityDailySummary/fairlyActiveMinutes", "@type": "xsd:integer" },
+        "veryActiveMinutes": { "@id": "fitbit:ActivityDailySummary/veryActiveMinutes", "@type": "xsd:integer" },
+        "restingHeartRate": { "@id": "fitbit:ActivityDailySummary/restingHeartRate", "@type": "xsd:integer" }
+      }
+    },
+
+    "ActivityLog": {
+      "@id": "fitbit:ActivityLog",
+      "@context": {
+        "logId": { "@id": "fitbit:ActivityLog/logId", "@type": "xsd:long" },
+        "activityId": { "@id": "fitbit:ActivityLog/activityId", "@type": "xsd:integer" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "startDate": { "@id": "fitbit:ActivityLog/startDate", "@type": "xsd:date" },
+        "startTime": { "@id": "fitbit:ActivityLog/startTime", "@type": "xsd:string" },
+        "duration": { "@id": "fitbit:ActivityLog/duration", "@type": "xsd:integer" },
+        "calories": { "@id": "fitbit:ActivityLog/calories", "@type": "xsd:integer" },
+        "distance": { "@id": "fitbit:ActivityLog/distance", "@type": "xsd:decimal" },
+        "steps": { "@id": "fitbit:ActivityLog/steps", "@type": "xsd:integer" }
+      }
+    },
+
+    "HeartRateZone": {
+      "@id": "fitbit:HeartRateZone",
+      "@context": {
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "min": { "@id": "fitbit:HeartRateZone/min", "@type": "xsd:integer" },
+        "max": { "@id": "fitbit:HeartRateZone/max", "@type": "xsd:integer" },
+        "minutes": { "@id": "fitbit:HeartRateZone/minutes", "@type": "xsd:integer" },
+        "caloriesOut": { "@id": "fitbit:HeartRateZone/caloriesOut", "@type": "xsd:decimal" }
+      }
+    },
+
+    "SleepEntry": {
+      "@id": "fitbit:SleepEntry",
+      "@context": {
+        "logId": { "@id": "fitbit:SleepEntry/logId", "@type": "xsd:long" },
+        "dateOfSleep": { "@id": "fitbit:SleepEntry/dateOfSleep", "@type": "xsd:date" },
+        "startTime": { "@id": "fitbit:SleepEntry/startTime", "@type": "xsd:dateTime" },
+        "endTime": { "@id": "fitbit:SleepEntry/endTime", "@type": "xsd:dateTime" },
+        "duration": { "@id": "fitbit:SleepEntry/duration", "@type": "xsd:integer" },
+        "efficiency": { "@id": "fitbit:SleepEntry/efficiency", "@type": "xsd:integer" },
+        "minutesAsleep": { "@id": "fitbit:SleepEntry/minutesAsleep", "@type": "xsd:integer" },
+        "minutesAwake": { "@id": "fitbit:SleepEntry/minutesAwake", "@type": "xsd:integer" },
+        "minutesToFallAsleep": { "@id": "fitbit:SleepEntry/minutesToFallAsleep", "@type": "xsd:integer" },
+        "isMainSleep": { "@id": "fitbit:SleepEntry/isMainSleep", "@type": "xsd:boolean" },
+        "type": { "@id": "fitbit:SleepEntry/type", "@type": "xsd:string" }
+      }
+    },
+
+    "WeightLog": {
+      "@id": "fitbit:WeightLog",
+      "@context": {
+        "logId": { "@id": "fitbit:WeightLog/logId", "@type": "xsd:long" },
+        "date": { "@id": "fitbit:WeightLog/date", "@type": "xsd:date" },
+        "time": { "@id": "fitbit:WeightLog/time", "@type": "xsd:string" },
+        "weight": { "@id": "schema:weight", "@type": "xsd:decimal" },
+        "bmi": { "@id": "fitbit:WeightLog/bmi", "@type": "xsd:decimal" },
+        "fat": { "@id": "fitbit:WeightLog/fat", "@type": "xsd:decimal" },
+        "source": { "@id": "fitbit:WeightLog/source", "@type": "xsd:string" }
+      }
+    },
+
+    "FoodLog": {
+      "@id": "fitbit:FoodLog",
+      "@context": {
+        "logId": { "@id": "fitbit:FoodLog/logId", "@type": "xsd:long" },
+        "foodId": { "@id": "fitbit:FoodLog/foodId", "@type": "xsd:integer" },
+        "name": { "@id": "schema:name", "@type": "xsd:string" },
+        "brand": { "@id": "schema:brand", "@type": "xsd:string" },
+        "calories": { "@id": "fitbit:FoodLog/calories", "@type": "xsd:integer" },
+        "carbs": { "@id": "fitbit:FoodLog/carbs", "@type": "xsd:decimal" },
+        "fat": { "@id": "fitbit:FoodLog/fat", "@type": "xsd:decimal" },
+        "fiber": { "@id": "fitbit:FoodLog/fiber", "@type": "xsd:decimal" },
+        "protein": { "@id": "fitbit:FoodLog/protein", "@type": "xsd:decimal" },
+        "sodium": { "@id": "fitbit:FoodLog/sodium", "@type": "xsd:decimal" }
+      }
+    },
+
+    "Device": {
+      "@id": "fitbit:Device",
+      "@context": {
+        "id": { "@id": "fitbit:Device/id", "@type": "xsd:string" },
+        "deviceVersion": { "@id": "schema:model", "@type": "xsd:string" },
+        "battery": { "@id": "fitbit:Device/battery", "@type": "xsd:string" },
+        "batteryLevel": { "@id": "fitbit:Device/batteryLevel", "@type": "xsd:integer" },
+        "lastSyncTime": { "@id": "fitbit:Device/lastSyncTime", "@type": "xsd:dateTime" },
+        "mac": { "@id": "fitbit:Device/mac", "@type": "xsd:string" },
+        "type": { "@id": "fitbit:Device/type", "@type": "xsd:string" }
+      }
+    },
+
+    "Subscription": {
+      "@id": "fitbit:Subscription",
+      "@context": {
+        "subscriptionId": { "@id": "fitbit:Subscription/subscriptionId", "@type": "xsd:string" },
+        "collectionType": { "@id": "fitbit:Subscription/collectionType", "@type": "xsd:string" },
+        "ownerId": { "@id": "fitbit:Subscription/ownerId", "@type": "xsd:string" },
+        "ownerType": { "@id": "fitbit:Subscription/ownerType", "@type": "xsd:string" },
+        "subscriberId": { "@id": "fitbit:Subscription/subscriberId", "@type": "xsd:string" }
+      }
+    },
+
+    "EcgReading": {
+      "@id": "fitbit:EcgReading",
+      "@context": {
+        "startTime": { "@id": "fitbit:EcgReading/startTime", "@type": "xsd:dateTime" },
+        "averageHeartRate": { "@id": "fitbit:EcgReading/averageHeartRate", "@type": "xsd:integer" },
+        "resultClassification": { "@id": "fitbit:EcgReading/resultClassification", "@type": "xsd:string" },
+        "samplingFrequencyHz": { "@id": "fitbit:EcgReading/samplingFrequencyHz", "@type": "xsd:string" },
+        "leadNumber": { "@id": "fitbit:EcgReading/leadNumber", "@type": "xsd:integer" },
+        "deviceName": { "@id": "schema:model", "@type": "xsd:string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: Fitbit Body API
+  description: |
+    Read and write body and weight data for Fitbit users: weight logs, body fat
+    logs, BMI, body weight goals, and body fat goals. Includes time-series
+    endpoints for weight, BMI, and body fat percentage.
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/body/
+servers:
+- url: https://api.fitbit.com
+security:
+- OAuth2:
+  - weight
+paths:
+  /1/user/{user-id}/body/log/weight/date/{date}.json:
+    get:
+      summary: Get Weight Logs By Date
+      description: Retrieves a list of all user's weight log entries for a given day.
+      operationId: getWeightLogsByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Weight logs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightLogList'
+    post:
+      summary: Log Weight
+      description: Creates a log entry for a body weight.
+      operationId: logWeight
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: weight
+        in: query
+        required: true
+        schema:
+          type: number
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: time
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Weight log created.
+  /1/user/{user-id}/body/log/weight/{weight-log-id}.json:
+    delete:
+      summary: Delete Weight Log
+      description: Deletes a user's weight log entry with the given ID.
+      operationId: deleteWeightLog
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: weight-log-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Weight log deleted.
+  /1/user/{user-id}/body/log/fat/date/{date}.json:
+    get:
+      summary: Get Body Fat Logs By Date
+      description: Retrieves a list of all user's body fat log entries for a given day.
+      operationId: getBodyFatLogsByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Body fat logs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BodyFatLogList'
+  /1/user/{user-id}/body/{resource-path}/date/{date}/{period}.json:
+    get:
+      summary: Get Body Time Series By Date
+      description: Retrieves the user's body data (weight, BMI, or fat) over a period of time.
+      operationId: getBodyTimeSeriesByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: resource-path
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [bmi, fat, weight]
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: period
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, max]
+      responses:
+        '200':
+          description: Body time series.
+          content:
+            application/json:
+              schema:
+                type: object
+  /1/user/{user-id}/body/log/weight/goal.json:
+    get:
+      summary: Get Body Weight Goal
+      description: Retrieves the user's current body weight goal.
+      operationId: getBodyWeightGoal
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: Body weight goal.
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            weight: Weight, BMI, and body fat data
+  schemas:
+    WeightLogList:
+      type: object
+      properties:
+        weight:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeightLog'
+    WeightLog:
+      type: object
+      properties:
+        bmi:
+          type: number
+        date:
+          type: string
+          format: date
+        fat:
+          type: number
+        logId:
+          type: integer
+          format: int64
+        source:
+          type: string
+        time:
+          type: string
+        weight:
+          type: number
+    BodyFatLogList:
+      type: object
+      properties:
+        fat:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+              fat:
+                type: number
+              logId:
+                type: integer
+                format: int64
+              source:
+                type: string
+              time:
+                type: string

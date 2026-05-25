@@ -1,0 +1,225 @@
+openapi: 3.0.3
+info:
+  title: Fitbit User API
+  description: |
+    Read and update Fitbit user profile information including display name,
+    gender, birthday, height, weight, locale, time zone, and account settings.
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/user/
+servers:
+- url: https://api.fitbit.com
+security:
+- OAuth2:
+  - profile
+paths:
+  /1/user/{user-id}/profile.json:
+    get:
+      summary: Get Profile
+      description: Retrieves the user's profile data.
+      operationId: getProfile
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: User profile.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+    post:
+      summary: Update Profile
+      description: Updates a user's profile using a form.
+      operationId: updateProfile
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: gender
+        in: query
+        schema:
+          type: string
+      - name: birthday
+        in: query
+        schema:
+          type: string
+          format: date
+      - name: height
+        in: query
+        schema:
+          type: number
+      - name: aboutMe
+        in: query
+        schema:
+          type: string
+      - name: fullname
+        in: query
+        schema:
+          type: string
+      - name: country
+        in: query
+        schema:
+          type: string
+      - name: state
+        in: query
+        schema:
+          type: string
+      - name: city
+        in: query
+        schema:
+          type: string
+      - name: timezone
+        in: query
+        schema:
+          type: string
+      - name: foodsLocale
+        in: query
+        schema:
+          type: string
+      - name: locale
+        in: query
+        schema:
+          type: string
+      - name: localeLang
+        in: query
+        schema:
+          type: string
+      - name: localeCountry
+        in: query
+        schema:
+          type: string
+      - name: startDayOfWeek
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Profile updated.
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            profile: User profile
+            settings: Account settings
+  schemas:
+    UserProfile:
+      type: object
+      properties:
+        user:
+          type: object
+          properties:
+            aboutMe:
+              type: string
+            age:
+              type: integer
+            ambassador:
+              type: boolean
+            autoStrideEnabled:
+              type: boolean
+            avatar:
+              type: string
+            avatar150:
+              type: string
+            avatar640:
+              type: string
+            averageDailySteps:
+              type: integer
+            challengesBeta:
+              type: boolean
+            city:
+              type: string
+            clockTimeDisplayFormat:
+              type: string
+            country:
+              type: string
+            corporate:
+              type: boolean
+            corporateAdmin:
+              type: boolean
+            dateOfBirth:
+              type: string
+              format: date
+            displayName:
+              type: string
+            displayNameSetting:
+              type: string
+            distanceUnit:
+              type: string
+            encodedId:
+              type: string
+            features:
+              type: object
+            firstName:
+              type: string
+            fullName:
+              type: string
+            gender:
+              type: string
+            glucoseUnit:
+              type: string
+            height:
+              type: number
+            heightUnit:
+              type: string
+            isBugReportEnabled:
+              type: boolean
+            isChild:
+              type: boolean
+            isCoach:
+              type: boolean
+            languageLocale:
+              type: string
+            lastName:
+              type: string
+            legalTermsAcceptRequired:
+              type: boolean
+            locale:
+              type: string
+            memberSince:
+              type: string
+            mfaEnabled:
+              type: boolean
+            offsetFromUTCMillis:
+              type: integer
+            startDayOfWeek:
+              type: string
+            state:
+              type: string
+            strideLengthRunning:
+              type: number
+            strideLengthRunningType:
+              type: string
+            strideLengthWalking:
+              type: number
+            strideLengthWalkingType:
+              type: string
+            swimUnit:
+              type: string
+            temperatureUnit:
+              type: string
+            timezone:
+              type: string
+            topBadges:
+              type: array
+              items:
+                type: object
+            waterUnit:
+              type: string
+            waterUnitName:
+              type: string
+            weight:
+              type: number
+            weightUnit:
+              type: string

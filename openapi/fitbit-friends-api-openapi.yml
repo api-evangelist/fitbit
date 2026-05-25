@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Fitbit Friends API
+  description: |
+    Read the user's Fitbit friends list and weekly leaderboard rankings.
+  version: '1.1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/friends/
+servers:
+- url: https://api.fitbit.com
+security:
+- OAuth2:
+  - social
+paths:
+  /1.1/user/{user-id}/friends.json:
+    get:
+      summary: Get Friends
+      description: Returns data of a user's friends.
+      operationId: getFriends
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: List of friends.
+  /1.1/user/{user-id}/leaderboard/friends.json:
+    get:
+      summary: Get Friends Leaderboard
+      description: Returns the user's friends leaderboard ranked by activity.
+      operationId: getFriendsLeaderboard
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: Friends leaderboard.
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            social: Friends and leaderboard data

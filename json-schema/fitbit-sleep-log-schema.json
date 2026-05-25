@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fitbit/main/json-schema/fitbit-sleep-log-schema.json",
+  "title": "Fitbit Sleep Log",
+  "type": "object",
+  "properties": {
+    "sleep": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/SleepEntry" }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "stages": {
+          "type": "object",
+          "properties": {
+            "deep": { "type": "integer" },
+            "light": { "type": "integer" },
+            "rem": { "type": "integer" },
+            "wake": { "type": "integer" }
+          }
+        },
+        "totalMinutesAsleep": { "type": "integer" },
+        "totalSleepRecords": { "type": "integer" },
+        "totalTimeInBed": { "type": "integer" }
+      }
+    }
+  },
+  "$defs": {
+    "SleepEntry": {
+      "type": "object",
+      "properties": {
+        "dateOfSleep": { "type": "string", "format": "date" },
+        "duration": { "type": "integer" },
+        "efficiency": { "type": "integer" },
+        "endTime": { "type": "string" },
+        "infoCode": { "type": "integer" },
+        "isMainSleep": { "type": "boolean" },
+        "levels": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "dateTime": { "type": "string" },
+                  "level": { "type": "string", "enum": ["wake", "light", "deep", "rem", "restless", "asleep", "awake"] },
+                  "seconds": { "type": "integer" }
+                }
+              }
+            },
+            "summary": { "type": "object" }
+          }
+        },
+        "logId": { "type": "integer" },
+        "minutesAfterWakeup": { "type": "integer" },
+        "minutesAsleep": { "type": "integer" },
+        "minutesAwake": { "type": "integer" },
+        "minutesToFallAsleep": { "type": "integer" },
+        "startTime": { "type": "string" },
+        "timeInBed": { "type": "integer" },
+        "type": { "type": "string", "enum": ["stages", "classic"] }
+      }
+    }
+  }
+}

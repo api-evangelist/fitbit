@@ -1,0 +1,44 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Fitbit
+providerId: fitbit
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Rate Limiting
+  - Quotas
+  - Wearable
+  - Fitbit
+description: |
+  Reconciled rate limits for the Fitbit Web API. Quotas are per OAuth grant
+  (per authorized user per app) and reset on a rolling hourly window. Intraday
+  access is granted on a case-by-case basis and counts against the same hourly
+  bucket. When a quota is exceeded the API returns HTTP 429 with a Retry-After
+  header.
+sources:
+  - https://dev.fitbit.com/build/reference/web-api/
+  - https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/
+headers:
+  limit: Fitbit-Rate-Limit-Limit
+  remaining: Fitbit-Rate-Limit-Remaining
+  reset: Fitbit-Rate-Limit-Reset
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+algorithm: fixed-window
+limits:
+  - tier: Authorized (per user, per app)
+    flow: Authorization Code / Authorization Code + PKCE
+    rph: 150
+    description: Default hourly request quota for an OAuth 2.0 authorized user, per registered application. Window resets at the top of each hour.
+  - tier: Unauthorized (server-to-server, no user grant)
+    flow: Client Credentials (Commerce APIs) / IP-bound public endpoints
+    rph: 150
+    description: Hourly quota for application-level (no user token) calls, scoped per client IP / per app.
+notes:
+  - Intraday endpoints (heart rate 1sec/1min, steps, calories, SpO2, breathing rate, HRV) require explicit approval from Fitbit/Google and share the same hourly bucket per user.
+  - 429 responses include a Retry-After header (seconds) indicating when the next request will be accepted.
+  - Migration target — Google Health API — uses a different quota model on Google's infrastructure and is not represented in this file.
