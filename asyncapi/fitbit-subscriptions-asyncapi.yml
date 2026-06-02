@@ -1,0 +1,261 @@
+asyncapi: 2.6.0
+info:
+  title: Fitbit Subscriptions Webhooks
+  version: '1'
+  description: >-
+    Fitbit's Subscription API streams sync notifications to a registered
+    Subscriber endpoint each time a user has new data available for a
+    subscribed collection. Five collections are subscribable per user:
+    `activities`, `body`, `foods`, `sleep`, and `userRevokedAccess`.
+    Notifications are delivered as HTTP POST requests with
+    `Content-Type: application/json` over TLSv1.2. The Subscriber endpoint
+    must respond with HTTP 204 No Content and close the connection within
+    5 seconds; otherwise Fitbit may disable the subscriber. During subscriber
+    configuration Fitbit additionally sends two GET verification requests with
+    a `verify` query parameter — respond with 204 to the correct code and 404
+    to the incorrect code. To confirm a notification originated from Fitbit,
+    verify the `X-Fitbit-Signature` HTTP header: HMAC-SHA1 the raw JSON body
+    using your application's OAuth client secret with a trailing `&` as the
+    signing key, then BASE64-encode the result and compare to the header
+    value. Signature verification is optional but recommended; on failure
+    respond 404 and log the request.
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/subscription/
+  license:
+    name: Fitbit Platform Terms of Service
+    url: https://dev.fitbit.com/legal/platform-terms-of-service/
+externalDocs:
+  description: Fitbit Web API — Subscription
+  url: https://dev.fitbit.com/build/reference/web-api/subscription/
+defaultContentType: application/json
+servers:
+  subscriber:
+    url: '{subscriberHost}'
+    protocol: https
+    protocolVersion: '1.1'
+    description: >-
+      Developer-operated Subscriber endpoint registered at dev.fitbit.com.
+      Must serve TLSv1.2 and acknowledge each notification with HTTP 204
+      within 5 seconds.
+    variables:
+      subscriberHost:
+        default: https://subscriber.example.com
+        description: HTTPS URL of the registered subscriber endpoint.
+channels:
+  /subscriber:
+    description: >-
+      Single subscriber URL that receives notifications for every collection
+      the application has subscribed to. Fitbit may batch multiple
+      notifications into one POST as a JSON array.
+    bindings:
+      http:
+        type: request
+        method: POST
+        bindingVersion: 0.3.0
+    subscribe:
+      operationId: receiveSubscriptionNotification
+      summary: Receive subscription notification batch
+      description: >-
+        Fitbit POSTs a JSON array of notification objects whenever new data
+        becomes available for any subscribed user/collection pair. Verify the
+        `X-Fitbit-Signature` header (HMAC-SHA1 of the raw body, BASE64
+        encoded, signing key = `<clientSecret>&`) and respond 204.
+      bindings:
+        http:
+          bindingVersion: 0.3.0
+      message:
+        oneOf:
+        - $ref: '#/components/messages/ActivitiesNotification'
+        - $ref: '#/components/messages/BodyNotification'
+        - $ref: '#/components/messages/FoodsNotification'
+        - $ref: '#/components/messages/SleepNotification'
+        - $ref: '#/components/messages/UserRevokedAccessNotification'
+  /subscriber/verify:
+    description: >-
+      Subscriber verification handshake. When a subscriber URL is
+      registered or updated on dev.fitbit.com, Fitbit issues two GET
+      requests with a `verify` query parameter. Respond 204 to the
+      verification code shown in the developer console and 404 to the
+      intentionally-incorrect second code.
+    bindings:
+      http:
+        type: request
+        method: GET
+        bindingVersion: 0.3.0
+    subscribe:
+      operationId: receiveSubscriberVerification
+      summary: Subscriber verification handshake
+      message:
+        $ref: '#/components/messages/SubscriberVerification'
+components:
+  messages:
+    ActivitiesNotification:
+      name: ActivitiesNotification
+      title: Activities Collection Notification
+      summary: New activity data is available for the user.
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/NotificationHeaders'
+      payload:
+        type: array
+        items:
+          allOf:
+          - $ref: '#/components/schemas/Notification'
+          - type: object
+            properties:
+              collectionType:
+                type: string
+                enum: [activities]
+      examples:
+      - name: activitiesExample
+        summary: Single activities notification
+        payload:
+        - collectionType: activities
+          date: '2010-03-01'
+          ownerId: 184X36
+          ownerType: user
+          subscriptionId: '2345'
+    BodyNotification:
+      name: BodyNotification
+      title: Body Collection Notification
+      summary: New body (weight, body fat, BMI) data is available for the user.
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/NotificationHeaders'
+      payload:
+        type: array
+        items:
+          allOf:
+          - $ref: '#/components/schemas/Notification'
+          - type: object
+            properties:
+              collectionType:
+                type: string
+                enum: [body]
+    FoodsNotification:
+      name: FoodsNotification
+      title: Foods Collection Notification
+      summary: New food / water log data is available for the user.
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/NotificationHeaders'
+      payload:
+        type: array
+        items:
+          allOf:
+          - $ref: '#/components/schemas/Notification'
+          - type: object
+            properties:
+              collectionType:
+                type: string
+                enum: [foods]
+    SleepNotification:
+      name: SleepNotification
+      title: Sleep Collection Notification
+      summary: New sleep log data is available for the user.
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/NotificationHeaders'
+      payload:
+        type: array
+        items:
+          allOf:
+          - $ref: '#/components/schemas/Notification'
+          - type: object
+            properties:
+              collectionType:
+                type: string
+                enum: [sleep]
+    UserRevokedAccessNotification:
+      name: UserRevokedAccessNotification
+      title: User Revoked Access Notification
+      summary: >-
+        The user revoked the application's access. The application should
+        stop calling Fitbit APIs and delete any related access/refresh
+        tokens.
+      contentType: application/json
+      headers:
+        $ref: '#/components/schemas/NotificationHeaders'
+      payload:
+        type: array
+        items:
+          allOf:
+          - $ref: '#/components/schemas/Notification'
+          - type: object
+            properties:
+              collectionType:
+                type: string
+                enum: [userRevokedAccess]
+    SubscriberVerification:
+      name: SubscriberVerification
+      title: Subscriber Verification GET
+      summary: >-
+        Subscriber registration handshake. Two GETs are issued — one with the
+        correct verification code (respond 204) and one with an incorrect
+        code (respond 404). Responses must arrive within 5 seconds.
+      contentType: application/json
+      payload:
+        type: object
+        properties:
+          verify:
+            type: string
+            description: >-
+              The verification code shown on the Subscriber configuration
+              screen at dev.fitbit.com. Compare for equality and respond
+              204 (match) or 404 (mismatch).
+  schemas:
+    NotificationHeaders:
+      type: object
+      properties:
+        Content-Type:
+          type: string
+          enum: [application/json]
+        X-Fitbit-Signature:
+          type: string
+          description: >-
+            BASE64-encoded HMAC-SHA1 of the raw JSON request body. The
+            signing key is the application's OAuth client secret (from
+            dev.fitbit.com) with a trailing `&` character appended. To
+            verify, recompute the digest over the raw body and compare;
+            on mismatch respond with HTTP 404 and log the request (remote
+            IP, signature, body).
+    Notification:
+      type: object
+      description: >-
+        A single subscription notification. Notifications may be delivered
+        individually or batched into a JSON array.
+      required:
+      - collectionType
+      - ownerId
+      - ownerType
+      - subscriptionId
+      properties:
+        collectionType:
+          type: string
+          enum:
+          - activities
+          - body
+          - foods
+          - sleep
+          - userRevokedAccess
+          description: The subscribed collection that has new data.
+        date:
+          type: string
+          format: date
+          description: >-
+            Date (YYYY-MM-DD) of the data that changed. Present for data
+            collections; may be absent for `userRevokedAccess`.
+        ownerId:
+          type: string
+          description: Encoded Fitbit user identifier.
+        ownerType:
+          type: string
+          enum: [user]
+          description: Always `user`.
+        subscriptionId:
+          type: string
+          maxLength: 50
+          description: >-
+            Application-supplied subscription identifier (max 50 chars)
+            that was provided when the subscription was created.
