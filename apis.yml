@@ -1,393 +1,396 @@
 aid: fitbit
 url: https://raw.githubusercontent.com/api-evangelist/fitbit/refs/heads/main/apis.yml
 apis:
-- aid: fitbit:fitbit-activity-api
-  name: Fitbit Activity API
-  tags:
-  - Activity
-  - Fitness
-  - Steps
-  - Active Zone Minutes
-  - Wearable
-  humanURL: https://dev.fitbit.com/build/reference/web-api/activity/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/activity/
-    type: Documentation
-  - url: https://dev.fitbit.com/build/reference/web-api/active-zone-minutes-timeseries/
-    type: Documentation
-  - url: openapi/fitbit-activity-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/fitbit-activity-summary-schema.json
-    type: JSONSchema
-  - url: json-ld/fitbit-context.jsonld
-    type: JSONLD
-  - type: NaftikoCapability
-    url: capabilities/activity-activity.yaml
-  description: Read and write user activity, exercise logs, daily activity summaries (steps, distance, calories,
-    floors, elevation), activity goals, the Fitbit exercise catalog, and Active Zone Minutes (AZM) time series.
-    Supports per-day, per-period, and per-date-range queries.
-- aid: fitbit:fitbit-heart-rate-api
-  name: Fitbit Heart Rate API
-  tags:
-  - Heart Rate
-  - Cardiovascular
-  - Wearable
-  humanURL: https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/
-    type: Documentation
-  - url: https://dev.fitbit.com/build/reference/web-api/intraday/
-    type: Documentation
-  - url: openapi/fitbit-heart-rate-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/heart-rate-heart-rate.yaml
-  description: Retrieve heart rate time series including resting heart rate, custom and default heart rate zones,
-    and zone-minute breakdowns. Intraday endpoints expose 1-second, 1-minute, 5-minute, or 15-minute detail-level
-    series and require explicit Intraday access approval.
-- aid: fitbit:fitbit-sleep-api
-  name: Fitbit Sleep API
-  tags:
-  - Sleep
-  - Sleep Stages
-  - Wearable
-  humanURL: https://dev.fitbit.com/build/reference/web-api/sleep/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/sleep/
-    type: Documentation
-  - url: openapi/fitbit-sleep-api-openapi.yml
-    type: OpenAPI
-  - url: json-schema/fitbit-sleep-log-schema.json
-    type: JSONSchema
-  - type: NaftikoCapability
-    url: capabilities/sleep-sleep.yaml
-  description: Read, log, and delete sleep records with stage breakdowns (light, deep, REM, wake), sleep efficiency,
-    time in bed, minutes asleep, minutes awake, and minutes to fall asleep. Supports paginated list queries, date
-    queries, date-range queries, and sleep goal management.
-- aid: fitbit:fitbit-body-api
-  name: Fitbit Body API
-  tags:
-  - Body
-  - Weight
-  - BMI
-  - Body Fat
-  humanURL: https://dev.fitbit.com/build/reference/web-api/body/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/body/
-    type: Documentation
-  - url: openapi/fitbit-body-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/body-body.yaml
-  description: Read and write weight and body fat log entries, BMI time series, and body weight / body fat goals.
-    Aria scales and manual logs both flow into this surface.
-- aid: fitbit:fitbit-nutrition-api
-  name: Fitbit Nutrition API
-  tags:
-  - Nutrition
-  - Food
-  - Water
-  - Calories
-  humanURL: https://dev.fitbit.com/build/reference/web-api/nutrition/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/nutrition/
-    type: Documentation
-  - url: openapi/fitbit-nutrition-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/nutrition-nutrition.yaml
-  description: Read and write food, water, and meal logs; access the Fitbit foods database (search, get by ID,
-    create custom foods); manage meal goals, favorites, and frequent foods; and read daily macronutrient summaries
-    (calories, carbs, fat, fiber, protein, sodium, water).
-- aid: fitbit:fitbit-user-api
-  name: Fitbit User API
-  tags:
-  - User
-  - Profile
-  - Settings
-  humanURL: https://dev.fitbit.com/build/reference/web-api/user/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/user/
-    type: Documentation
-  - url: openapi/fitbit-user-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/user-profile.yaml
-  description: Read and update the authorized Fitbit user's profile including display name, gender, birthday,
-    height, weight, locale, timezone, and unit preferences (distance, weight, water, glucose, temperature).
-- aid: fitbit:fitbit-devices-api
-  name: Fitbit Devices API
-  tags:
-  - Devices
-  - Wearable
-  - Alarms
-  humanURL: https://dev.fitbit.com/build/reference/web-api/devices/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/devices/
-    type: Documentation
-  - url: openapi/fitbit-devices-api-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/devices-devices.yaml
-  description: List paired Fitbit devices, retrieve battery level and last sync timestamps, identify the device
-    model (deviceVersion), and create, update, and delete tracker alarms.
-- aid: fitbit:fitbit-subscriptions-api
-  name: Fitbit Subscriptions API
-  tags:
-  - Webhooks
-  - Subscriptions
-  - Notifications
-  humanURL: https://dev.fitbit.com/build/reference/web-api/subscription/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/subscription/
-    type: Documentation
-  - url: openapi/fitbit-subscriptions-api-openapi.yml
-    type: OpenAPI
-  - url: asyncapi/fitbit-subscriptions-asyncapi.yml
-    type: AsyncAPI
-  - type: NaftikoCapability
-    url: capabilities/subscriptions-subscriptions.yaml
-  description: Webhook-based notification system. Subscribe per user to the activities, body, foods, sleep, or
-    userRevokedAccess collections; Fitbit POSTs to your registered Subscriber endpoint when new data is available,
-    eliminating polling.
-- aid: fitbit:fitbit-friends-api
-  name: Fitbit Friends API
-  tags:
-  - Social
-  - Friends
-  - Leaderboard
-  humanURL: https://dev.fitbit.com/build/reference/web-api/friends/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/friends/
-    type: Documentation
-  - url: openapi/fitbit-friends-api-openapi.yml
-    type: OpenAPI
-  description: Read the authorized user's Fitbit friends list and weekly friends leaderboard rankings.
-- aid: fitbit:fitbit-spo2-breathing-temperature-api
-  name: Fitbit SpO2, Breathing Rate, Temperature, HRV, and Cardio Fitness API
-  tags:
-  - SpO2
-  - Breathing Rate
-  - Temperature
-  - HRV
-  - VO2 Max
-  - Cardio Fitness
-  humanURL: https://dev.fitbit.com/build/reference/web-api/spo2/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/spo2/
-    type: Documentation
-  - url: https://dev.fitbit.com/build/reference/web-api/breathing-rate/
-    type: Documentation
-  - url: https://dev.fitbit.com/build/reference/web-api/temperature/
-    type: Documentation
-  - url: https://dev.fitbit.com/build/reference/web-api/heartrate-variability/
-    type: Documentation
-  - url: https://dev.fitbit.com/build/reference/web-api/cardio-fitness-score/
-    type: Documentation
-  - url: openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
-    type: OpenAPI
-  description: Advanced sensor readings from supported Fitbit devices — SpO2 (blood oxygen saturation), Breathing
-    Rate, Skin Temperature and Core Temperature variation, Heart Rate Variability (RMSSD), and Cardio Fitness
-    Score (VO2 Max). Each metric supports per-day and per-date-range summary queries; SpO2, breathing rate, and
-    HRV additionally support intraday detail with Intraday access approval.
-- aid: fitbit:fitbit-ecg-irn-api
-  name: Fitbit ECG and Irregular Rhythm Notifications API
-  tags:
-  - ECG
-  - Electrocardiogram
-  - Irregular Rhythm Notifications
-  - Atrial Fibrillation
-  - Cardiac Health
-  humanURL: https://dev.fitbit.com/build/reference/web-api/electrocardiogram/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/electrocardiogram/
-    type: Documentation
-  - url: https://dev.fitbit.com/build/reference/web-api/irregular-rhythm-notifications/
-    type: Documentation
-  - url: openapi/fitbit-ecg-irn-api-openapi.yml
-    type: OpenAPI
-  description: Access Electrocardiogram (ECG) readings recorded on Fitbit Sense, Sense 2, and Charge 5/6 devices,
-    and access Irregular Rhythm Notifications (IRN) including alerts and feature enrollment. ECG readings include
-    waveform samples, sampling frequency, lead number, and the algorithm's result classification (Normal Sinus
-    Rhythm, Atrial Fibrillation, Inconclusive).
-- aid: fitbit:fitbit-authorization-api
-  name: Fitbit Authorization API
-  tags:
-  - OAuth
-  - Authentication
-  - Authorization
-  - Security
-  humanURL: https://dev.fitbit.com/build/reference/web-api/authorization/
-  properties:
-  - url: https://dev.fitbit.com/build/reference/web-api/authorization/
-    type: Documentation
-  - url: openapi/fitbit-authorization-api-openapi.yml
-    type: OpenAPI
-  description: OAuth 2.0 authorization endpoints. Supports Authorization Code Grant with PKCE (recommended),
-    Authorization Code Grant, Implicit Grant, and Client Credentials (for Fitbit Commerce APIs that do not retrieve
-    user data). Tokens can be introspected, refreshed, or revoked.
+  - aid: fitbit:fitbit-activity-api
+    name: Fitbit Activity API
+    tags:
+      - Activity
+      - Fitness
+      - Steps
+      - Active Zone Minutes
+      - Wearable
+    humanURL: https://dev.fitbit.com/build/reference/web-api/activity/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/activity/
+        type: Documentation
+      - url: https://dev.fitbit.com/build/reference/web-api/active-zone-minutes-timeseries/
+        type: Documentation
+      - url: openapi/fitbit-activity-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/fitbit-activity-summary-schema.json
+        type: JSONSchema
+      - url: json-ld/fitbit-context.jsonld
+        type: JSONLD
+    description: >-
+      Read and write user activity, exercise logs, daily activity summaries (steps, distance, calories, floors,
+      elevation), activity goals, the Fitbit exercise catalog, and Active Zone Minutes (AZM) time series. Supports
+      per-day, per-period, and per-date-range queries.
+  - aid: fitbit:fitbit-heart-rate-api
+    name: Fitbit Heart Rate API
+    tags:
+      - Heart Rate
+      - Cardiovascular
+      - Wearable
+    humanURL: https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/
+        type: Documentation
+      - url: https://dev.fitbit.com/build/reference/web-api/intraday/
+        type: Documentation
+      - url: openapi/fitbit-heart-rate-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Retrieve heart rate time series including resting heart rate, custom and default heart rate zones, and zone-minute
+      breakdowns. Intraday endpoints expose 1-second, 1-minute, 5-minute, or 15-minute detail-level series and require
+      explicit Intraday access approval.
+  - aid: fitbit:fitbit-sleep-api
+    name: Fitbit Sleep API
+    tags:
+      - Sleep
+      - Sleep Stages
+      - Wearable
+    humanURL: https://dev.fitbit.com/build/reference/web-api/sleep/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/sleep/
+        type: Documentation
+      - url: openapi/fitbit-sleep-api-openapi.yml
+        type: OpenAPI
+      - url: json-schema/fitbit-sleep-log-schema.json
+        type: JSONSchema
+    description: >-
+      Read, log, and delete sleep records with stage breakdowns (light, deep, REM, wake), sleep efficiency, time in bed,
+      minutes asleep, minutes awake, and minutes to fall asleep. Supports paginated list queries, date queries,
+      date-range queries, and sleep goal management.
+  - aid: fitbit:fitbit-body-api
+    name: Fitbit Body API
+    tags:
+      - Body
+      - Weight
+      - BMI
+      - Body Fat
+    humanURL: https://dev.fitbit.com/build/reference/web-api/body/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/body/
+        type: Documentation
+      - url: openapi/fitbit-body-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Read and write weight and body fat log entries, BMI time series, and body weight / body fat goals. Aria scales and
+      manual logs both flow into this surface.
+  - aid: fitbit:fitbit-nutrition-api
+    name: Fitbit Nutrition API
+    tags:
+      - Nutrition
+      - Food
+      - Water
+      - Calories
+    humanURL: https://dev.fitbit.com/build/reference/web-api/nutrition/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/nutrition/
+        type: Documentation
+      - url: openapi/fitbit-nutrition-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Read and write food, water, and meal logs; access the Fitbit foods database (search, get by ID, create custom
+      foods); manage meal goals, favorites, and frequent foods; and read daily macronutrient summaries (calories, carbs,
+      fat, fiber, protein, sodium, water).
+  - aid: fitbit:fitbit-user-api
+    name: Fitbit User API
+    tags:
+      - User
+      - Profile
+      - Settings
+    humanURL: https://dev.fitbit.com/build/reference/web-api/user/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/user/
+        type: Documentation
+      - url: openapi/fitbit-user-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Read and update the authorized Fitbit user's profile including display name, gender, birthday, height, weight,
+      locale, timezone, and unit preferences (distance, weight, water, glucose, temperature).
+  - aid: fitbit:fitbit-devices-api
+    name: Fitbit Devices API
+    tags:
+      - Devices
+      - Wearable
+      - Alarms
+    humanURL: https://dev.fitbit.com/build/reference/web-api/devices/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/devices/
+        type: Documentation
+      - url: openapi/fitbit-devices-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      List paired Fitbit devices, retrieve battery level and last sync timestamps, identify the device model
+      (deviceVersion), and create, update, and delete tracker alarms.
+  - aid: fitbit:fitbit-subscriptions-api
+    name: Fitbit Subscriptions API
+    tags:
+      - Webhooks
+      - Subscriptions
+      - Notifications
+    humanURL: https://dev.fitbit.com/build/reference/web-api/subscription/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/subscription/
+        type: Documentation
+      - url: openapi/fitbit-subscriptions-api-openapi.yml
+        type: OpenAPI
+      - url: asyncapi/fitbit-subscriptions-asyncapi.yml
+        type: AsyncAPI
+    description: >-
+      Webhook-based notification system. Subscribe per user to the activities, body, foods, sleep, or userRevokedAccess
+      collections; Fitbit POSTs to your registered Subscriber endpoint when new data is available, eliminating polling.
+  - aid: fitbit:fitbit-friends-api
+    name: Fitbit Friends API
+    tags:
+      - Social
+      - Friends
+      - Leaderboard
+    humanURL: https://dev.fitbit.com/build/reference/web-api/friends/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/friends/
+        type: Documentation
+      - url: openapi/fitbit-friends-api-openapi.yml
+        type: OpenAPI
+    description: Read the authorized user's Fitbit friends list and weekly friends leaderboard rankings.
+  - aid: fitbit:fitbit-spo2-breathing-temperature-api
+    name: Fitbit SpO2, Breathing Rate, Temperature, HRV, and Cardio Fitness API
+    tags:
+      - SpO2
+      - Breathing Rate
+      - Temperature
+      - HRV
+      - VO2 Max
+      - Cardio Fitness
+    humanURL: https://dev.fitbit.com/build/reference/web-api/spo2/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/spo2/
+        type: Documentation
+      - url: https://dev.fitbit.com/build/reference/web-api/breathing-rate/
+        type: Documentation
+      - url: https://dev.fitbit.com/build/reference/web-api/temperature/
+        type: Documentation
+      - url: https://dev.fitbit.com/build/reference/web-api/heartrate-variability/
+        type: Documentation
+      - url: https://dev.fitbit.com/build/reference/web-api/cardio-fitness-score/
+        type: Documentation
+      - url: openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Advanced sensor readings from supported Fitbit devices — SpO2 (blood oxygen saturation), Breathing Rate, Skin
+      Temperature and Core Temperature variation, Heart Rate Variability (RMSSD), and Cardio Fitness Score (VO2 Max).
+      Each metric supports per-day and per-date-range summary queries; SpO2, breathing rate, and HRV additionally
+      support intraday detail with Intraday access approval.
+  - aid: fitbit:fitbit-ecg-irn-api
+    name: Fitbit ECG and Irregular Rhythm Notifications API
+    tags:
+      - ECG
+      - Electrocardiogram
+      - Irregular Rhythm Notifications
+      - Atrial Fibrillation
+      - Cardiac Health
+    humanURL: https://dev.fitbit.com/build/reference/web-api/electrocardiogram/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/electrocardiogram/
+        type: Documentation
+      - url: https://dev.fitbit.com/build/reference/web-api/irregular-rhythm-notifications/
+        type: Documentation
+      - url: openapi/fitbit-ecg-irn-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      Access Electrocardiogram (ECG) readings recorded on Fitbit Sense, Sense 2, and Charge 5/6 devices, and access
+      Irregular Rhythm Notifications (IRN) including alerts and feature enrollment. ECG readings include waveform
+      samples, sampling frequency, lead number, and the algorithm's result classification (Normal Sinus Rhythm, Atrial
+      Fibrillation, Inconclusive).
+  - aid: fitbit:fitbit-authorization-api
+    name: Fitbit Authorization API
+    tags:
+      - OAuth
+      - Authentication
+      - Authorization
+      - Security
+    humanURL: https://dev.fitbit.com/build/reference/web-api/authorization/
+    properties:
+      - url: https://dev.fitbit.com/build/reference/web-api/authorization/
+        type: Documentation
+      - url: openapi/fitbit-authorization-api-openapi.yml
+        type: OpenAPI
+    description: >-
+      OAuth 2.0 authorization endpoints. Supports Authorization Code Grant with PKCE (recommended), Authorization Code
+      Grant, Implicit Grant, and Client Credentials (for Fitbit Commerce APIs that do not retrieve user data). Tokens
+      can be introspected, refreshed, or revoked.
 name: Fitbit
 tags:
-- Wearable
-- Health
-- Fitness
-- Activity Tracking
-- Heart Rate
-- Sleep
-- Google
-- IoT
+  - Wearable
+  - Health
+  - Fitness
+  - Activity Tracking
+  - Heart Rate
+  - Sleep
+  - Google
+  - IoT
 kind: contract
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
-- url: https://www.fitbit.com
-  type: Portal
-- url: https://dev.fitbit.com/
-  name: Fitbit Developer Portal
-  type: Portal
-- url: https://dev.fitbit.com/build/reference/web-api/
-  name: Web API Reference
-  type: Documentation
-- url: https://dev.fitbit.com/build/reference/device-api/
-  name: Device API Reference (Fitbit OS SDK)
-  type: Documentation
-- url: https://dev.fitbit.com/getting-started/
-  name: Getting Started with the Fitbit Web API
-  type: GettingStarted
-- url: https://dev.fitbit.com/build/reference/web-api/authorization/
-  name: OAuth 2.0 Authorization
-  type: Documentation
-- url: https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/
-  name: Troubleshooting Guide
-  type: Support
-- url: https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/error-handling/
-  name: Error Handling
-  type: Errors
-- url: https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/error-messages/
-  name: HTTP Status Codes
-  type: Errors
-- url: https://dev.fitbit.com/build/reference/web-api/rate-limits/
-  name: Rate Limits
-  type: RateLimits
-- url: https://dev.fitbit.com/build/reference/web-api/intraday/
-  name: Intraday Access
-  type: Documentation
-- url: https://dev.fitbit.com/build/reference/web-api/subscription/
-  name: Subscriptions (Webhooks)
-  type: Documentation
-- url: https://dev.fitbit.com/apps/
-  name: Application Management
-  type: SignUp
-- url: https://github.com/Fitbit
-  name: Fitbit GitHub Organization
-  type: GitHubOrganization
-- url: https://github.com/Fitbit/fitbit-sdk-toolchain
-  name: Fitbit SDK Toolchain
-  type: SDK
-- url: https://github.com/Fitbit/create-fitbit-app
-  name: create-fitbit-app
-  type: SDK
-- url: https://github.com/Fitbit/developer-bridge
-  name: Fitbit Developer Bridge
-  type: Tool
-- url: https://github.com/Fitbit/sdk-oauth
-  name: Fitbit SDK OAuth Sample
-  type: CodeExamples
-- url: https://github.com/Fitbit/sdk-hr-meter
-  name: Fitbit SDK Heart Rate Meter Sample
-  type: CodeExamples
-- url: https://github.com/Fitbit/ossapps
-  name: Open Source Fitbit Apps
-  type: CodeExamples
-- url: https://github.com/Fitbit/golden-gate
-  name: Golden Gate (BLE IP stack)
-  type: Tool
-- url: https://github.com/Fitbit/bitgatt
-  name: BitGatt (Android BLE state machine)
-  type: Tool
-- url: https://www.fitbit.com/global/us/products/premium
-  name: Fitbit Premium
-  type: Plans
-- url: https://store.google.com/category/watches_trackers
-  name: Fitbit Devices at Google Store
-  type: Pricing
-- url: https://www.linkedin.com/company/fitbit
-  type: LinkedIn
-- url: https://twitter.com/fitbit
-  type: Twitter
-- url: https://www.youtube.com/user/fitbit
-  type: YouTube
-- url: https://help.fitbit.com/
-  name: Fitbit Help Center
-  type: Support
-- url: https://community.fitbit.com/
-  name: Fitbit Community
-  type: Forum
-- url: https://community.fitbit.com/t5/Web-API-Development/bd-p/dev
-  name: Fitbit Web API Development Forum
-  type: Forum
-- url: https://www.fitbit.com/global/us/legal/terms-of-service
-  type: TermsOfService
-- url: https://www.fitbit.com/global/us/legal/privacy-policy
-  type: PrivacyPolicy
-- url: https://dev.fitbit.com/legal/platform-terms-of-service/
-  name: Fitbit Platform Terms of Service
-  type: TermsOfService
-- url: https://developers.google.com/health
-  name: Google Health API (Successor Platform)
-  type: Documentation
-- url: https://developers.google.com/health/migration
-  name: Google Health API Migration Guide
-  type: Documentation
-- url: https://developers.google.com/health/release-notes
-  name: Google Health API Release Notes
-  type: ChangeLog
-- url: https://community.fitbit.com/t5/Web-API-Development/Introducing-the-next-phase-of-the-Fitbit-Web-API/td-p/5821061
-  name: Introducing the Next Phase of the Fitbit Web API
-  type: Blog
-- url: https://about.google/intl/en/products/devices-services/fitbit/
-  name: Fitbit at Google
-  type: Portal
-- url: https://blog.google/products/fitbit/
-  name: The Keyword — Fitbit Blog
-  type: Blog
-- url: plans/fitbit-plans-pricing.yml
-  type: Plans
-- url: rate-limits/fitbit-rate-limits.yml
-  type: RateLimits
-- url: finops/fitbit-finops.yml
-  type: FinOps
-- type: Features
-  data:
-  - Wearable-native API surface covering activity, exercise, heart rate, sleep, body, nutrition, devices, and social
-  - Advanced sensor data — SpO2, breathing rate, skin and core temperature, heart rate variability (RMSSD), VO2 Max
-  - Electrocardiogram (ECG) readings and Irregular Rhythm Notifications (IRN) on supported devices
-  - Active Zone Minutes (AZM) as Fitbit's modern engagement metric
-  - Time-series endpoints with day, week, month, quarter, half-year, and year periods
-  - Intraday endpoints (1-second / 1-minute / 5-minute / 15-minute resolution) on case-by-case approval
-  - Webhook subscriptions for activities, body, foods, sleep, and userRevokedAccess — eliminates polling
-  - OAuth 2.0 Authorization Code Grant with PKCE, plus Implicit Grant and Client Credentials (Commerce only)
-  - Fine-grained scopes — activity, heartrate, location, nutrition, profile, settings, sleep, social, weight,
-    oxygen_saturation, respiratory_rate, temperature, electrocardiogram, irregular_rhythm_notifications, cardio_fitness
-  - Three application types — Personal (developer's own data), Client (mobile/single-page), Server (multi-user backend)
-  - Default 150 requests-per-hour-per-user quota; 429 + Retry-After on overage
-  - Fitbit OS SDK (JavaScript/CSS/SVG) for on-device apps and clock faces on Versa/Sense/Inspire/Charge devices
-  - Fitbit SDK toolchain (TypeScript) and create-fitbit-app scaffolder published on GitHub
-  - Fitbit Premium consumer tier ($9.99/month, $79.99/year) adds Daily Readiness, advanced sleep, mindfulness, workouts
-  - Cross-platform mobile apps (iOS, Android) and Fitbit web dashboard
-  - Acquired by Google in January 2021; now part of Google's hardware portfolio alongside Pixel Watch
-  - Successor platform — Google Health API — launched on Google's modern infrastructure with Google OAuth 2.0
-  - Legacy Fitbit Web API scheduled for turndown in September 2026; migration guides published on developers.google.com/health
-  sources:
-  - https://dev.fitbit.com/
-  - https://dev.fitbit.com/build/reference/web-api/
-  - https://dev.fitbit.com/build/reference/web-api/authorization/
-  - https://dev.fitbit.com/build/reference/web-api/intraday/
-  - https://dev.fitbit.com/build/reference/web-api/subscription/
-  - https://developers.google.com/health
-  - https://community.fitbit.com/t5/Web-API-Development/Introducing-the-next-phase-of-the-Fitbit-Web-API/td-p/5821061
-  - https://github.com/Fitbit
-  updated: '2026-05-25'
+  - url: https://www.fitbit.com
+    type: Portal
+  - url: https://dev.fitbit.com/
+    name: Fitbit Developer Portal
+    type: Portal
+  - url: https://dev.fitbit.com/build/reference/web-api/
+    name: Web API Reference
+    type: Documentation
+  - url: https://dev.fitbit.com/build/reference/device-api/
+    name: Device API Reference (Fitbit OS SDK)
+    type: Documentation
+  - url: https://dev.fitbit.com/getting-started/
+    name: Getting Started with the Fitbit Web API
+    type: GettingStarted
+  - url: https://dev.fitbit.com/build/reference/web-api/authorization/
+    name: OAuth 2.0 Authorization
+    type: Documentation
+  - url: https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/
+    name: Troubleshooting Guide
+    type: Support
+  - url: https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/error-handling/
+    name: Error Handling
+    type: Errors
+  - url: https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/error-messages/
+    name: HTTP Status Codes
+    type: Errors
+  - url: https://dev.fitbit.com/build/reference/web-api/rate-limits/
+    name: Rate Limits
+    type: RateLimits
+  - url: https://dev.fitbit.com/build/reference/web-api/intraday/
+    name: Intraday Access
+    type: Documentation
+  - url: https://dev.fitbit.com/build/reference/web-api/subscription/
+    name: Subscriptions (Webhooks)
+    type: Documentation
+  - url: https://dev.fitbit.com/apps/
+    name: Application Management
+    type: SignUp
+  - url: https://github.com/Fitbit
+    name: Fitbit GitHub Organization
+    type: GitHubOrganization
+  - url: https://github.com/Fitbit/fitbit-sdk-toolchain
+    name: Fitbit SDK Toolchain
+    type: SDK
+  - url: https://github.com/Fitbit/create-fitbit-app
+    name: create-fitbit-app
+    type: SDK
+  - url: https://github.com/Fitbit/developer-bridge
+    name: Fitbit Developer Bridge
+    type: Tool
+  - url: https://github.com/Fitbit/sdk-oauth
+    name: Fitbit SDK OAuth Sample
+    type: CodeExamples
+  - url: https://github.com/Fitbit/sdk-hr-meter
+    name: Fitbit SDK Heart Rate Meter Sample
+    type: CodeExamples
+  - url: https://github.com/Fitbit/ossapps
+    name: Open Source Fitbit Apps
+    type: CodeExamples
+  - url: https://github.com/Fitbit/golden-gate
+    name: Golden Gate (BLE IP stack)
+    type: Tool
+  - url: https://github.com/Fitbit/bitgatt
+    name: BitGatt (Android BLE state machine)
+    type: Tool
+  - url: https://www.fitbit.com/global/us/products/premium
+    name: Fitbit Premium
+    type: Plans
+  - url: https://store.google.com/category/watches_trackers
+    name: Fitbit Devices at Google Store
+    type: Pricing
+  - url: https://www.linkedin.com/company/fitbit
+    type: LinkedIn
+  - url: https://twitter.com/fitbit
+    type: Twitter
+  - url: https://www.youtube.com/user/fitbit
+    type: YouTube
+  - url: https://help.fitbit.com/
+    name: Fitbit Help Center
+    type: Support
+  - url: https://community.fitbit.com/
+    name: Fitbit Community
+    type: Forum
+  - url: https://community.fitbit.com/t5/Web-API-Development/bd-p/dev
+    name: Fitbit Web API Development Forum
+    type: Forum
+  - url: https://www.fitbit.com/global/us/legal/terms-of-service
+    type: TermsOfService
+  - url: https://www.fitbit.com/global/us/legal/privacy-policy
+    type: PrivacyPolicy
+  - url: https://dev.fitbit.com/legal/platform-terms-of-service/
+    name: Fitbit Platform Terms of Service
+    type: TermsOfService
+  - url: https://developers.google.com/health
+    name: Google Health API (Successor Platform)
+    type: Documentation
+  - url: https://developers.google.com/health/migration
+    name: Google Health API Migration Guide
+    type: Documentation
+  - url: https://developers.google.com/health/release-notes
+    name: Google Health API Release Notes
+    type: ChangeLog
+  - url: https://community.fitbit.com/t5/Web-API-Development/Introducing-the-next-phase-of-the-Fitbit-Web-API/td-p/5821061
+    name: Introducing the Next Phase of the Fitbit Web API
+    type: Blog
+  - url: https://about.google/intl/en/products/devices-services/fitbit/
+    name: Fitbit at Google
+    type: Portal
+  - url: https://blog.google/products/fitbit/
+    name: The Keyword — Fitbit Blog
+    type: Blog
+  - url: plans/fitbit-plans-pricing.yml
+    type: Plans
+  - url: rate-limits/fitbit-rate-limits.yml
+    type: RateLimits
+  - url: finops/fitbit-finops.yml
+    type: FinOps
+  - type: Features
+    data:
+      - Wearable-native API surface covering activity, exercise, heart rate, sleep, body, nutrition, devices, and social
+      - Advanced sensor data — SpO2, breathing rate, skin and core temperature, heart rate variability (RMSSD), VO2 Max
+      - Electrocardiogram (ECG) readings and Irregular Rhythm Notifications (IRN) on supported devices
+      - Active Zone Minutes (AZM) as Fitbit's modern engagement metric
+      - Time-series endpoints with day, week, month, quarter, half-year, and year periods
+      - Intraday endpoints (1-second / 1-minute / 5-minute / 15-minute resolution) on case-by-case approval
+      - Webhook subscriptions for activities, body, foods, sleep, and userRevokedAccess — eliminates polling
+      - OAuth 2.0 Authorization Code Grant with PKCE, plus Implicit Grant and Client Credentials (Commerce only)
+      - >-
+        Fine-grained scopes — activity, heartrate, location, nutrition, profile, settings, sleep, social, weight,
+        oxygen_saturation, respiratory_rate, temperature, electrocardiogram, irregular_rhythm_notifications,
+        cardio_fitness
+      - >-
+        Three application types — Personal (developer's own data), Client (mobile/single-page), Server (multi-user
+        backend)
+      - Default 150 requests-per-hour-per-user quota; 429 + Retry-After on overage
+      - Fitbit OS SDK (JavaScript/CSS/SVG) for on-device apps and clock faces on Versa/Sense/Inspire/Charge devices
+      - Fitbit SDK toolchain (TypeScript) and create-fitbit-app scaffolder published on GitHub
+      - >-
+        Fitbit Premium consumer tier ($9.99/month, $79.99/year) adds Daily Readiness, advanced sleep, mindfulness,
+        workouts
+      - Cross-platform mobile apps (iOS, Android) and Fitbit web dashboard
+      - Acquired by Google in January 2021; now part of Google's hardware portfolio alongside Pixel Watch
+      - Successor platform — Google Health API — launched on Google's modern infrastructure with Google OAuth 2.0
+      - >-
+        Legacy Fitbit Web API scheduled for turndown in September 2026; migration guides published on
+        developers.google.com/health
+    sources:
+      - https://dev.fitbit.com/
+      - https://dev.fitbit.com/build/reference/web-api/
+      - https://dev.fitbit.com/build/reference/web-api/authorization/
+      - https://dev.fitbit.com/build/reference/web-api/intraday/
+      - https://dev.fitbit.com/build/reference/web-api/subscription/
+      - https://developers.google.com/health
+      - >-
+        https://community.fitbit.com/t5/Web-API-Development/Introducing-the-next-phase-of-the-Fitbit-Web-API/td-p/5821061
+      - https://github.com/Fitbit
+    updated: '2026-05-25'
 created: '2026-05-25T00:00:00.000Z'
 modified: '2026-05-30'
 position: Consuming
@@ -406,8 +409,8 @@ description: |
   target the successor Google Health API at developers.google.com/health, which uses Google OAuth 2.0 and
   Google's modern infrastructure.
 maintainers:
-- FN: Kin Lane
-  email: info@apievangelist.com
-  X: apievangelist
-  url: https://apievangelist.com
+  - FN: Kin Lane
+    email: info@apievangelist.com
+    X: apievangelist
+    url: https://apievangelist.com
 specificationVersion: '0.16'
