@@ -1,0 +1,1408 @@
+"""
+Fitbit GraphQL Schema
+Conceptual GraphQL schema for the Fitbit Web API (now part of Google).
+Covers activity, heart rate, sleep, body, nutrition, devices, social,
+advanced sensors, ECG, subscriptions, and authorization primitives.
+Legacy Fitbit Web API is scheduled for deprecation September 2026;
+new integrations should target the Google Health API.
+"""
+
+# ─── Scalars ────────────────────────────────────────────────────────────────
+
+scalar Date
+scalar DateTime
+scalar Time
+scalar JSON
+
+# ─── Enums ──────────────────────────────────────────────────────────────────
+
+enum UnitSystem {
+  en_US
+  en_GB
+  METRIC
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  NA
+}
+
+enum BatteryLevel {
+  HIGH
+  MEDIUM
+  LOW
+  EMPTY
+}
+
+enum DeviceType {
+  TRACKER
+  SCALE
+  WATCH
+}
+
+enum SleepType {
+  CLASSIC
+  STAGES
+}
+
+enum ActivityLevel {
+  SEDENTARY
+  LIGHTLY_ACTIVE
+  FAIRLY_ACTIVE
+  VERY_ACTIVE
+}
+
+enum HeartRateZoneName {
+  OUT_OF_RANGE
+  FAT_BURN
+  CARDIO
+  PEAK
+}
+
+enum EcgResultStatus {
+  NORMAL_SINUS_RHYTHM
+  ATRIAL_FIBRILLATION
+  INCONCLUSIVE
+  CONNECTED_NOT_RECORDING
+  RECORDING
+  TOO_NOISY
+  OFF_WRIST
+  UNDETERMINED
+}
+
+enum SubscriptionCollection {
+  ACTIVITIES
+  BODY
+  FOODS
+  SLEEP
+  USER_REVOKED_ACCESS
+}
+
+enum Period {
+  ONE_DAY
+  SEVEN_DAYS
+  THIRTY_DAYS
+  ONE_WEEK
+  ONE_MONTH
+  THREE_MONTHS
+  SIX_MONTHS
+  ONE_YEAR
+  MAX
+}
+
+enum IntradayDetailLevel {
+  ONE_SECOND
+  ONE_MINUTE
+  FIVE_MINUTES
+  FIFTEEN_MINUTES
+}
+
+# ─── User & Profile ─────────────────────────────────────────────────────────
+
+"""Authorized Fitbit user account."""
+type User {
+  encodedId: ID!
+  displayName: String!
+  fullName: String
+  firstName: String
+  lastName: String
+  avatar: String
+  avatar150: String
+  avatar640: String
+  gender: Gender
+  dateOfBirth: Date
+  age: Int
+  heightUnit: String
+  weightUnit: String
+  waterUnit: String
+  glucoseUnit: String
+  temperatureUnit: String
+  distanceUnit: String
+  locale: String
+  timezone: String
+  country: String
+  state: String
+  city: String
+  memberSince: Date
+  isPremium: Boolean
+  features: UserFeatures
+  profile: UserProfile
+  devices: [Device!]
+  badges: [Badge!]
+  friends: [Friend!]
+  leaderboard: Leaderboard
+}
+
+"""Extended profile fields for the authorized user."""
+type UserProfile {
+  encodedId: ID!
+  displayName: String!
+  height: Float
+  weight: Float
+  strideLengthRunning: Float
+  strideLengthWalking: Float
+  swimUnit: String
+  foodsLocale: String
+  glucoseUnit: String
+  offsetFromUTCMillis: Int
+  startDayOfWeek: String
+  clockTimeDisplayFormat: String
+}
+
+"""Feature-flag set for the user account."""
+type UserFeatures {
+  exerciseGoal: Boolean
+}
+
+# ─── Activity ────────────────────────────────────────────────────────────────
+
+"""Daily activity summary for a user."""
+type Activity {
+  date: Date!
+  steps: Int
+  distance: Float
+  distanceUnit: String
+  floors: Int
+  elevation: Float
+  caloriesOut: Int
+  caloriesBMR: Int
+  activeScore: Int
+  activityCalories: Int
+  marginalCalories: Int
+  sedentaryMinutes: Int
+  lightlyActiveMinutes: Int
+  fairlyActiveMinutes: Int
+  veryActiveMinutes: Int
+  activeZoneMinutes: ActiveZoneMinutes
+  levels: [ActivityLevel!]
+  goals: ActivityGoal
+  summary: ActivitySummary
+  activities: [ActivityLog!]
+}
+
+"""Breakdown of Active Zone Minutes by heart rate zone."""
+type ActiveZoneMinutes {
+  inDefaultZone: Int
+  inHeartRateZone: Int
+  fatBurnActiveZoneMinutes: Int
+  cardioActiveZoneMinutes: Int
+  peakActiveZoneMinutes: Int
+  totalMinutes: Int
+}
+
+"""Aggregated daily activity metrics."""
+type ActivitySummary {
+  steps: Int
+  floors: Int
+  elevation: Float
+  caloriesOut: Int
+  activityCalories: Int
+  sedentaryMinutes: Int
+  lightlyActiveMinutes: Int
+  fairlyActiveMinutes: Int
+  veryActiveMinutes: Int
+  distances: [Distance!]
+}
+
+"""Distance breakdown by activity type."""
+type Distance {
+  activity: String!
+  distance: Float!
+}
+
+"""Activity or exercise goal for the user."""
+type ActivityGoal {
+  activeMinutes: Int
+  caloriesOut: Int
+  distance: Float
+  floors: Int
+  steps: Int
+  activeZoneMinutes: Int
+}
+
+"""A logged activity or exercise session."""
+type ActivityLog {
+  logId: ID!
+  activityId: Int
+  activityParentId: Int
+  activityParentName: String
+  name: String!
+  description: String
+  hasStartTime: Boolean
+  isFavorite: Boolean
+  logType: String
+  startTime: DateTime
+  duration: Int
+  calories: Int
+  steps: Int
+  distance: Float
+  distanceUnit: String
+  pace: Float
+  speed: Float
+  averageHeartRate: Int
+  heartRateZones: [HeartRateZone!]
+  activeDuration: Int
+  lastModified: DateTime
+  levels: [ActivityLevelDetail!]
+  source: LogSource
+  tcxLink: String
+}
+
+"""Granular activity level detail within a log."""
+type ActivityLevelDetail {
+  minutes: Int
+  name: String
+}
+
+"""Source of a log entry (device, app, or manual)."""
+type LogSource {
+  id: String
+  name: String
+  trackerFeatures: [String!]
+  type: String
+  url: String
+}
+
+"""Exercise type from the Fitbit exercise catalog."""
+type Exercise {
+  id: ID!
+  hasSpeed: Boolean
+  mets: Float
+  name: String!
+  accessLevel: String
+}
+
+"""Summary of a run exercise."""
+type RunSummary {
+  averagePace: Float
+  averageSpeed: Float
+  elevationGain: Float
+  steps: Int
+}
+
+"""Summary of a bike exercise."""
+type BikeSummary {
+  averageSpeed: Float
+  elevationGain: Float
+}
+
+"""Summary of a swim exercise."""
+type SwimSummary {
+  averageLaps: Float
+  laps: Int
+  lengths: Int
+  poolLength: Float
+  poolLengthUnit: String
+  strokeCount: Int
+}
+
+"""Summary of a golf exercise."""
+type GolfSummary {
+  averageSpeed: Float
+  courseId: String
+  courseName: String
+}
+
+"""One set within a strength-training exercise log."""
+type ExerciseSet {
+  distance: Float
+  duration: Int
+  percentBodyWeight: Float
+  repetitions: Int
+  setType: String
+  speed: Float
+  weight: Float
+  weightUnit: String
+}
+
+# ─── Steps & Distance (time-series) ─────────────────────────────────────────
+
+"""A single data point in a steps time series."""
+type Steps {
+  dateTime: DateTime!
+  value: Int!
+}
+
+"""A single data point in a distance time series."""
+type DistanceSeries {
+  dateTime: DateTime!
+  value: Float!
+}
+
+"""A single data point in a calories time series."""
+type Calories {
+  dateTime: DateTime!
+  value: Int!
+}
+
+"""A single data point in an active-minutes time series."""
+type ActiveMinutes {
+  dateTime: DateTime!
+  value: Int!
+}
+
+# ─── Heart Rate ──────────────────────────────────────────────────────────────
+
+"""Aggregated heart rate data for a day."""
+type HeartRate {
+  date: Date!
+  restingHeartRate: Int
+  heartRateZones: [HeartRateZone!]
+  customHeartRateZones: [HeartRateZone!]
+  value: HeartRateValue
+}
+
+"""Detail fields inside a daily heart rate record."""
+type HeartRateValue {
+  bpmMode: Int
+  customHeartRateZones: [HeartRateZone!]
+  heartRateZones: [HeartRateZone!]
+  restingHeartRate: Int
+}
+
+"""Heart rate zone definition and minutes/calories in zone."""
+type HeartRateZone {
+  caloriesOut: Float
+  max: Int
+  min: Int
+  minutes: Int
+  name: HeartRateZoneName!
+}
+
+"""Time-series data point for heart rate."""
+type HeartRateTimeSeries {
+  dateTime: DateTime!
+  value: HeartRateValue!
+}
+
+"""Intraday heart rate data point."""
+type HeartRateIntraday {
+  time: Time!
+  value: Int!
+}
+
+"""Heart Rate Variability daily summary."""
+type HRVSummary {
+  date: Date!
+  dailyRmssd: Float
+  deepRmssd: Float
+}
+
+"""Heart Rate Variability detail record."""
+type HRV {
+  date: Date!
+  minutes: [HRVMinute!]
+  summary: HRVSummary
+}
+
+"""Single intraday HRV reading."""
+type HRVMinute {
+  minute: DateTime!
+  value: HRVValue!
+}
+
+"""HRV measurement values."""
+type HRVValue {
+  rmssd: Float!
+  coverage: Float
+  hf: Float
+  lf: Float
+}
+
+# ─── Sleep ───────────────────────────────────────────────────────────────────
+
+"""Sleep record for one night."""
+type SleepLog {
+  logId: ID!
+  dateOfSleep: Date!
+  startTime: DateTime!
+  endTime: DateTime!
+  duration: Int
+  minutesToFallAsleep: Int
+  minutesAsleep: Int
+  minutesAwake: Int
+  minutesAfterWakeup: Int
+  timeInBed: Int
+  efficiency: Int
+  type: SleepType
+  infoCode: Int
+  isMainSleep: Boolean
+  levels: SleepStageData
+  summary: SleepSummary
+  logType: String
+}
+
+"""Container for sleep stage data."""
+type SleepStageData {
+  data: [SleepStage!]
+  shortData: [SleepStage!]
+  summary: SleepStageSummary
+}
+
+"""A single 30-second epoch of sleep stage data."""
+type SleepStage {
+  dateTime: DateTime!
+  level: String!
+  seconds: Int!
+}
+
+"""Aggregate minutes per sleep stage."""
+type SleepStageSummary {
+  deep: SleepStageStats
+  light: SleepStageStats
+  rem: SleepStageStats
+  wake: SleepStageStats
+  asleep: SleepStageStats
+  awake: SleepStageStats
+  restless: SleepStageStats
+}
+
+"""Statistics for a single sleep stage."""
+type SleepStageStats {
+  count: Int
+  minutes: Int
+  thirtyDayAvgMinutes: Int
+}
+
+"""Aggregated sleep summary across main and nap sessions."""
+type SleepSummary {
+  stages: SleepStageSummary
+  totalMinutesAsleep: Int
+  totalSleepRecords: Int
+  totalTimeInBed: Int
+}
+
+"""Daily Sleep Score (Fitbit Premium metric)."""
+type SleepScore {
+  date: Date!
+  overall: SleepScoreValue
+  composition: SleepCompositionScore
+  revitalization: SleepRevitalizationScore
+  duration: SleepDurationScore
+}
+
+"""Overall sleep score value."""
+type SleepScoreValue {
+  qualityDescription: String
+  score: Int
+}
+
+"""Sleep composition score component."""
+type SleepCompositionScore {
+  qualityDescription: String
+  score: Int
+}
+
+"""Sleep revitalization score component."""
+type SleepRevitalizationScore {
+  qualityDescription: String
+  score: Int
+}
+
+"""Sleep duration score component."""
+type SleepDurationScore {
+  qualityDescription: String
+  score: Int
+}
+
+"""User's sleep goal."""
+type SleepGoal {
+  bedtime: Time
+  minDuration: Int
+  updatedOn: Date
+  wakeupTime: Time
+}
+
+# ─── SpO2, Breathing Rate, Temperature ──────────────────────────────────────
+
+"""Blood oxygen saturation (SpO2) daily summary."""
+type SpO2 {
+  date: Date!
+  avg: Float
+  min: Float
+  max: Float
+  minutes: [SpO2Minute!]
+}
+
+"""Intraday SpO2 reading."""
+type SpO2Minute {
+  minute: DateTime!
+  value: Float!
+}
+
+"""Breathing rate daily summary."""
+type BreathingRate {
+  date: Date!
+  breathingRate: BreathingRateValue
+  full: Float
+  rem: Float
+  light: Float
+  deep: Float
+}
+
+"""Breathing rate values by sleep stage."""
+type BreathingRateValue {
+  deepSleepSummary: BreathingRateStageSummary
+  remSleepSummary: BreathingRateStageSummary
+  fullSleepSummary: BreathingRateStageSummary
+  lightSleepSummary: BreathingRateStageSummary
+}
+
+"""Breathing rate average for a sleep stage."""
+type BreathingRateStageSummary {
+  breathingRate: Float
+}
+
+"""Skin and core temperature daily summary."""
+type Temperature {
+  date: Date!
+  logType: String
+  skin: TemperatureValue
+  core: TemperatureValue
+}
+
+"""Temperature reading and deviation."""
+type TemperatureValue {
+  nightlyRelative: Float
+  expected: TemperatureRange
+}
+
+"""Expected temperature range."""
+type TemperatureRange {
+  min: Float
+  max: Float
+}
+
+"""Cardio Fitness Score (VO2 Max) record."""
+type CardioFitnessScore {
+  date: Date!
+  value: CardioFitnessValue
+}
+
+"""VO2 Max value and confidence range."""
+type CardioFitnessValue {
+  vo2Max: String
+  vo2MaxEstimate: Float
+  filteredDemographicVo2Max: Float
+  demographicVo2MaxDeviation: Float
+}
+
+# ─── Body ────────────────────────────────────────────────────────────────────
+
+"""A weight log entry."""
+type WeightLog {
+  logId: ID!
+  date: Date!
+  time: Time
+  weight: Float!
+  bmi: Float
+  fat: Float
+  source: String
+}
+
+"""A body fat percentage log entry."""
+type BodyFat {
+  logId: ID!
+  date: Date!
+  time: Time
+  fat: Float!
+  source: String
+}
+
+"""Body composition aggregate view."""
+type BodyComposition {
+  date: Date!
+  weight: Float
+  bmi: Float
+  fat: Float
+}
+
+"""BMI time-series data point."""
+type BMI {
+  dateTime: DateTime!
+  value: Float!
+}
+
+"""Weight time-series data point."""
+type Weight {
+  dateTime: DateTime!
+  value: Float!
+}
+
+"""Body weight and body fat goals."""
+type BodyGoal {
+  startDate: Date
+  startWeight: Float
+  weight: Float
+  fat: Float
+}
+
+# ─── Nutrition ───────────────────────────────────────────────────────────────
+
+"""A food item from the Fitbit database or user-created."""
+type Food {
+  foodId: ID!
+  name: String!
+  brand: String
+  calories: Int
+  servings: [FoodServing!]
+  units: [Int!]
+  defaultServingSize: Float
+  defaultUnit: FoodUnit
+  isGeneric: Boolean
+  locale: String
+  accessLevel: String
+  nutritionalValues: NutritionalValues
+}
+
+"""A food log entry."""
+type FoodLog {
+  logId: ID!
+  loggedFood: LoggedFood!
+  nutritionalValues: NutritionalValues
+  isFavorite: Boolean
+}
+
+"""The food reference inside a food log entry."""
+type LoggedFood {
+  accessLevel: String
+  amount: Float
+  brand: String
+  calories: Int
+  foodId: ID
+  locale: String
+  mealTypeId: Int
+  name: String
+  unit: FoodUnit
+  units: [Int!]
+}
+
+"""Serving size definition."""
+type FoodServing {
+  multiplier: Float
+  servingSize: Float
+  unit: FoodUnit
+}
+
+"""Food measurement unit."""
+type FoodUnit {
+  id: ID!
+  name: String!
+  plural: String
+}
+
+"""Nutritional values for a food or meal."""
+type NutritionalValues {
+  calories: Float
+  carbs: Float
+  fat: Float
+  fiber: Float
+  protein: Float
+  sodium: Float
+  water: Float
+  biotin: Float
+  calcium: Float
+  copper: Float
+  folate: Float
+  folicAcid: Float
+  iron: Float
+  magnesium: Float
+  niacin: Float
+  pantothenicAcid: Float
+  phosphorus: Float
+  potassium: Float
+  riboflavin: Float
+  saturatedFat: Float
+  thiamin: Float
+  transFat: Float
+  vitaminA: Float
+  vitaminB6: Float
+  vitaminB12: Float
+  vitaminC: Float
+  vitaminD: Float
+  vitaminE: Float
+  vitaminK: Float
+  zinc: Float
+}
+
+"""A saved meal (collection of food log entries)."""
+type Meal {
+  id: ID!
+  name: String!
+  description: String
+  mealFoods: [MealFood!]!
+}
+
+"""A food item within a saved meal."""
+type MealFood {
+  loggedFood: LoggedFood!
+  nutritionalValues: NutritionalValues
+}
+
+"""Daily nutrition summary."""
+type NutritionSummary {
+  date: Date!
+  calories: NutritionCaloriesSummary
+  goals: NutritionGoals
+  water: Float
+  summary: NutritionalValues
+}
+
+"""Calorie budget vs intake for the day."""
+type NutritionCaloriesSummary {
+  budget: Float
+  foodCalories: Float
+  estimated: Float
+  net: Float
+}
+
+"""User nutrition goals."""
+type NutritionGoals {
+  calories: Float
+  estimatedCalories: Float
+}
+
+"""Food plan (calorie deficit / surplus goal)."""
+type FoodPlan {
+  estimatedDate: Date
+  intensity: String
+  personalized: Boolean
+  supply: [FoodPlanSupply!]
+}
+
+"""Daily calorie supply target for a food plan."""
+type FoodPlanSupply {
+  date: Date!
+  calories: Int!
+}
+
+"""A water log entry."""
+type WaterLog {
+  logId: ID!
+  amount: Float!
+  date: Date!
+}
+
+"""Daily water intake goal."""
+type WaterGoal {
+  goal: Float!
+  startDate: Date
+}
+
+"""Daily water intake summary."""
+type WaterSummary {
+  date: Date!
+  goal: Float
+  water: Float
+  waterLogs: [WaterLog!]
+}
+
+# ─── Devices ─────────────────────────────────────────────────────────────────
+
+"""A paired Fitbit device on the user's account."""
+type Device {
+  id: ID!
+  deviceVersion: String!
+  type: DeviceType!
+  battery: BatteryLevel!
+  batteryLevel: Int
+  lastSyncTime: DateTime!
+  mac: String
+  features: [String!]
+  alarms: [Alarm!]
+  model: DeviceModel
+}
+
+"""Fitbit device model metadata."""
+type DeviceModel {
+  name: String!
+  version: String
+  type: DeviceType
+  features: [String!]
+}
+
+"""Battery status for a device."""
+type DeviceBattery {
+  deviceId: ID!
+  batteryLevel: Int!
+  battery: BatteryLevel!
+  lastSyncTime: DateTime!
+}
+
+"""A tracker alarm."""
+type Alarm {
+  alarmId: ID!
+  deleted: Boolean
+  enabled: Boolean!
+  label: String
+  recurring: Boolean
+  snoozeCount: Int
+  snoozeLength: Int
+  syncedToDevice: Boolean
+  time: AlarmTime!
+  type: String
+  vibe: String
+  weekDays: [String!]
+}
+
+"""Alarm time (wall-clock with offset)."""
+type AlarmTime {
+  time: Time!
+  offset: Int
+}
+
+# ─── Social ──────────────────────────────────────────────────────────────────
+
+"""A Fitbit friend with leaderboard context."""
+type Friend {
+  user: FriendUser!
+  rank: Int
+}
+
+"""Minimal user reference for friends."""
+type FriendUser {
+  encodedId: ID!
+  displayName: String!
+  avatar: String
+  avatar150: String
+}
+
+"""Weekly friends leaderboard."""
+type Leaderboard {
+  rank: Int
+  lastUpdateTime: DateTime
+  friends: [LeaderboardEntry!]!
+}
+
+"""A single leaderboard entry."""
+type LeaderboardEntry {
+  encodedId: ID!
+  displayName: String!
+  avatar: String
+  rank: Int!
+  steps: Int!
+  activeZoneMinutes: Int
+}
+
+# ─── Badges ──────────────────────────────────────────────────────────────────
+
+"""A Fitbit achievement badge."""
+type Badge {
+  badgeGradientEndColor: String
+  badgeGradientStartColor: String
+  badgeType: String!
+  category: String!
+  cheers: [JSON]
+  dateTime: DateTime!
+  description: String
+  earnedMessage: String
+  encodedId: ID!
+  image50px: String
+  image75px: String
+  image100px: String
+  image125px: String
+  image300px: String
+  marketingDescription: String
+  mobileDescription: String
+  name: String!
+  shareImage640px: String
+  shareText: String
+  shortDescription: String
+  shortName: String
+  timesAchieved: Int!
+  unit: String
+  value: Float!
+}
+
+# ─── ECG ─────────────────────────────────────────────────────────────────────
+
+"""An ECG reading from a supported Fitbit device."""
+type ECG {
+  logId: ID!
+  date: Date!
+  startTime: DateTime!
+  averageHeartRate: Int
+  resultClassification: EcgResultStatus!
+  waveformSamples: [Int!]
+  samplingFrequencyHz: Float
+  numberOfWaveformSamples: Int
+  leadNumber: Int
+  scalingFactor: Float
+  deviceName: String
+  featureVersion: String
+}
+
+"""Irregular Rhythm Notification (IRN) alert record."""
+type IrregularRhythmNotification {
+  logId: ID!
+  date: Date!
+  startTime: DateTime!
+  type: String
+  deviceName: String
+  featureVersion: String
+}
+
+"""IRN feature enrollment status."""
+type IrregularRhythmNotificationEnrollment {
+  enabled: Boolean!
+  enrolledAt: DateTime
+}
+
+# ─── Subscriptions (Webhooks) ────────────────────────────────────────────────
+
+"""A webhook subscription for event notifications."""
+type Subscription {
+  ownerId: String!
+  ownerType: String!
+  subscriberId: String!
+  subscriptionId: ID!
+  collectionType: SubscriptionCollection!
+}
+
+"""A received subscription event notification."""
+type EventSubscription {
+  collectionType: SubscriptionCollection!
+  date: Date!
+  ownerId: String!
+  ownerType: String!
+  subscriptionId: ID!
+  updates: [SubscriptionUpdate!]
+}
+
+"""Individual update within a subscription event."""
+type SubscriptionUpdate {
+  collectionType: String!
+  date: Date
+  ownerId: String
+  ownerType: String
+}
+
+"""Record of a device-to-cloud sync event."""
+type SyncRecord {
+  date: DateTime!
+  deviceId: ID!
+  success: Boolean!
+}
+
+# ─── Authorization ───────────────────────────────────────────────────────────
+
+"""OAuth 2.0 access token metadata."""
+type OAuthToken {
+  accessToken: String!
+  expiresIn: Int!
+  refreshToken: String
+  scope: String!
+  tokenType: String!
+  userId: ID!
+}
+
+"""Token introspection result."""
+type TokenIntrospection {
+  active: Boolean!
+  clientId: String
+  expiresAt: DateTime
+  iat: Int
+  scope: String
+  sub: String
+  tokenType: String
+  userId: String
+}
+
+# ─── Query ───────────────────────────────────────────────────────────────────
+
+type Query {
+  """Get the authorized user's profile."""
+  user(userId: ID): User
+
+  """Get daily activity summary."""
+  activity(userId: ID, date: Date!): Activity
+
+  """Get activity time series."""
+  activityTimeSeries(
+    userId: ID
+    resourcePath: String!
+    date: Date!
+    period: Period
+    endDate: Date
+  ): [Steps!]
+
+  """Get steps intraday detail."""
+  stepsIntraday(
+    userId: ID
+    date: Date!
+    detailLevel: IntradayDetailLevel!
+    startTime: Time
+    endTime: Time
+  ): [Steps!]
+
+  """Get heart rate data for a date."""
+  heartRate(userId: ID, date: Date!): HeartRate
+
+  """Get heart rate time series."""
+  heartRateTimeSeries(
+    userId: ID
+    date: Date!
+    period: Period
+    endDate: Date
+  ): [HeartRateTimeSeries!]
+
+  """Get heart rate intraday data."""
+  heartRateIntraday(
+    userId: ID
+    date: Date!
+    detailLevel: IntradayDetailLevel!
+    startTime: Time
+    endTime: Time
+  ): [HeartRateIntraday!]
+
+  """Get HRV summary for a date or range."""
+  hrv(userId: ID, date: Date, startDate: Date, endDate: Date): [HRV!]
+
+  """Get sleep logs by date."""
+  sleepLogs(userId: ID, date: Date, startDate: Date, endDate: Date): [SleepLog!]
+
+  """Get the user's sleep goal."""
+  sleepGoal(userId: ID): SleepGoal
+
+  """Get sleep score for a date range."""
+  sleepScore(userId: ID, date: Date, startDate: Date, endDate: Date): [SleepScore!]
+
+  """Get SpO2 for a date or range."""
+  spo2(userId: ID, date: Date, startDate: Date, endDate: Date): [SpO2!]
+
+  """Get breathing rate for a date or range."""
+  breathingRate(userId: ID, date: Date, startDate: Date, endDate: Date): [BreathingRate!]
+
+  """Get skin/core temperature for a date or range."""
+  temperature(userId: ID, date: Date, startDate: Date, endDate: Date): [Temperature!]
+
+  """Get cardio fitness score (VO2 Max)."""
+  cardioFitnessScore(userId: ID, date: Date, startDate: Date, endDate: Date): [CardioFitnessScore!]
+
+  """Get body weight logs."""
+  weightLogs(userId: ID, date: Date, startDate: Date, endDate: Date): [WeightLog!]
+
+  """Get body fat logs."""
+  bodyFatLogs(userId: ID, date: Date, startDate: Date, endDate: Date): [BodyFat!]
+
+  """Get body weight goal."""
+  bodyGoal(userId: ID): BodyGoal
+
+  """Search for foods in the Fitbit database."""
+  searchFoods(query: String!, locale: String): [Food!]
+
+  """Get a food by ID."""
+  food(foodId: ID!): Food
+
+  """Get food logs for a date."""
+  foodLogs(userId: ID, date: Date!): [FoodLog!]
+
+  """Get nutrition summary for a date."""
+  nutritionSummary(userId: ID, date: Date!): NutritionSummary
+
+  """Get meals saved by the user."""
+  meals(userId: ID): [Meal!]
+
+  """Get a specific meal."""
+  meal(mealId: ID!): Meal
+
+  """Get water logs for a date."""
+  waterLogs(userId: ID, date: Date!): [WaterLog!]
+
+  """Get water goal."""
+  waterGoal(userId: ID): WaterGoal
+
+  """Get paired devices for the user."""
+  devices(userId: ID): [Device!]
+
+  """Get alarms for a device."""
+  alarms(userId: ID, deviceId: ID!): [Alarm!]
+
+  """Get ECG readings."""
+  ecgLogs(userId: ID, limit: Int, offset: Int, sort: String): [ECG!]
+
+  """Get IRN alerts."""
+  irregularRhythmNotifications(userId: ID, limit: Int, offset: Int, sort: String): [IrregularRhythmNotification!]
+
+  """Get IRN enrollment status."""
+  irregularRhythmNotificationEnrollment(userId: ID): IrregularRhythmNotificationEnrollment
+
+  """Get the user's friends."""
+  friends(userId: ID): [Friend!]
+
+  """Get the weekly friends leaderboard."""
+  leaderboard(userId: ID): Leaderboard
+
+  """Get the user's badges."""
+  badges(userId: ID): [Badge!]
+
+  """Get webhook subscriptions for a collection."""
+  subscriptions(userId: ID, collection: SubscriptionCollection): [Subscription!]
+
+  """Introspect an OAuth token."""
+  introspectToken(token: String!): TokenIntrospection
+
+  """Get the Fitbit exercise catalog."""
+  exercises: [Exercise!]
+
+  """Get activity logs."""
+  activityLogs(userId: ID, afterDate: DateTime, beforeDate: DateTime, sort: String, limit: Int, offset: Int): [ActivityLog!]
+}
+
+# ─── Mutation ────────────────────────────────────────────────────────────────
+
+type Mutation {
+  """Update the authorized user's profile."""
+  updateUserProfile(input: UpdateUserProfileInput!): User
+
+  """Log an activity."""
+  logActivity(input: LogActivityInput!): ActivityLog
+
+  """Delete an activity log entry."""
+  deleteActivityLog(logId: ID!): Boolean
+
+  """Update activity goals."""
+  updateActivityGoals(userId: ID, input: ActivityGoalInput!): ActivityGoal
+
+  """Add a favorite activity."""
+  addFavoriteActivity(activityId: ID!): Boolean
+
+  """Remove a favorite activity."""
+  removeFavoriteActivity(activityId: ID!): Boolean
+
+  """Log a sleep record."""
+  logSleep(input: LogSleepInput!): SleepLog
+
+  """Delete a sleep log entry."""
+  deleteSleepLog(logId: ID!): Boolean
+
+  """Update the sleep goal."""
+  updateSleepGoal(minDuration: Int!): SleepGoal
+
+  """Log a weight entry."""
+  logWeight(input: LogWeightInput!): WeightLog
+
+  """Delete a weight log entry."""
+  deleteWeightLog(logId: ID!): Boolean
+
+  """Update body goals."""
+  updateBodyGoals(input: BodyGoalInput!): BodyGoal
+
+  """Log a body fat entry."""
+  logBodyFat(input: LogBodyFatInput!): BodyFat
+
+  """Delete a body fat log entry."""
+  deleteBodyFatLog(logId: ID!): Boolean
+
+  """Log food consumption."""
+  logFood(input: LogFoodInput!): FoodLog
+
+  """Delete a food log entry."""
+  deleteFoodLog(logId: ID!): Boolean
+
+  """Create a custom food."""
+  createFood(input: CreateFoodInput!): Food
+
+  """Delete a custom food."""
+  deleteFood(foodId: ID!): Boolean
+
+  """Create a meal."""
+  createMeal(input: CreateMealInput!): Meal
+
+  """Update a meal."""
+  updateMeal(mealId: ID!, input: CreateMealInput!): Meal
+
+  """Delete a meal."""
+  deleteMeal(mealId: ID!): Boolean
+
+  """Log water intake."""
+  logWater(input: LogWaterInput!): WaterLog
+
+  """Update water intake for a log entry."""
+  updateWaterLog(logId: ID!, amount: Float!): WaterLog
+
+  """Delete a water log entry."""
+  deleteWaterLog(logId: ID!): Boolean
+
+  """Update the water goal."""
+  updateWaterGoal(goal: Float!): WaterGoal
+
+  """Create a tracker alarm."""
+  createAlarm(userId: ID, deviceId: ID!, input: AlarmInput!): Alarm
+
+  """Update a tracker alarm."""
+  updateAlarm(userId: ID, deviceId: ID!, alarmId: ID!, input: AlarmInput!): Alarm
+
+  """Delete a tracker alarm."""
+  deleteAlarm(userId: ID, deviceId: ID!, alarmId: ID!): Boolean
+
+  """Create a webhook subscription."""
+  createSubscription(userId: ID, collection: SubscriptionCollection!, subscriptionId: ID!): Subscription
+
+  """Delete a webhook subscription."""
+  deleteSubscription(userId: ID, collection: SubscriptionCollection!, subscriptionId: ID!): Boolean
+
+  """Revoke an OAuth token."""
+  revokeToken(token: String!): Boolean
+
+  """Refresh an OAuth access token."""
+  refreshToken(refreshToken: String!): OAuthToken
+}
+
+# ─── Input Types ─────────────────────────────────────────────────────────────
+
+input UpdateUserProfileInput {
+  aboutMe: String
+  birthday: Date
+  city: String
+  clockTimeDisplayFormat: String
+  country: String
+  displayName: String
+  firstName: String
+  foodsLocale: String
+  fullName: String
+  gender: Gender
+  glucoseUnit: String
+  height: Float
+  heightUnit: String
+  lastName: String
+  locale: String
+  offsetFromUTCMillis: Int
+  startDayOfWeek: String
+  state: String
+  strideLengthRunning: Float
+  strideLengthWalking: Float
+  swimUnit: String
+  temperatureUnit: String
+  timezone: String
+  waterUnit: String
+  weightUnit: String
+}
+
+input LogActivityInput {
+  activityId: ID
+  activityName: String
+  manualCalories: Int
+  startTime: DateTime!
+  durationMillis: Int!
+  date: Date!
+  distance: Float
+  distanceUnit: String
+}
+
+input ActivityGoalInput {
+  activeMinutes: Int
+  caloriesOut: Int
+  distance: Float
+  floors: Int
+  steps: Int
+}
+
+input LogSleepInput {
+  startTime: DateTime!
+  duration: Int!
+  date: Date!
+}
+
+input LogWeightInput {
+  weight: Float!
+  date: Date!
+  time: Time
+}
+
+input BodyGoalInput {
+  weight: Float
+  fat: Float
+}
+
+input LogBodyFatInput {
+  fat: Float!
+  date: Date!
+  time: Time
+}
+
+input LogFoodInput {
+  foodId: ID
+  mealTypeId: Int!
+  unitId: ID!
+  amount: Float!
+  date: Date!
+}
+
+input CreateFoodInput {
+  name: String!
+  defaultFoodMeasurementUnitId: ID!
+  defaultServingSize: Float!
+  calories: Int!
+  formType: String
+  nutritionalValuesInput: NutritionalValuesInput
+}
+
+input NutritionalValuesInput {
+  biotin: Float
+  calcium: Float
+  calories: Float
+  caloriesFromFat: Float
+  carbs: Float
+  cholesterol: Float
+  copper: Float
+  dietaryFiber: Float
+  fat: Float
+  folicAcid: Float
+  iodine: Float
+  iron: Float
+  magnesium: Float
+  monounsaturatedFat: Float
+  niacin: Float
+  pantothenicAcid: Float
+  phosphorus: Float
+  polyunsaturatedFat: Float
+  potassium: Float
+  protein: Float
+  riboflavin: Float
+  saturatedFat: Float
+  selenium: Float
+  sodium: Float
+  sugar: Float
+  thiamin: Float
+  transFat: Float
+  vitaminA: Float
+  vitaminB6: Float
+  vitaminB12: Float
+  vitaminC: Float
+  vitaminD: Float
+  vitaminE: Float
+  vitaminK: Float
+  water: Float
+  zinc: Float
+}
+
+input CreateMealInput {
+  name: String!
+  description: String
+  mealFoods: [MealFoodInput!]!
+}
+
+input MealFoodInput {
+  foodId: ID!
+  unitId: ID!
+  amount: Float!
+}
+
+input LogWaterInput {
+  amount: Float!
+  date: Date!
+  unit: String
+}
+
+input AlarmInput {
+  enabled: Boolean!
+  time: String!
+  recurring: Boolean
+  weekDays: [String!]
+  label: String
+  snoozeLength: Int
+  snoozeCount: Int
+  vibe: String
+}
