@@ -1,0 +1,745 @@
+{
+  "item": [
+    {
+      "id": "15b0035e-bde5-4acc-b123-075a1678ef70",
+      "name": "Get Weight Logs By Date",
+      "request": {
+        "name": "Get Weight Logs By Date",
+        "description": {
+          "content": "Retrieves a list of all user's weight log entries for a given day.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "body",
+            "log",
+            "weight",
+            "date",
+            "{{date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "40388b85-9677-4035-945f-7308afccc616",
+          "name": "Weight logs.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "body",
+                "log",
+                "weight",
+                "date",
+                "{{date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"weight\": [\n    {\n      \"bmi\": 3177.4286858087876,\n      \"date\": \"2018-01-10\",\n      \"fat\": 2665.4618875729543,\n      \"logId\": 1684,\n      \"source\": \"string\",\n      \"time\": \"string\",\n      \"weight\": 7401.215306957575\n    },\n    {\n      \"bmi\": 3399.9279262831315,\n      \"date\": \"2012-08-24\",\n      \"fat\": 9930.859371220431,\n      \"logId\": 4884,\n      \"source\": \"string\",\n      \"time\": \"string\",\n      \"weight\": 4105.273562632855\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c80b75fc-7731-41f0-a441-0ae00e91d66f",
+      "name": "Log Weight",
+      "request": {
+        "name": "Log Weight",
+        "description": {
+          "content": "Creates a log entry for a body weight.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "body",
+            "log",
+            "weight",
+            "date",
+            "{{date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "weight",
+              "value": "<number>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "date",
+              "value": "<date>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "time",
+              "value": "<string>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7aa5f3c1-c871-4869-872f-d6a9fc5d988f",
+          "name": "Weight log created.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "body",
+                "log",
+                "weight",
+                "date",
+                "{{date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "weight",
+                  "value": "<number>"
+                },
+                {
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "key": "time",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "863b4662-a356-467d-b9a9-faf434bc3ac0",
+      "name": "Delete Weight Log",
+      "request": {
+        "name": "Delete Weight Log",
+        "description": {
+          "content": "Deletes a user's weight log entry with the given ID.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "body",
+            "log",
+            "weight",
+            "{{weight-log-id}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4e3cf87f-86fd-4b37-bc56-ba66700a2b5c",
+          "name": "Weight log deleted.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "body",
+                "log",
+                "weight",
+                "{{weight-log-id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5db0bd35-eda9-4ac7-93b7-369ab97f78e7",
+      "name": "Get Body Fat Logs By Date",
+      "request": {
+        "name": "Get Body Fat Logs By Date",
+        "description": {
+          "content": "Retrieves a list of all user's body fat log entries for a given day.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "body",
+            "log",
+            "fat",
+            "date",
+            "{{date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "2542dd28-df0e-4be9-8b0d-943ad256a774",
+          "name": "Body fat logs.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "body",
+                "log",
+                "fat",
+                "date",
+                "{{date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"fat\": [\n    {\n      \"date\": \"string\",\n      \"fat\": 7375.444300736106,\n      \"logId\": 1531,\n      \"source\": \"string\",\n      \"time\": \"string\"\n    },\n    {\n      \"date\": \"string\",\n      \"fat\": 4718.058837377342,\n      \"logId\": 5020,\n      \"source\": \"string\",\n      \"time\": \"string\"\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3da2a85d-2d14-46bc-b240-ebacf5fbb2ba",
+      "name": "Get Body Time Series By Date",
+      "request": {
+        "name": "Get Body Time Series By Date",
+        "description": {
+          "content": "Retrieves the user's body data (weight, BMI, or fat) over a period of time.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "body",
+            ":resource-path",
+            "date",
+            ":date",
+            "{{period}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "resource-path",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "date",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "65f69d2b-aaf3-473f-8ef8-bfc0b90a577f",
+          "name": "Body time series.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "body",
+                ":resource-path",
+                "date",
+                ":date",
+                "{{period}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource-path",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "36b6f33d-66b4-47c0-ab1a-5dbf7e08697c",
+      "name": "Get Body Weight Goal",
+      "request": {
+        "name": "Get Body Weight Goal",
+        "description": {
+          "content": "Retrieves the user's current body weight goal.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "body",
+            "log",
+            "weight",
+            "goal.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "e6875e3f-5f8d-40ea-9aba-1c21852fc5e4",
+          "name": "Body weight goal.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "body",
+                "log",
+                "weight",
+                "goal.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fitbit.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "date"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "weight-log-id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "period"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "weight"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ac5ab393-05b2-4468-b04c-72a2034433ef",
+    "name": "Fitbit Body API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read and write body and weight data for Fitbit users: weight logs, body fat\nlogs, BMI, body weight goals, and body fat goals. Includes time-series\nendpoints for weight, BMI, and body fat percentage.\n\n\nContact Support:\n Name: Fitbit Developer",
+      "type": "text/plain"
+    }
+  }
+}

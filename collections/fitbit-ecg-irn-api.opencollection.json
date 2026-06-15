@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit ECG and Irregular Rhythm Notifications API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get ECG Log List",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/ecg/list.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "beforeDate",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "afterDate",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "sort",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "offset",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns a list of a user's ECG log entries before or after a given day with offset, limit, and sort order."
+    },
+    {
+      "info": {
+        "name": "Get IRN Alerts List",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/irn/alerts/list.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "beforeDate",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "afterDate",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "sort",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "offset",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Returns the user's Irregular Rhythm Notification alerts list."
+    },
+    {
+      "info": {
+        "name": "Get IRN Profile",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/irn/profile.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns the user's IRN profile and enrollment status."
+    }
+  ],
+  "bundled": true
+}

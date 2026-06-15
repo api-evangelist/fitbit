@@ -1,0 +1,424 @@
+{
+  "item": [
+    {
+      "id": "9b657a9c-e608-479c-826a-e8b2a3599942",
+      "name": "Get ECG Log List",
+      "request": {
+        "name": "Get ECG Log List",
+        "description": {
+          "content": "Returns a list of a user's ECG log entries before or after a given day with offset, limit, and sort order.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "ecg",
+            "list.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "beforeDate",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "afterDate",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "sort",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "offset",
+              "value": "<integer>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "3ca7ef5d-306c-47f2-8c54-b5cda44af07d",
+          "name": "ECG log list.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "ecg",
+                "list.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "beforeDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "afterDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"ecgReadings\": [\n    {\n      \"startTime\": \"string\",\n      \"averageHeartRate\": 8890,\n      \"resultClassification\": \"Atrial Fibrillation\",\n      \"waveformSamples\": [\n        2481.475640865873,\n        4951.721023405971\n      ],\n      \"samplingFrequencyHz\": \"string\",\n      \"scalingFactor\": 9605,\n      \"numberOfWaveformSamples\": 829,\n      \"leadNumber\": 5156,\n      \"featureVersion\": \"string\",\n      \"deviceName\": \"string\",\n      \"firmwareVersion\": \"string\"\n    },\n    {\n      \"startTime\": \"string\",\n      \"averageHeartRate\": 5725,\n      \"resultClassification\": \"Atrial Fibrillation\",\n      \"waveformSamples\": [\n        9008.92187889386,\n        6017.696629127505\n      ],\n      \"samplingFrequencyHz\": \"string\",\n      \"scalingFactor\": 9136,\n      \"numberOfWaveformSamples\": 1589,\n      \"leadNumber\": 5273,\n      \"featureVersion\": \"string\",\n      \"deviceName\": \"string\",\n      \"firmwareVersion\": \"string\"\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "17f049ed-9c86-49d6-a6ba-3a12f0432731",
+      "name": "Get IRN Alerts List",
+      "request": {
+        "name": "Get IRN Alerts List",
+        "description": {
+          "content": "Returns the user's Irregular Rhythm Notification alerts list.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "irn",
+            "alerts",
+            "list.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "beforeDate",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "afterDate",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "sort",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "offset",
+              "value": "<integer>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "0a216de4-ea42-4a50-9f6d-3334ad867689",
+          "name": "IRN alerts list.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "irn",
+                "alerts",
+                "list.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "beforeDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "afterDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c873a4ae-a493-4f3e-be1a-037c31b70b4d",
+      "name": "Get IRN Profile",
+      "request": {
+        "name": "Get IRN Profile",
+        "description": {
+          "content": "Returns the user's IRN profile and enrollment status.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "irn",
+            "profile.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7ff68256-d295-4597-93e0-de45f82a6de2",
+          "name": "IRN profile.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "irn",
+                "profile.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fitbit.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "electrocardiogram irregular_rhythm_notifications"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c844a12e-a269-4126-9ae1-e62f05ac040e",
+    "name": "Fitbit ECG and Irregular Rhythm Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Access Electrocardiogram (ECG) readings and Irregular Rhythm Notifications\n(IRN) data collected on Fitbit Sense, Sense 2, Charge 5/6, and other\nsupported devices. ECG readings produce waveform data classified by the\ndevice algorithm. IRN data captures the user's enrollment, alerts, and\nfeature engagement.\n\n\nContact Support:\n Name: Fitbit Developer",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Authorization API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorize",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://www.fitbit.com/oauth2/authorize",
+        "params": [
+          {
+            "name": "response_type",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "client_id",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "redirect_uri",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "scope",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "code_challenge",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "code_challenge_method",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "state",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "prompt",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "expires_in",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Initiates the OAuth 2.0 authorization flow by presenting the consent screen to the user."
+    },
+    {
+      "info": {
+        "name": "Get Access Token",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://www.fitbit.com/oauth2/token",
+        "body": {
+          "type": "form-urlencoded",
+          "data": [
+            {
+              "name": "grant_type",
+              "value": ""
+            },
+            {
+              "name": "code",
+              "value": ""
+            },
+            {
+              "name": "client_id",
+              "value": ""
+            },
+            {
+              "name": "redirect_uri",
+              "value": ""
+            },
+            {
+              "name": "code_verifier",
+              "value": ""
+            },
+            {
+              "name": "refresh_token",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "docs": "Exchanges the authorization code for the initial access token and refresh token."
+    },
+    {
+      "info": {
+        "name": "Introspect Token",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://www.fitbit.com/1.1/oauth2/introspect",
+        "body": {
+          "type": "form-urlencoded",
+          "data": [
+            {
+              "name": "token",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "docs": "Returns the active state and metadata for an OAuth 2.0 access token."
+    },
+    {
+      "info": {
+        "name": "Revoke Token",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://www.fitbit.com/oauth2/revoke",
+        "body": {
+          "type": "form-urlencoded",
+          "data": [
+            {
+              "name": "token",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "docs": "Disables a user's authorization and all associated tokens."
+    }
+  ],
+  "bundled": true
+}

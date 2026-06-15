@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit User API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get Profile",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/profile.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves the user's profile data."
+    },
+    {
+      "info": {
+        "name": "Update Profile",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1/user/:user-id/profile.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "gender",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "birthday",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "height",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "aboutMe",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "fullname",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "country",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "state",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "city",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "timezone",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "foodsLocale",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "locale",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "localeLang",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "localeCountry",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "startDayOfWeek",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Updates a user's profile using a form."
+    }
+  ],
+  "bundled": true
+}

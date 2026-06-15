@@ -1,0 +1,440 @@
+{
+  "item": [
+    {
+      "id": "0226055f-d27f-40b9-aac0-f5f14e0c9fd7",
+      "name": "Get Heart Rate Time Series By Date",
+      "request": {
+        "name": "Get Heart Rate Time Series By Date",
+        "description": {
+          "content": "Retrieves a user's heart rate time series for the given date and period.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "heart",
+            "date",
+            ":date",
+            "{{period}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "date",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "695af3f8-fc15-40f6-a1b0-1520ba76d5ec",
+          "name": "Heart rate time series.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "heart",
+                "date",
+                ":date",
+                "{{period}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"activities-heart\": [\n    {\n      \"dateTime\": \"1975-12-27\",\n      \"value\": {\n        \"customHeartRateZones\": [\n          {\n            \"caloriesOut\": 6685.860421330122,\n            \"max\": 662,\n            \"min\": 3782,\n            \"minutes\": 6641,\n            \"name\": \"string\"\n          },\n          {\n            \"caloriesOut\": 1107.0642842970424,\n            \"max\": 3344,\n            \"min\": 7229,\n            \"minutes\": 7202,\n            \"name\": \"string\"\n          }\n        ],\n        \"heartRateZones\": [\n          {\n            \"caloriesOut\": 1837.406651217519,\n            \"max\": 1591,\n            \"min\": 1748,\n            \"minutes\": 7921,\n            \"name\": \"string\"\n          },\n          {\n            \"caloriesOut\": 3861.879287320378,\n            \"max\": 814,\n            \"min\": 3472,\n            \"minutes\": 7148,\n            \"name\": \"string\"\n          }\n        ],\n        \"restingHeartRate\": 94\n      }\n    },\n    {\n      \"dateTime\": \"1946-07-31\",\n      \"value\": {\n        \"customHeartRateZones\": [\n          {\n            \"caloriesOut\": 1296.943572676219,\n            \"max\": 5078,\n            \"min\": 5804,\n            \"minutes\": 96,\n            \"name\": \"string\"\n          },\n          {\n            \"caloriesOut\": 8196.676100434152,\n            \"max\": 2222,\n            \"min\": 1157,\n            \"minutes\": 7829,\n            \"name\": \"string\"\n          }\n        ],\n        \"heartRateZones\": [\n          {\n            \"caloriesOut\": 1884.8305741164063,\n            \"max\": 5449,\n            \"min\": 7914,\n            \"minutes\": 6520,\n            \"name\": \"string\"\n          },\n          {\n            \"caloriesOut\": 1794.5118146438533,\n            \"max\": 5045,\n            \"min\": 1477,\n            \"minutes\": 326,\n            \"name\": \"string\"\n          }\n        ],\n        \"restingHeartRate\": 2681\n      }\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "659c7cee-4eb1-4174-874d-5a1a321f27df",
+      "name": "Get Heart Rate Time Series By Date Range",
+      "request": {
+        "name": "Get Heart Rate Time Series By Date Range",
+        "description": {
+          "content": "Retrieves a user's heart rate time series for the given date range.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "heart",
+            "date",
+            ":base-date",
+            "{{end-date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "base-date",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7e1bf58e-92c4-4397-8469-fb2abee162a4",
+          "name": "Heart rate time series.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "heart",
+                "date",
+                ":base-date",
+                "{{end-date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "base-date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"activities-heart\": [\n    {\n      \"dateTime\": \"2015-09-05\",\n      \"value\": {\n        \"customHeartRateZones\": [\n          {\n            \"caloriesOut\": 9503.147174900967,\n            \"max\": 8640,\n            \"min\": 9922,\n            \"minutes\": 5244,\n            \"name\": \"string\"\n          },\n          {\n            \"caloriesOut\": 378.8271254910147,\n            \"max\": 7091,\n            \"min\": 1771,\n            \"minutes\": 9292,\n            \"name\": \"string\"\n          }\n        ],\n        \"heartRateZones\": [\n          {\n            \"caloriesOut\": 686.8895327770464,\n            \"max\": 7235,\n            \"min\": 7693,\n            \"minutes\": 4244,\n            \"name\": \"string\"\n          },\n          {\n            \"caloriesOut\": 230.76279407089893,\n            \"max\": 5067,\n            \"min\": 1746,\n            \"minutes\": 7146,\n            \"name\": \"string\"\n          }\n        ],\n        \"restingHeartRate\": 6300\n      }\n    },\n    {\n      \"dateTime\": \"1983-03-20\",\n      \"value\": {\n        \"customHeartRateZones\": [\n          {\n            \"caloriesOut\": 2743.062822469201,\n            \"max\": 9448,\n            \"min\": 3342,\n            \"minutes\": 636,\n            \"name\": \"string\"\n          },\n          {\n            \"caloriesOut\": 4287.754171328614,\n            \"max\": 6006,\n            \"min\": 4765,\n            \"minutes\": 4015,\n            \"name\": \"string\"\n          }\n        ],\n        \"heartRateZones\": [\n          {\n            \"caloriesOut\": 2268.630760347972,\n            \"max\": 941,\n            \"min\": 58,\n            \"minutes\": 8759,\n            \"name\": \"string\"\n          },\n          {\n            \"caloriesOut\": 7503.92439293665,\n            \"max\": 6106,\n            \"min\": 2410,\n            \"minutes\": 9342,\n            \"name\": \"string\"\n          }\n        ],\n        \"restingHeartRate\": 2499\n      }\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b4891a45-f3ab-410d-857a-a8607e0a459e",
+      "name": "Get Heart Rate Intraday Time Series",
+      "request": {
+        "name": "Get Heart Rate Intraday Time Series",
+        "description": {
+          "content": "Retrieves the user's heart rate intraday time series at the requested detail level (1sec, 1min, 5min, or 15min). Requires Intraday access.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "heart",
+            "date",
+            ":date",
+            "1d",
+            "{{detail-level}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "date",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ba9636c3-c09b-4651-b451-ce91e88fa148",
+          "name": "Heart rate intraday data.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "heart",
+                "date",
+                ":date",
+                "1d",
+                "{{detail-level}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"activities-heart-intraday\": {\n    \"dataset\": [\n      {\n        \"time\": \"string\",\n        \"value\": 6568\n      },\n      {\n        \"time\": \"string\",\n        \"value\": 997\n      }\n    ],\n    \"datasetInterval\": 4961,\n    \"datasetType\": \"string\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fitbit.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "period"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "end-date"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "detail-level"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "heartrate"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "16e2fdcc-5ebc-4727-8598-e0c0a9dcd60e",
+    "name": "Fitbit Heart Rate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read user heart rate data from Fitbit. Provides resting heart rate, heart\nrate zones, and time-series heart rate measurements at day, week, month, and\nyear granularity. Intraday endpoints expose 1-minute or 1-second detail-level\nseries and require explicit Intraday access approval from Fitbit/Google.\n\n\nContact Support:\n Name: Fitbit Developer",
+      "type": "text/plain"
+    }
+  }
+}

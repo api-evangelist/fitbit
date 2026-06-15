@@ -1,0 +1,865 @@
+{
+  "item": [
+    {
+      "id": "0d125b85-0947-4325-84a8-29e85dc93eae",
+      "name": "Get Sleep Log By Date",
+      "request": {
+        "name": "Get Sleep Log By Date",
+        "description": {
+          "content": "Retrieves a list of a user's sleep log entries for a given date.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1.2",
+            "user",
+            ":user-id",
+            "sleep",
+            "date",
+            "{{date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "c64f3df6-86c6-443f-98c7-c0f5b81f4d31",
+          "name": "Sleep log.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1.2",
+                "user",
+                ":user-id",
+                "sleep",
+                "date",
+                "{{date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"sleep\": [\n    {\n      \"dateOfSleep\": \"1987-11-18\",\n      \"duration\": 4559,\n      \"efficiency\": 5580,\n      \"endTime\": \"string\",\n      \"infoCode\": 3750,\n      \"isMainSleep\": true,\n      \"levels\": {\n        \"data\": [\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 4390\n          },\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 9463\n          }\n        ],\n        \"summary\": {}\n      },\n      \"logId\": 7883,\n      \"minutesAfterWakeup\": 9645,\n      \"minutesAsleep\": 6104,\n      \"minutesAwake\": 242,\n      \"minutesToFallAsleep\": 4509,\n      \"startTime\": \"string\",\n      \"timeInBed\": 4195,\n      \"type\": \"stages\"\n    },\n    {\n      \"dateOfSleep\": \"2020-08-05\",\n      \"duration\": 3852,\n      \"efficiency\": 7932,\n      \"endTime\": \"string\",\n      \"infoCode\": 6621,\n      \"isMainSleep\": true,\n      \"levels\": {\n        \"data\": [\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 1946\n          },\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 8799\n          }\n        ],\n        \"summary\": {}\n      },\n      \"logId\": 1133,\n      \"minutesAfterWakeup\": 6161,\n      \"minutesAsleep\": 9648,\n      \"minutesAwake\": 5609,\n      \"minutesToFallAsleep\": 7430,\n      \"startTime\": \"string\",\n      \"timeInBed\": 4256,\n      \"type\": \"classic\"\n    }\n  ],\n  \"summary\": {\n    \"stages\": {\n      \"deep\": 6471,\n      \"light\": 989,\n      \"rem\": 2280,\n      \"wake\": 1229\n    },\n    \"totalMinutesAsleep\": 7555,\n    \"totalSleepRecords\": 1105,\n    \"totalTimeInBed\": 773\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "44774b52-2960-4705-9789-ccb9ef821a7d",
+      "name": "Get Sleep Log By Date Range",
+      "request": {
+        "name": "Get Sleep Log By Date Range",
+        "description": {
+          "content": "Retrieves a list of a user's sleep log entries over a date range.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1.2",
+            "user",
+            ":user-id",
+            "sleep",
+            "date",
+            ":base-date",
+            "{{end-date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "base-date",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ad6bba7e-f309-4d2d-8131-32061469b89a",
+          "name": "Sleep log.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1.2",
+                "user",
+                ":user-id",
+                "sleep",
+                "date",
+                ":base-date",
+                "{{end-date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "base-date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"sleep\": [\n    {\n      \"dateOfSleep\": \"2008-01-29\",\n      \"duration\": 8255,\n      \"efficiency\": 9906,\n      \"endTime\": \"string\",\n      \"infoCode\": 3227,\n      \"isMainSleep\": true,\n      \"levels\": {\n        \"data\": [\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 9591\n          },\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 2320\n          }\n        ],\n        \"summary\": {}\n      },\n      \"logId\": 9796,\n      \"minutesAfterWakeup\": 4225,\n      \"minutesAsleep\": 7278,\n      \"minutesAwake\": 1725,\n      \"minutesToFallAsleep\": 8029,\n      \"startTime\": \"string\",\n      \"timeInBed\": 7064,\n      \"type\": \"classic\"\n    },\n    {\n      \"dateOfSleep\": \"1968-01-16\",\n      \"duration\": 1834,\n      \"efficiency\": 4815,\n      \"endTime\": \"string\",\n      \"infoCode\": 3776,\n      \"isMainSleep\": false,\n      \"levels\": {\n        \"data\": [\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 9656\n          },\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 3488\n          }\n        ],\n        \"summary\": {}\n      },\n      \"logId\": 1150,\n      \"minutesAfterWakeup\": 6403,\n      \"minutesAsleep\": 415,\n      \"minutesAwake\": 4487,\n      \"minutesToFallAsleep\": 5141,\n      \"startTime\": \"string\",\n      \"timeInBed\": 5230,\n      \"type\": \"classic\"\n    }\n  ],\n  \"summary\": {\n    \"stages\": {\n      \"deep\": 7048,\n      \"light\": 3284,\n      \"rem\": 3310,\n      \"wake\": 238\n    },\n    \"totalMinutesAsleep\": 612,\n    \"totalSleepRecords\": 4848,\n    \"totalTimeInBed\": 913\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9f1e727a-3171-4c3d-a21b-6abfdadfca1d",
+      "name": "Get Sleep Log List",
+      "request": {
+        "name": "Get Sleep Log List",
+        "description": {
+          "content": "Retrieves a list of sleep log entries before or after a given date with offset, limit, and sort order.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1.2",
+            "user",
+            ":user-id",
+            "sleep",
+            "list.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "beforeDate",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "afterDate",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "sort",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "offset",
+              "value": "<integer>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "fc86c813-90ec-4f6d-b640-da1c33478bf8",
+          "name": "Sleep log list.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1.2",
+                "user",
+                ":user-id",
+                "sleep",
+                "list.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "beforeDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "afterDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"sleep\": [\n    {\n      \"dateOfSleep\": \"2008-01-29\",\n      \"duration\": 8255,\n      \"efficiency\": 9906,\n      \"endTime\": \"string\",\n      \"infoCode\": 3227,\n      \"isMainSleep\": true,\n      \"levels\": {\n        \"data\": [\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 9591\n          },\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 2320\n          }\n        ],\n        \"summary\": {}\n      },\n      \"logId\": 9796,\n      \"minutesAfterWakeup\": 4225,\n      \"minutesAsleep\": 7278,\n      \"minutesAwake\": 1725,\n      \"minutesToFallAsleep\": 8029,\n      \"startTime\": \"string\",\n      \"timeInBed\": 7064,\n      \"type\": \"classic\"\n    },\n    {\n      \"dateOfSleep\": \"1968-01-16\",\n      \"duration\": 1834,\n      \"efficiency\": 4815,\n      \"endTime\": \"string\",\n      \"infoCode\": 3776,\n      \"isMainSleep\": false,\n      \"levels\": {\n        \"data\": [\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 9656\n          },\n          {\n            \"dateTime\": \"string\",\n            \"level\": \"string\",\n            \"seconds\": 3488\n          }\n        ],\n        \"summary\": {}\n      },\n      \"logId\": 1150,\n      \"minutesAfterWakeup\": 6403,\n      \"minutesAsleep\": 415,\n      \"minutesAwake\": 4487,\n      \"minutesToFallAsleep\": 5141,\n      \"startTime\": \"string\",\n      \"timeInBed\": 5230,\n      \"type\": \"classic\"\n    }\n  ],\n  \"summary\": {\n    \"stages\": {\n      \"deep\": 7048,\n      \"light\": 3284,\n      \"rem\": 3310,\n      \"wake\": 238\n    },\n    \"totalMinutesAsleep\": 612,\n    \"totalSleepRecords\": 4848,\n    \"totalTimeInBed\": 913\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5d39d8e9-260a-466e-909b-61e9c91114b8",
+      "name": "Log Sleep",
+      "request": {
+        "name": "Log Sleep",
+        "description": {
+          "content": "Creates a sleep log entry for the user.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1.2",
+            "user",
+            ":user-id",
+            "sleep.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "startTime",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "duration",
+              "value": "<integer>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "date",
+              "value": "<date>",
+              "description": "(Required) "
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "50d50600-9070-488e-b896-518c686445e5",
+          "name": "Sleep log created.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1.2",
+                "user",
+                ":user-id",
+                "sleep.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "<string>"
+                },
+                {
+                  "key": "duration",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "date",
+                  "value": "<date>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "60ee8c77-37ab-4d14-921a-4d12f4192495",
+      "name": "Delete Sleep Log",
+      "request": {
+        "name": "Delete Sleep Log",
+        "description": {
+          "content": "Deletes a user's sleep log entry with the given ID.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1.2",
+            "user",
+            ":user-id",
+            "sleep",
+            "{{log-id}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b1a0126e-337e-4969-85ec-397e95002794",
+          "name": "Sleep log deleted.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1.2",
+                "user",
+                ":user-id",
+                "sleep",
+                "{{log-id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c69141bf-8919-48ae-93cc-67fe4a29ad2b",
+      "name": "Get Sleep Goal",
+      "request": {
+        "name": "Get Sleep Goal",
+        "description": {
+          "content": "Retrieves the user's current sleep goal.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "sleep",
+            "goal.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "568f57c7-382f-462f-a942-1006bcee1c15",
+          "name": "Sleep goal.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "sleep",
+                "goal.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"goal\": {\n    \"minDuration\": 8638,\n    \"updatedOn\": \"string\"\n  },\n  \"consistency\": {}\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "86af67c0-2aef-436d-be67-ef6d1c8a715f",
+      "name": "Update Sleep Goal",
+      "request": {
+        "name": "Update Sleep Goal",
+        "description": {
+          "content": "Creates or updates the user's sleep goal.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "sleep",
+            "goal.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "minDuration",
+              "value": "<integer>",
+              "description": "(Required) "
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "d7b66afd-c92f-4f77-82b1-71493c6ea871",
+          "name": "Sleep goal updated.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "sleep",
+                "goal.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "minDuration",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fitbit.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "date"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "end-date"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "log-id"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "sleep"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d9068942-cf2a-41cb-a32e-eeddfeb4a74c",
+    "name": "Fitbit Sleep API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Retrieve and log Fitbit sleep data. Returns sleep log entries with stage\nbreakdowns (light, deep, REM, wake), sleep efficiency, time in bed,\nminutes asleep, restless and awake counts. Supports sleep goal management\nand date-range queries.\n\n\nContact Support:\n Name: Fitbit Developer",
+      "type": "text/plain"
+    }
+  }
+}

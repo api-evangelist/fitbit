@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Devices API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get Devices",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/devices.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns a list of the Fitbit devices connected to a user's account."
+    },
+    {
+      "info": {
+        "name": "Get Alarms",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/devices/tracker/:tracker-id/alarms.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "tracker-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns alarms for a device."
+    },
+    {
+      "info": {
+        "name": "Add Alarm",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1/user/:user-id/devices/tracker/:tracker-id/alarms.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "tracker-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "time",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "enabled",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "recurring",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "weekDays",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Adds the alarm settings to a given device."
+    },
+    {
+      "info": {
+        "name": "Delete Alarm",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.fitbit.com/1/user/:user-id/devices/tracker/:tracker-id/alarms/:alarm-id.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "tracker-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "alarm-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Deletes a specific alarm entry for the given tracker."
+    }
+  ],
+  "bundled": true
+}

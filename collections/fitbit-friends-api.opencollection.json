@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Friends API",
+    "version": "1.1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get Friends",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1.1/user/:user-id/friends.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns data of a user's friends."
+    },
+    {
+      "info": {
+        "name": "Get Friends Leaderboard",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1.1/user/:user-id/leaderboard/friends.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns the user's friends leaderboard ranked by activity."
+    }
+  ],
+  "bundled": true
+}

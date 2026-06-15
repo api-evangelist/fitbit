@@ -1,0 +1,257 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Activity API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get Daily Activity Summary",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path",
+            "description": "The user's encoded ID. Use '-' for the currently authorized user."
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path",
+            "description": "The date in the format YYYY-MM-DD or 'today'."
+          }
+        ]
+      },
+      "docs": "Retrieves a summary and list of a user's activities and activity log entries for a given day."
+    },
+    {
+      "info": {
+        "name": "Log Activity",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path",
+            "description": "The user's encoded ID. Use '-' for the currently authorized user."
+          },
+          {
+            "name": "activityId",
+            "value": "",
+            "type": "query",
+            "description": "The activity ID."
+          },
+          {
+            "name": "activityName",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "manualCalories",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "startTime",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "durationMillis",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "distance",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "distanceUnit",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Logs an activity or creates a manual activity log entry for the user."
+    },
+    {
+      "info": {
+        "name": "Delete Activity Log",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/:activity-log-id.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path",
+            "description": "The user's encoded ID. Use '-' for the currently authorized user."
+          },
+          {
+            "name": "activity-log-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Deletes a user's activity log entry with the given ID."
+    },
+    {
+      "info": {
+        "name": "Get Activity Log List",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/list.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path",
+            "description": "The user's encoded ID. Use '-' for the currently authorized user."
+          },
+          {
+            "name": "beforeDate",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "afterDate",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "sort",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "offset",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieves a list of a user's activity log entries before or after a given day with offset, limit, and sort order."
+    },
+    {
+      "info": {
+        "name": "Get Activity Goals",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/goals/:period.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path",
+            "description": "The user's encoded ID. Use '-' for the currently authorized user."
+          },
+          {
+            "name": "period",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a user's current daily or weekly activity goals."
+    },
+    {
+      "info": {
+        "name": "Get AZM Time Series By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/active-zone-minutes/date/:date/:period.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path",
+            "description": "The user's encoded ID. Use '-' for the currently authorized user."
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "period",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves the user's Active Zone Minutes time series data for the given date and period."
+    },
+    {
+      "info": {
+        "name": "Get Activity Time Series By Date Range",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/steps/date/:base-date/:end-date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path",
+            "description": "The user's encoded ID. Use '-' for the currently authorized user."
+          },
+          {
+            "name": "base-date",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "end-date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves activity (steps) data over a date range for the user."
+    }
+  ],
+  "bundled": true
+}

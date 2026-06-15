@@ -1,0 +1,953 @@
+{
+  "item": [
+    {
+      "id": "ae51ebe0-7be4-4b75-943b-559b5b3808db",
+      "name": "Get Daily Activity Summary",
+      "request": {
+        "name": "Get Daily Activity Summary",
+        "description": {
+          "content": "Retrieves a summary and list of a user's activities and activity log entries for a given day.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "date",
+            "{{date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "e6bd32a4-adbe-4b49-a73b-3d0b297c369f",
+          "name": "Daily activity summary.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "date",
+                "{{date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"activities\": [\n    {\n      \"activityId\": 27,\n      \"activityParentId\": 7200,\n      \"calories\": 2830,\n      \"description\": \"string\",\n      \"distance\": 8405.13138254024,\n      \"duration\": 4000,\n      \"hasStartTime\": true,\n      \"isFavorite\": false,\n      \"logId\": 8373,\n      \"name\": \"string\",\n      \"startDate\": \"1991-09-13\",\n      \"startTime\": \"string\",\n      \"steps\": 989\n    },\n    {\n      \"activityId\": 7516,\n      \"activityParentId\": 7114,\n      \"calories\": 8093,\n      \"description\": \"string\",\n      \"distance\": 5276.409140593621,\n      \"duration\": 7316,\n      \"hasStartTime\": true,\n      \"isFavorite\": true,\n      \"logId\": 1983,\n      \"name\": \"string\",\n      \"startDate\": \"1979-01-18\",\n      \"startTime\": \"string\",\n      \"steps\": 4260\n    }\n  ],\n  \"goals\": {\n    \"goals\": {\n      \"activeMinutes\": 3519,\n      \"caloriesOut\": 9682,\n      \"distance\": 2188.5844043901934,\n      \"floors\": 4203,\n      \"steps\": 2009,\n      \"activeZoneMinutes\": 8347\n    }\n  },\n  \"summary\": {\n    \"activeScore\": 7673,\n    \"activityCalories\": 5911,\n    \"caloriesOut\": 8786,\n    \"steps\": 9002,\n    \"distances\": [\n      {\n        \"activity\": \"string\",\n        \"distance\": 8510.870522662786\n      },\n      {\n        \"activity\": \"string\",\n        \"distance\": 5007.367623422253\n      }\n    ],\n    \"fairlyActiveMinutes\": 5810,\n    \"lightlyActiveMinutes\": 8889,\n    \"sedentaryMinutes\": 7614,\n    \"veryActiveMinutes\": 1469,\n    \"floors\": 2413,\n    \"elevation\": 5911.692842157969,\n    \"restingHeartRate\": 3239\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "392c2ab7-990d-40a7-ad17-f68c3cd19782",
+      "name": "Log Activity",
+      "request": {
+        "name": "Log Activity",
+        "description": {
+          "content": "Logs an activity or creates a manual activity log entry for the user.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "activityId",
+              "value": "<integer>",
+              "description": "The activity ID."
+            },
+            {
+              "disabled": false,
+              "key": "activityName",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "manualCalories",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "startTime",
+              "value": "<string>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "durationMillis",
+              "value": "<integer>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "date",
+              "value": "<date>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "distance",
+              "value": "<number>"
+            },
+            {
+              "disabled": false,
+              "key": "distanceUnit",
+              "value": "<string>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ebe7b793-84f6-4431-a8ee-f79959f5c56b",
+          "name": "Activity log entry created.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "activityId",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "activityName",
+                  "value": "<string>"
+                },
+                {
+                  "key": "manualCalories",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "startTime",
+                  "value": "<string>"
+                },
+                {
+                  "key": "durationMillis",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "key": "distance",
+                  "value": "<number>"
+                },
+                {
+                  "key": "distanceUnit",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"activityId\": 6228,\n  \"activityParentId\": 9322,\n  \"calories\": 9237,\n  \"description\": \"string\",\n  \"distance\": 9551.652657286138,\n  \"duration\": 8664,\n  \"hasStartTime\": true,\n  \"isFavorite\": true,\n  \"logId\": 1954,\n  \"name\": \"string\",\n  \"startDate\": \"2019-04-27\",\n  \"startTime\": \"string\",\n  \"steps\": 2317\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "ffd07350-f07d-4970-b602-0c66eceb21f9",
+      "name": "Delete Activity Log",
+      "request": {
+        "name": "Delete Activity Log",
+        "description": {
+          "content": "Deletes a user's activity log entry with the given ID.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "{{activity-log-id}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "29269519-fe46-439c-9c0b-cb2013978927",
+          "name": "Activity log deleted.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "{{activity-log-id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "53e43b96-26c9-4dde-80aa-7328a49ba6c4",
+      "name": "Get Activity Log List",
+      "request": {
+        "name": "Get Activity Log List",
+        "description": {
+          "content": "Retrieves a list of a user's activity log entries before or after a given day with offset, limit, and sort order.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "list.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "beforeDate",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "afterDate",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "sort",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "limit",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "offset",
+              "value": "<integer>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "7c5fd4ce-aac1-4660-b266-11d964c50573",
+          "name": "Paginated activity log list.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "list.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "beforeDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "afterDate",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"activities\": [\n    {\n      \"activityId\": 9546,\n      \"activityParentId\": 7361,\n      \"calories\": 2949,\n      \"description\": \"string\",\n      \"distance\": 7797.660934968188,\n      \"duration\": 2097,\n      \"hasStartTime\": false,\n      \"isFavorite\": false,\n      \"logId\": 8829,\n      \"name\": \"string\",\n      \"startDate\": \"1950-05-25\",\n      \"startTime\": \"string\",\n      \"steps\": 7367\n    },\n    {\n      \"activityId\": 395,\n      \"activityParentId\": 9391,\n      \"calories\": 439,\n      \"description\": \"string\",\n      \"distance\": 9555.648518271315,\n      \"duration\": 6653,\n      \"hasStartTime\": false,\n      \"isFavorite\": true,\n      \"logId\": 5378,\n      \"name\": \"string\",\n      \"startDate\": \"2003-04-23\",\n      \"startTime\": \"string\",\n      \"steps\": 6649\n    }\n  ],\n  \"pagination\": {\n    \"beforeDate\": \"string\",\n    \"limit\": 300,\n    \"next\": \"string\",\n    \"offset\": 9563,\n    \"previous\": \"string\",\n    \"sort\": \"string\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "d8bed669-7dd7-4690-a277-7c49bd56e7a2",
+      "name": "Get Activity Goals",
+      "request": {
+        "name": "Get Activity Goals",
+        "description": {
+          "content": "Retrieves a user's current daily or weekly activity goals.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "goals",
+            "{{period}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "4b30a8f0-72e2-4afb-b783-c0de20a82373",
+          "name": "Activity goals.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "goals",
+                "{{period}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"goals\": {\n    \"activeMinutes\": 5996,\n    \"caloriesOut\": 9777,\n    \"distance\": 1376.422562654963,\n    \"floors\": 6930,\n    \"steps\": 2077,\n    \"activeZoneMinutes\": 4703\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e4569c15-977d-4dda-8b5f-f061ea8c61df",
+      "name": "Get AZM Time Series By Date",
+      "request": {
+        "name": "Get AZM Time Series By Date",
+        "description": {
+          "content": "Retrieves the user's Active Zone Minutes time series data for the given date and period.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "active-zone-minutes",
+            "date",
+            ":date",
+            "{{period}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "date",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "64e9242a-97c3-4416-b639-9723c9be2883",
+          "name": "Active Zone Minutes time series.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "active-zone-minutes",
+                "date",
+                ":date",
+                "{{period}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"activities-active-zone-minutes\": [\n    {\n      \"dateTime\": \"string\",\n      \"value\": {\n        \"activeZoneMinutes\": 5157,\n        \"fatBurnActiveZoneMinutes\": 1104,\n        \"cardioActiveZoneMinutes\": 3562,\n        \"peakActiveZoneMinutes\": 4422\n      }\n    },\n    {\n      \"dateTime\": \"string\",\n      \"value\": {\n        \"activeZoneMinutes\": 9826,\n        \"fatBurnActiveZoneMinutes\": 8844,\n        \"cardioActiveZoneMinutes\": 8947,\n        \"peakActiveZoneMinutes\": 1414\n      }\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "b09e3670-9a4a-4c18-9a3f-20f9f471474f",
+      "name": "Get Activity Time Series By Date Range",
+      "request": {
+        "name": "Get Activity Time Series By Date Range",
+        "description": {
+          "content": "Retrieves activity (steps) data over a date range for the user.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "activities",
+            "steps",
+            "date",
+            ":base-date",
+            "{{end-date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "base-date",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "c09f99ba-beac-48c0-b93c-1ddd2c4cc61d",
+          "name": "Steps time series.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "activities",
+                "steps",
+                "date",
+                ":base-date",
+                "{{end-date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) The user's encoded ID. Use '-' for the currently authorized user."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "base-date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fitbit.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The date in the format YYYY-MM-DD or 'today'.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "date"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "activity-log-id"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "period"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "end-date"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "activity heartrate location nutrition profile settings sleep social weight oxygen_saturation respiratory_rate temperature electrocardiogram irregular_rhythm_notifications cardio_fitness"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5084fb9f-9958-4a89-a9f7-f33690727a58",
+    "name": "Fitbit Activity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read and write user activity, exercise, and Active Zone Minutes (AZM) data on\nFitbit. The Activity API exposes daily activity summaries (steps, distance,\ncalories, floors, elevation, activity minutes), per-activity logs, lifetime\ntotals, activity goals, the user's exercise type catalog, and Active Zone\nMinutes time series. Time-series endpoints accept a base-date and either an\nend-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).\n\n\nContact Support:\n Name: Fitbit Developer",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Body API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get Weight Logs By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/body/log/weight/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a list of all user's weight log entries for a given day."
+    },
+    {
+      "info": {
+        "name": "Log Weight",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1/user/:user-id/body/log/weight/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "weight",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "time",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Creates a log entry for a body weight."
+    },
+    {
+      "info": {
+        "name": "Delete Weight Log",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.fitbit.com/1/user/:user-id/body/log/weight/:weight-log-id.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "weight-log-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Deletes a user's weight log entry with the given ID."
+    },
+    {
+      "info": {
+        "name": "Get Body Fat Logs By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/body/log/fat/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a list of all user's body fat log entries for a given day."
+    },
+    {
+      "info": {
+        "name": "Get Body Time Series By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/body/:resource-path/date/:date/:period.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "resource-path",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "period",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves the user's body data (weight, BMI, or fat) over a period of time."
+    },
+    {
+      "info": {
+        "name": "Get Body Weight Goal",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/body/log/weight/goal.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves the user's current body weight goal."
+    }
+  ],
+  "bundled": true
+}

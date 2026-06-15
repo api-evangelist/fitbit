@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Heart Rate API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get Heart Rate Time Series By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/heart/date/:date/:period.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "period",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a user's heart rate time series for the given date and period."
+    },
+    {
+      "info": {
+        "name": "Get Heart Rate Time Series By Date Range",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/heart/date/:base-date/:end-date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "base-date",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "end-date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a user's heart rate time series for the given date range."
+    },
+    {
+      "info": {
+        "name": "Get Heart Rate Intraday Time Series",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/activities/heart/date/:date/1d/:detail-level.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "detail-level",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves the user's heart rate intraday time series at the requested detail level (1sec, 1min, 5min, or 15min). Requires Intraday access."
+    }
+  ],
+  "bundled": true
+}

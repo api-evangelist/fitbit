@@ -1,0 +1,188 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit SpO2 / Breathing Rate / Temperature / HRV / VO2 Max API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get SpO2 Summary By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/spo2/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns the daily summary of SpO2 measurements for the user."
+    },
+    {
+      "info": {
+        "name": "Get SpO2 Summary By Date Range",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/spo2/date/:base-date/:end-date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "base-date",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "end-date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns daily SpO2 summary for a date range."
+    },
+    {
+      "info": {
+        "name": "Get Breathing Rate Summary By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/br/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns average breathing rate (breaths per minute) during sleep for the date."
+    },
+    {
+      "info": {
+        "name": "Get Skin Temperature Summary By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/temp/skin/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns skin temperature variation relative to the user's baseline."
+    },
+    {
+      "info": {
+        "name": "Get Core Temperature Summary By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/temp/core/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns core temperature readings."
+    },
+    {
+      "info": {
+        "name": "Get Heart Rate Variability By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/hrv/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns daily Heart Rate Variability (RMSSD) values measured during the deep sleep stage."
+    },
+    {
+      "info": {
+        "name": "Get VO2 Max Summary By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/cardioscore/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Returns the Cardio Fitness Score (VO2 Max) for the user."
+    }
+  ],
+  "bundled": true
+}

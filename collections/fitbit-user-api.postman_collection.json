@@ -1,0 +1,360 @@
+{
+  "item": [
+    {
+      "id": "e16e4a60-6c21-4637-8d8f-df319d942ec4",
+      "name": "Get Profile",
+      "request": {
+        "name": "Get Profile",
+        "description": {
+          "content": "Retrieves the user's profile data.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "profile.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "cda5b756-2476-40d3-9069-12a5dfbf0262",
+          "name": "User profile.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "profile.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"user\": {\n    \"aboutMe\": \"string\",\n    \"age\": 1070,\n    \"ambassador\": true,\n    \"autoStrideEnabled\": true,\n    \"avatar\": \"string\",\n    \"avatar150\": \"string\",\n    \"avatar640\": \"string\",\n    \"averageDailySteps\": 7220,\n    \"challengesBeta\": false,\n    \"city\": \"string\",\n    \"clockTimeDisplayFormat\": \"string\",\n    \"country\": \"string\",\n    \"corporate\": true,\n    \"corporateAdmin\": false,\n    \"dateOfBirth\": \"1966-08-19\",\n    \"displayName\": \"string\",\n    \"displayNameSetting\": \"string\",\n    \"distanceUnit\": \"string\",\n    \"encodedId\": \"string\",\n    \"features\": {},\n    \"firstName\": \"string\",\n    \"fullName\": \"string\",\n    \"gender\": \"string\",\n    \"glucoseUnit\": \"string\",\n    \"height\": 6615.174373352704,\n    \"heightUnit\": \"string\",\n    \"isBugReportEnabled\": true,\n    \"isChild\": true,\n    \"isCoach\": false,\n    \"languageLocale\": \"string\",\n    \"lastName\": \"string\",\n    \"legalTermsAcceptRequired\": true,\n    \"locale\": \"string\",\n    \"memberSince\": \"string\",\n    \"mfaEnabled\": true,\n    \"offsetFromUTCMillis\": 8089,\n    \"startDayOfWeek\": \"string\",\n    \"state\": \"string\",\n    \"strideLengthRunning\": 9815.838441397405,\n    \"strideLengthRunningType\": \"string\",\n    \"strideLengthWalking\": 3785.258292019985,\n    \"strideLengthWalkingType\": \"string\",\n    \"swimUnit\": \"string\",\n    \"temperatureUnit\": \"string\",\n    \"timezone\": \"string\",\n    \"waterUnit\": \"string\",\n    \"waterUnitName\": \"string\",\n    \"weight\": 9375.812997505835,\n    \"weightUnit\": \"string\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "18260267-a5af-427b-871c-56a4d09e5511",
+      "name": "Update Profile",
+      "request": {
+        "name": "Update Profile",
+        "description": {
+          "content": "Updates a user's profile using a form.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "profile.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "gender",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "birthday",
+              "value": "<date>"
+            },
+            {
+              "disabled": false,
+              "key": "height",
+              "value": "<number>"
+            },
+            {
+              "disabled": false,
+              "key": "aboutMe",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "fullname",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "country",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "state",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "city",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "timezone",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "foodsLocale",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "locale",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "localeLang",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "localeCountry",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "startDayOfWeek",
+              "value": "<string>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "aeb43b14-fc90-4cfb-8cfe-5c4ad5da2e47",
+          "name": "Profile updated.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "profile.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "gender",
+                  "value": "<string>"
+                },
+                {
+                  "key": "birthday",
+                  "value": "<date>"
+                },
+                {
+                  "key": "height",
+                  "value": "<number>"
+                },
+                {
+                  "key": "aboutMe",
+                  "value": "<string>"
+                },
+                {
+                  "key": "fullname",
+                  "value": "<string>"
+                },
+                {
+                  "key": "country",
+                  "value": "<string>"
+                },
+                {
+                  "key": "state",
+                  "value": "<string>"
+                },
+                {
+                  "key": "city",
+                  "value": "<string>"
+                },
+                {
+                  "key": "timezone",
+                  "value": "<string>"
+                },
+                {
+                  "key": "foodsLocale",
+                  "value": "<string>"
+                },
+                {
+                  "key": "locale",
+                  "value": "<string>"
+                },
+                {
+                  "key": "localeLang",
+                  "value": "<string>"
+                },
+                {
+                  "key": "localeCountry",
+                  "value": "<string>"
+                },
+                {
+                  "key": "startDayOfWeek",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fitbit.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "profile settings"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0903080f-a64f-4f79-abb3-a7c3d25455b8",
+    "name": "Fitbit User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read and update Fitbit user profile information including display name,\ngender, birthday, height, weight, locale, time zone, and account settings.\n\n\nContact Support:\n Name: Fitbit Developer",
+      "type": "text/plain"
+    }
+  }
+}

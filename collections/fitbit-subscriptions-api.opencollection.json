@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Subscriptions API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Create Subscription",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1/user/:user-id/:collection-path/apiSubscriptions/:subscription-id.json",
+        "headers": [
+          {
+            "name": "X-Fitbit-Subscriber-Id",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "collection-path",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "subscription-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Creates a subscription that triggers notifications when the user has new data of the requested type."
+    },
+    {
+      "info": {
+        "name": "Delete Subscription",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.fitbit.com/1/user/:user-id/:collection-path/apiSubscriptions/:subscription-id.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "collection-path",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "subscription-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Deletes a subscription for a specific user."
+    },
+    {
+      "info": {
+        "name": "Get Subscription List",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/:collection-path/apiSubscriptions.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "collection-path",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a list of a user's subscriptions."
+    }
+  ],
+  "bundled": true
+}

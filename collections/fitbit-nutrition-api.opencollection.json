@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Nutrition API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get Food Logs By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/foods/log/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a summary and list of a user's food log entries for a given day."
+    },
+    {
+      "info": {
+        "name": "Log Food",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1/user/:user-id/foods/log.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "foodId",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "foodName",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "mealTypeId",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "unitId",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "amount",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "calories",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "brandName",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "nutritionValues",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Creates a food log entry for the user."
+    },
+    {
+      "info": {
+        "name": "Delete Food Log",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.fitbit.com/1/user/:user-id/foods/log/:food-log-id.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "food-log-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Deletes a user's food log entry with the given ID."
+    },
+    {
+      "info": {
+        "name": "Get Water Logs",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/foods/log/water/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a list of a user's water log entries for a given day."
+    },
+    {
+      "info": {
+        "name": "Log Water",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1/user/:user-id/foods/log/water.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "amount",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "unit",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Creates a water log entry."
+    },
+    {
+      "info": {
+        "name": "Search Foods",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/foods/search.json",
+        "params": [
+          {
+            "name": "query",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Searches the Fitbit foods database for foods matching the query."
+    },
+    {
+      "info": {
+        "name": "Get Food Goals",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/foods/log/goal.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves the user's current daily calorie consumption goal and/or food plan."
+    }
+  ],
+  "bundled": true
+}

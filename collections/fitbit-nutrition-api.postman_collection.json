@@ -1,0 +1,852 @@
+{
+  "item": [
+    {
+      "id": "ea0d44cf-6d88-4eb9-afba-ad9d64916c56",
+      "name": "Get Food Logs By Date",
+      "request": {
+        "name": "Get Food Logs By Date",
+        "description": {
+          "content": "Retrieves a summary and list of a user's food log entries for a given day.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "foods",
+            "log",
+            "date",
+            "{{date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b53eefb8-cc95-441d-aecc-44f43cd5c33f",
+          "name": "Food log summary.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "foods",
+                "log",
+                "date",
+                "{{date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"goals\": {},\n  \"summary\": {\n    \"calories\": 256,\n    \"carbs\": 678.6496705391243,\n    \"fat\": 8478.403891752814,\n    \"fiber\": 3703.5150527461637,\n    \"protein\": 8411.68932086833,\n    \"sodium\": 5197.416996399228,\n    \"water\": 2382.7300830117924\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "cd4fcf07-1cce-465e-99cd-bfae675dca88",
+      "name": "Log Food",
+      "request": {
+        "name": "Log Food",
+        "description": {
+          "content": "Creates a food log entry for the user.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "foods",
+            "log.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "foodId",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "foodName",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "mealTypeId",
+              "value": "<integer>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "unitId",
+              "value": "<integer>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "amount",
+              "value": "<number>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "date",
+              "value": "<date>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "calories",
+              "value": "<integer>"
+            },
+            {
+              "disabled": false,
+              "key": "brandName",
+              "value": "<string>"
+            },
+            {
+              "disabled": false,
+              "key": "nutritionValues",
+              "value": "<string>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "ce955a2e-f9c1-4d02-a112-7e0d16cf3a3c",
+          "name": "Food log entry created.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "foods",
+                "log.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "foodId",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "foodName",
+                  "value": "<string>"
+                },
+                {
+                  "key": "mealTypeId",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "unitId",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "amount",
+                  "value": "<number>"
+                },
+                {
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "key": "calories",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "brandName",
+                  "value": "<string>"
+                },
+                {
+                  "key": "nutritionValues",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5a69a9f8-40ab-4be4-8ad7-c9e8b79c0283",
+      "name": "Delete Food Log",
+      "request": {
+        "name": "Delete Food Log",
+        "description": {
+          "content": "Deletes a user's food log entry with the given ID.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "foods",
+            "log",
+            "{{food-log-id}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b5dec575-dec7-4c98-b3e7-cf2dc1251dad",
+          "name": "Food log deleted.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "foods",
+                "log",
+                "{{food-log-id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "387ebf92-ae4e-45ce-aa49-c8f7d08790b2",
+      "name": "Get Water Logs",
+      "request": {
+        "name": "Get Water Logs",
+        "description": {
+          "content": "Retrieves a list of a user's water log entries for a given day.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "foods",
+            "log",
+            "water",
+            "date",
+            "{{date}}.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "6a41a7ca-36ef-48b1-8482-833613aceebe",
+          "name": "Water logs.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "foods",
+                "log",
+                "water",
+                "date",
+                "{{date}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9346d895-796a-4443-8390-120209c0f7fd",
+      "name": "Log Water",
+      "request": {
+        "name": "Log Water",
+        "description": {
+          "content": "Creates a water log entry.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "foods",
+            "log",
+            "water.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "date",
+              "value": "<date>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "amount",
+              "value": "<number>",
+              "description": "(Required) "
+            },
+            {
+              "disabled": false,
+              "key": "unit",
+              "value": "<string>"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "42108217-50df-4c9d-81a3-18f197d1aba9",
+          "name": "Water log created.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "foods",
+                "log",
+                "water.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "<date>"
+                },
+                {
+                  "key": "amount",
+                  "value": "<number>"
+                },
+                {
+                  "key": "unit",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "eefef312-d24e-4ed0-bc7c-069f4abbb2a7",
+      "name": "Search Foods",
+      "request": {
+        "name": "Search Foods",
+        "description": {
+          "content": "Searches the Fitbit foods database for foods matching the query.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "foods",
+            "search.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "query",
+              "value": "<string>",
+              "description": "(Required) "
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "851edef4-5637-4069-9963-82d14a79139c",
+          "name": "Search results.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "foods",
+                "search.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"foods\": [\n    {\n      \"accessLevel\": \"string\",\n      \"brand\": \"string\",\n      \"calories\": 1138,\n      \"defaultServingSize\": 6773.297797347965,\n      \"defaultUnit\": {},\n      \"foodId\": 9652,\n      \"name\": \"string\",\n      \"units\": [\n        2074,\n        8851\n      ]\n    },\n    {\n      \"accessLevel\": \"string\",\n      \"brand\": \"string\",\n      \"calories\": 1727,\n      \"defaultServingSize\": 1362.34212192907,\n      \"defaultUnit\": {},\n      \"foodId\": 6767,\n      \"name\": \"string\",\n      \"units\": [\n        4735,\n        5652\n      ]\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "791b2a60-ae4b-4b81-8b71-29feac8e0235",
+      "name": "Get Food Goals",
+      "request": {
+        "name": "Get Food Goals",
+        "description": {
+          "content": "Retrieves the user's current daily calorie consumption goal and/or food plan.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "1",
+            "user",
+            ":user-id",
+            "foods",
+            "log",
+            "goal.json"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "-",
+              "key": "user-id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b48c9018-acd0-464e-8d80-ee49f0d879ca",
+          "name": "Food goals.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "1",
+                "user",
+                ":user-id",
+                "foods",
+                "log",
+                "goal.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "-",
+                  "key": "user-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fitbit.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "date"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "food-log-id"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "nutrition"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a49f69d8-eedf-4319-9dec-300086050324",
+    "name": "Fitbit Nutrition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read and write food, water, meal, and nutrition data for Fitbit users.\nProvides access to the Fitbit food database, user food logs and favorites,\nwater logs, meal goals, daily food summaries with macronutrient breakdowns,\nand food/water time series.\n\n\nContact Support:\n Name: Fitbit Developer",
+      "type": "text/plain"
+    }
+  }
+}

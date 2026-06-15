@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fitbit Sleep API",
+    "version": "1.2"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://www.fitbit.com/oauth2/authorize",
+      "accessTokenUrl": "https://api.fitbit.com/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get Sleep Log By Date",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1.2/user/:user-id/sleep/date/:date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a list of a user's sleep log entries for a given date."
+    },
+    {
+      "info": {
+        "name": "Get Sleep Log By Date Range",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1.2/user/:user-id/sleep/date/:base-date/:end-date.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "base-date",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "end-date",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves a list of a user's sleep log entries over a date range."
+    },
+    {
+      "info": {
+        "name": "Get Sleep Log List",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1.2/user/:user-id/sleep/list.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "beforeDate",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "afterDate",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "sort",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "limit",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "offset",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Retrieves a list of sleep log entries before or after a given date with offset, limit, and sort order."
+    },
+    {
+      "info": {
+        "name": "Log Sleep",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1.2/user/:user-id/sleep.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "startTime",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "duration",
+            "value": "",
+            "type": "query"
+          },
+          {
+            "name": "date",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Creates a sleep log entry for the user."
+    },
+    {
+      "info": {
+        "name": "Delete Sleep Log",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.fitbit.com/1.2/user/:user-id/sleep/:log-id.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "log-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Deletes a user's sleep log entry with the given ID."
+    },
+    {
+      "info": {
+        "name": "Get Sleep Goal",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.fitbit.com/1/user/:user-id/sleep/goal.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Retrieves the user's current sleep goal."
+    },
+    {
+      "info": {
+        "name": "Update Sleep Goal",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.fitbit.com/1/user/:user-id/sleep/goal.json",
+        "params": [
+          {
+            "name": "user-id",
+            "value": "",
+            "type": "path"
+          },
+          {
+            "name": "minDuration",
+            "value": "",
+            "type": "query"
+          }
+        ]
+      },
+      "docs": "Creates or updates the user's sleep goal."
+    }
+  ],
+  "bundled": true
+}
