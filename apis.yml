@@ -259,10 +259,10 @@ common:
   type: Support
 - url: https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/error-handling/
   name: Error Handling
-  type: Errors
+  type: ErrorCodes
 - url: https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/error-messages/
   name: HTTP Status Codes
-  type: Errors
+  type: ErrorCodes
 - url: https://dev.fitbit.com/build/reference/web-api/rate-limits/
   name: Rate Limits
   type: RateLimits
@@ -274,19 +274,19 @@ common:
   type: Documentation
 - url: https://dev.fitbit.com/apps/
   name: Application Management
-  type: SignUp
+  type: Signup
 - url: https://github.com/Fitbit
   name: Fitbit GitHub Organization
   type: GitHubOrganization
 - url: https://github.com/Fitbit/fitbit-sdk-toolchain
   name: Fitbit SDK Toolchain
-  type: SDK
+  type: SDKs
 - url: https://github.com/Fitbit/create-fitbit-app
   name: create-fitbit-app
-  type: SDK
+  type: SDKs
 - url: https://github.com/Fitbit/developer-bridge
   name: Fitbit Developer Bridge
-  type: Tool
+  type: Tools
 - url: https://github.com/Fitbit/sdk-oauth
   name: Fitbit SDK OAuth Sample
   type: CodeExamples
@@ -298,10 +298,10 @@ common:
   type: CodeExamples
 - url: https://github.com/Fitbit/golden-gate
   name: Golden Gate (BLE IP stack)
-  type: Tool
+  type: Tools
 - url: https://github.com/Fitbit/bitgatt
   name: BitGatt (Android BLE state machine)
-  type: Tool
+  type: Tools
 - url: https://www.fitbit.com/global/us/products/premium
   name: Fitbit Premium
   type: Plans
@@ -319,10 +319,10 @@ common:
   type: Support
 - url: https://community.fitbit.com/
   name: Fitbit Community
-  type: Forum
+  type: Forums
 - url: https://community.fitbit.com/t5/Web-API-Development/bd-p/dev
   name: Fitbit Web API Development Forum
-  type: Forum
+  type: Forums
 - url: https://www.fitbit.com/global/us/legal/terms-of-service
   type: TermsOfService
 - url: https://www.fitbit.com/global/us/legal/privacy-policy
