@@ -1,0 +1,184 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/fitbit-activity-api-openapi.yml, openapi/fitbit-body-api-openapi.yml, openapi/fitbit-devices-api-openapi.yml,
+  openapi/fitbit-ecg-irn-api-openapi.yml, openapi/fitbit-friends-api-openapi.yml, openapi/fitbit-heart-rate-api-openapi.yml,
+  openapi/fitbit-nutrition-api-openapi.yml, openapi/fitbit-sleep-api-openapi.yml, openapi/fitbit-spo2-breathing-temperature-api-openapi.yml,
+  openapi/fitbit-subscriptions-api-openapi.yml, openapi/fitbit-user-api-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/fitbit-activity-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-body-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-devices-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-ecg-irn-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-friends-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-heart-rate-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-nutrition-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-sleep-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-subscriptions-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+- name: OAuth2
+  source: openapi/fitbit-user-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+scopes:
+- scope: activity
+  description: Activity and exercise data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-subscriptions-api-openapi.yml
+- scope: cardio_fitness
+  description: Cardio fitness (VO2 Max) data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
+- scope: electrocardiogram
+  description: ECG readings
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-ecg-irn-api-openapi.yml
+- scope: heartrate
+  description: Heart rate data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-heart-rate-api-openapi.yml
+  - openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
+  - openapi/fitbit-subscriptions-api-openapi.yml
+- scope: irregular_rhythm_notifications
+  description: IRN data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-ecg-irn-api-openapi.yml
+- scope: location
+  description: GPS and other location data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+- scope: nutrition
+  description: Food and nutrition data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-nutrition-api-openapi.yml
+  - openapi/fitbit-subscriptions-api-openapi.yml
+- scope: oxygen_saturation
+  description: SpO2 data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
+- scope: profile
+  description: User profile
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-user-api-openapi.yml
+- scope: respiratory_rate
+  description: Breathing rate data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
+- scope: settings
+  description: Account settings
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-devices-api-openapi.yml
+  - openapi/fitbit-user-api-openapi.yml
+- scope: sleep
+  description: Sleep data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-sleep-api-openapi.yml
+  - openapi/fitbit-subscriptions-api-openapi.yml
+- scope: social
+  description: Friends and leaderboard data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-friends-api-openapi.yml
+- scope: temperature
+  description: Skin and core body temperature data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
+- scope: weight
+  description: Weight, BMI, and body fat data
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-body-api-openapi.yml
+  - openapi/fitbit-subscriptions-api-openapi.yml
