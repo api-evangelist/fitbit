@@ -1,0 +1,31 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/fitbit-activity-api-openapi.yml, openapi/fitbit-body-api-openapi.yml, openapi/fitbit-devices-api-openapi.yml,
+  openapi/fitbit-ecg-irn-api-openapi.yml, openapi/fitbit-friends-api-openapi.yml, openapi/fitbit-heart-rate-api-openapi.yml,
+  openapi/fitbit-nutrition-api-openapi.yml, openapi/fitbit-sleep-api-openapi.yml, openapi/fitbit-spo2-breathing-temperature-api-openapi.yml,
+  openapi/fitbit-subscriptions-api-openapi.yml, openapi/fitbit-user-api-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.fitbit.com/oauth2/authorize
+    tokenUrl: https://api.fitbit.com/oauth2/token
+    scopes: 15
+  sources:
+  - openapi/fitbit-activity-api-openapi.yml
+  - openapi/fitbit-body-api-openapi.yml
+  - openapi/fitbit-devices-api-openapi.yml
+  - openapi/fitbit-ecg-irn-api-openapi.yml
+  - openapi/fitbit-friends-api-openapi.yml
+  - openapi/fitbit-heart-rate-api-openapi.yml
+  - openapi/fitbit-nutrition-api-openapi.yml
+  - openapi/fitbit-sleep-api-openapi.yml
+  - openapi/fitbit-spo2-breathing-temperature-api-openapi.yml
+  - openapi/fitbit-subscriptions-api-openapi.yml
+  - openapi/fitbit-user-api-openapi.yml

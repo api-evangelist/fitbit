@@ -1,0 +1,38 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.fitbit.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 23 19:41:11 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: dev.fitbit.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 23 19:41:11 2026 GMT
+  hsts: true
+  hsts_max_age: 300
+- host: about.google
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 14 08:37:56 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: fitbit.com
+  dnssec: false
+  caa:
+  - 0 issue "amazon.com"
+  - 0 issue "pki.goog"
+  - 0 issue "digicert.com"
+  spf: true
+  dmarc: true
+- domain: about.google
+  dnssec: true
+  caa:
+  - 0 issue "pki.goog"
+  spf: true
+  dmarc: true
+  dmarc_policy: none
