@@ -1,0 +1,806 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/fitbit-activity-api-openapi.yml, openapi/fitbit-authorization-api-openapi.yml,
+  openapi/fitbit-body-api-openapi.yml, openapi/fitbit-devices-api-openapi.yml, openapi/fitbit-ecg-irn-api-openapi.yml,
+  openapi/fitbit-friends-api-openapi.yml, openapi/fitbit-heart-rate-api-openapi.yml, openapi/fitbit-nutrition-api-openapi.yml,
+  openapi/fitbit-sleep-api-openapi.yml, openapi/fitbit-spo2-breathing-temperature-api-openapi.yml,
+  openapi/fitbit-subscriptions-api-openapi.yml, openapi/fitbit-user-api-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 55
+  by_action_class:
+    connected: 37
+    acting: 18
+  by_consequence:
+    read: 37
+    write: 17
+    safety-critical: 1
+  human_in_the_loop_required: 1
+operations:
+- path: /1/user/{user-id}/activities/date/{date}.json
+  method: get
+  operationId: getDailyActivitySummary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - activity
+- path: /1/user/{user-id}/activities.json
+  method: post
+  operationId: logActivity
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - activity
+- path: /1/user/{user-id}/activities/{activity-log-id}.json
+  method: delete
+  operationId: deleteActivityLog
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - activity
+- path: /1/user/{user-id}/activities/list.json
+  method: get
+  operationId: getActivityLogList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - activity
+- path: /1/user/{user-id}/activities/goals/{period}.json
+  method: get
+  operationId: getActivityGoals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - activity
+- path: /1/user/{user-id}/activities/active-zone-minutes/date/{date}/{period}.json
+  method: get
+  operationId: getAzmTimeSeriesByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - activity
+- path: /1/user/{user-id}/activities/steps/date/{base-date}/{end-date}.json
+  method: get
+  operationId: getActivityTimeSeriesByDateRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - activity
+- path: /oauth2/authorize
+  method: get
+  operationId: authorize
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /oauth2/token
+  method: post
+  operationId: getAccessToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1.1/oauth2/introspect
+  method: post
+  operationId: introspectToken
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /oauth2/revoke
+  method: post
+  operationId: revokeToken
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /1/user/{user-id}/body/log/weight/date/{date}.json
+  method: get
+  operationId: getWeightLogsByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - weight
+- path: /1/user/{user-id}/body/log/weight/date/{date}.json
+  method: post
+  operationId: logWeight
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - weight
+- path: /1/user/{user-id}/body/log/weight/{weight-log-id}.json
+  method: delete
+  operationId: deleteWeightLog
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - weight
+- path: /1/user/{user-id}/body/log/fat/date/{date}.json
+  method: get
+  operationId: getBodyFatLogsByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - weight
+- path: /1/user/{user-id}/body/{resource-path}/date/{date}/{period}.json
+  method: get
+  operationId: getBodyTimeSeriesByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - weight
+- path: /1/user/{user-id}/body/log/weight/goal.json
+  method: get
+  operationId: getBodyWeightGoal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - weight
+- path: /1/user/{user-id}/devices.json
+  method: get
+  operationId: getDevices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - settings
+- path: /1/user/{user-id}/devices/tracker/{tracker-id}/alarms.json
+  method: get
+  operationId: getAlarms
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - settings
+- path: /1/user/{user-id}/devices/tracker/{tracker-id}/alarms.json
+  method: post
+  operationId: addAlarm
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - settings
+- path: /1/user/{user-id}/devices/tracker/{tracker-id}/alarms/{alarm-id}.json
+  method: delete
+  operationId: deleteAlarm
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - settings
+- path: /1/user/{user-id}/ecg/list.json
+  method: get
+  operationId: getEcgLogList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - electrocardiogram
+    - irregular_rhythm_notifications
+- path: /1/user/{user-id}/irn/alerts/list.json
+  method: get
+  operationId: getIrnAlertsList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - electrocardiogram
+    - irregular_rhythm_notifications
+- path: /1/user/{user-id}/irn/profile.json
+  method: get
+  operationId: getIrnProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - electrocardiogram
+    - irregular_rhythm_notifications
+- path: /1.1/user/{user-id}/friends.json
+  method: get
+  operationId: getFriends
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - social
+- path: /1.1/user/{user-id}/leaderboard/friends.json
+  method: get
+  operationId: getFriendsLeaderboard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - social
+- path: /1/user/{user-id}/activities/heart/date/{date}/{period}.json
+  method: get
+  operationId: getHeartRateTimeSeriesByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - heartrate
+- path: /1/user/{user-id}/activities/heart/date/{base-date}/{end-date}.json
+  method: get
+  operationId: getHeartRateTimeSeriesByDateRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - heartrate
+- path: /1/user/{user-id}/activities/heart/date/{date}/1d/{detail-level}.json
+  method: get
+  operationId: getHeartRateIntradayTimeSeries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - heartrate
+- path: /1/user/{user-id}/foods/log/date/{date}.json
+  method: get
+  operationId: getFoodLogsByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - nutrition
+- path: /1/user/{user-id}/foods/log.json
+  method: post
+  operationId: logFood
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - nutrition
+- path: /1/user/{user-id}/foods/log/{food-log-id}.json
+  method: delete
+  operationId: deleteFoodLog
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - nutrition
+- path: /1/user/{user-id}/foods/log/water/date/{date}.json
+  method: get
+  operationId: getWaterLogs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - nutrition
+- path: /1/user/{user-id}/foods/log/water.json
+  method: post
+  operationId: logWater
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - nutrition
+- path: /1/foods/search.json
+  method: get
+  operationId: searchFoods
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - nutrition
+- path: /1/user/{user-id}/foods/log/goal.json
+  method: get
+  operationId: getFoodGoals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - nutrition
+- path: /1.2/user/{user-id}/sleep/date/{date}.json
+  method: get
+  operationId: getSleepLogByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - sleep
+- path: /1.2/user/{user-id}/sleep/date/{base-date}/{end-date}.json
+  method: get
+  operationId: getSleepLogByDateRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - sleep
+- path: /1.2/user/{user-id}/sleep/list.json
+  method: get
+  operationId: getSleepLogList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - sleep
+- path: /1.2/user/{user-id}/sleep.json
+  method: post
+  operationId: logSleep
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - sleep
+- path: /1.2/user/{user-id}/sleep/{log-id}.json
+  method: delete
+  operationId: deleteSleepLog
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - sleep
+- path: /1/user/{user-id}/sleep/goal.json
+  method: get
+  operationId: getSleepGoal
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - sleep
+- path: /1/user/{user-id}/sleep/goal.json
+  method: post
+  operationId: updateSleepGoal
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - sleep
+- path: /1/user/{user-id}/spo2/date/{date}.json
+  method: get
+  operationId: getSpo2SummaryByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cardio_fitness
+    - heartrate
+    - oxygen_saturation
+    - respiratory_rate
+    - temperature
+- path: /1/user/{user-id}/spo2/date/{base-date}/{end-date}.json
+  method: get
+  operationId: getSpo2SummaryByDateRange
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cardio_fitness
+    - heartrate
+    - oxygen_saturation
+    - respiratory_rate
+    - temperature
+- path: /1/user/{user-id}/br/date/{date}.json
+  method: get
+  operationId: getBreathingRateByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cardio_fitness
+    - heartrate
+    - oxygen_saturation
+    - respiratory_rate
+    - temperature
+- path: /1/user/{user-id}/temp/skin/date/{date}.json
+  method: get
+  operationId: getSkinTemperatureByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cardio_fitness
+    - heartrate
+    - oxygen_saturation
+    - respiratory_rate
+    - temperature
+- path: /1/user/{user-id}/temp/core/date/{date}.json
+  method: get
+  operationId: getCoreTemperatureByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cardio_fitness
+    - heartrate
+    - oxygen_saturation
+    - respiratory_rate
+    - temperature
+- path: /1/user/{user-id}/hrv/date/{date}.json
+  method: get
+  operationId: getHrvByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cardio_fitness
+    - heartrate
+    - oxygen_saturation
+    - respiratory_rate
+    - temperature
+- path: /1/user/{user-id}/cardioscore/date/{date}.json
+  method: get
+  operationId: getVo2MaxByDate
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - cardio_fitness
+    - heartrate
+    - oxygen_saturation
+    - respiratory_rate
+    - temperature
+- path: /1/user/{user-id}/{collection-path}/apiSubscriptions/{subscription-id}.json
+  method: post
+  operationId: createSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1/user/{user-id}/{collection-path}/apiSubscriptions/{subscription-id}.json
+  method: delete
+  operationId: deleteSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1/user/{user-id}/{collection-path}/apiSubscriptions.json
+  method: get
+  operationId: getSubscriptionList
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1/user/{user-id}/profile.json
+  method: get
+  operationId: getProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+    scope:
+    - profile
+- path: /1/user/{user-id}/profile.json
+  method: post
+  operationId: updateProfile
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+    scope:
+    - profile
