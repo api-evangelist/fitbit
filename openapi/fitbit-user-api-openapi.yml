@@ -1,26 +1,1221 @@
 openapi: 3.0.3
 info:
-  title: Fitbit User API
-  description: |
-    Read and update Fitbit user profile information including display name,
-    gender, birthday, height, weight, locale, time zone, and account settings.
+  title: Fitbit Activity Foods User API
+  description: 'Read and write user activity, exercise, and Active Zone Minutes (AZM) data on
+
+    Fitbit. The Activity API exposes daily activity summaries (steps, distance,
+
+    calories, floors, elevation, activity minutes), per-activity logs, lifetime
+
+    totals, activity goals, the user''s exercise type catalog, and Active Zone
+
+    Minutes time series. Time-series endpoints accept a base-date and either an
+
+    end-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).
+
+    '
   version: '1'
   contact:
     name: Fitbit Developer
-    url: https://dev.fitbit.com/build/reference/web-api/user/
+    url: https://dev.fitbit.com/build/reference/web-api/activity/
 servers:
 - url: https://api.fitbit.com
+  description: Fitbit Web API
 security:
 - OAuth2:
-  - profile
+  - activity
+tags:
+- name: User
 paths:
+  /1/user/{user-id}/activities/date/{date}.json:
+    get:
+      summary: Get Daily Activity Summary
+      description: Retrieves a summary and list of a user's activities and activity log entries for a given day.
+      operationId: getDailyActivitySummary
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        description: The date in the format YYYY-MM-DD or 'today'.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Daily activity summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityDailySummary'
+      tags:
+      - User
+  /1/user/{user-id}/activities.json:
+    post:
+      summary: Log Activity
+      description: Logs an activity or creates a manual activity log entry for the user.
+      operationId: logActivity
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: activityId
+        in: query
+        schema:
+          type: integer
+        description: The activity ID.
+      - name: activityName
+        in: query
+        schema:
+          type: string
+      - name: manualCalories
+        in: query
+        schema:
+          type: integer
+      - name: startTime
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: durationMillis
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: distance
+        in: query
+        schema:
+          type: number
+      - name: distanceUnit
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Activity log entry created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityLog'
+      tags:
+      - User
+  /1/user/{user-id}/activities/{activity-log-id}.json:
+    delete:
+      summary: Delete Activity Log
+      description: Deletes a user's activity log entry with the given ID.
+      operationId: deleteActivityLog
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: activity-log-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Activity log deleted.
+      tags:
+      - User
+  /1/user/{user-id}/activities/list.json:
+    get:
+      summary: Get Activity Log List
+      description: Retrieves a list of a user's activity log entries before or after a given day with offset, limit, and sort order.
+      operationId: getActivityLogList
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: beforeDate
+        in: query
+        schema:
+          type: string
+      - name: afterDate
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          maximum: 100
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Paginated activity log list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityLogList'
+      tags:
+      - User
+  /1/user/{user-id}/activities/goals/{period}.json:
+    get:
+      summary: Get Activity Goals
+      description: Retrieves a user's current daily or weekly activity goals.
+      operationId: getActivityGoals
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: period
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - daily
+          - weekly
+      responses:
+        '200':
+          description: Activity goals.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityGoals'
+      tags:
+      - User
+  /1/user/{user-id}/activities/active-zone-minutes/date/{date}/{period}.json:
+    get:
+      summary: Get AZM Time Series By Date
+      description: Retrieves the user's Active Zone Minutes time series data for the given date and period.
+      operationId: getAzmTimeSeriesByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: period
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - 1d
+          - 7d
+          - 30d
+          - 1w
+          - 1m
+          - 3m
+          - 6m
+          - 1y
+      responses:
+        '200':
+          description: Active Zone Minutes time series.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AzmTimeSeries'
+      tags:
+      - User
+  /1/user/{user-id}/activities/steps/date/{base-date}/{end-date}.json:
+    get:
+      summary: Get Activity Time Series By Date Range
+      description: Retrieves activity (steps) data over a date range for the user.
+      operationId: getActivityTimeSeriesByDateRange
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: base-date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end-date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Steps time series.
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - User
+  /1/user/{user-id}/body/log/weight/date/{date}.json:
+    get:
+      summary: Get Weight Logs By Date
+      description: Retrieves a list of all user's weight log entries for a given day.
+      operationId: getWeightLogsByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_2'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Weight logs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WeightLogList'
+      tags:
+      - User
+    post:
+      summary: Log Weight
+      description: Creates a log entry for a body weight.
+      operationId: logWeight
+      parameters:
+      - $ref: '#/components/parameters/UserId_2'
+      - name: weight
+        in: query
+        required: true
+        schema:
+          type: number
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: time
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Weight log created.
+      tags:
+      - User
+  /1/user/{user-id}/body/log/weight/{weight-log-id}.json:
+    delete:
+      summary: Delete Weight Log
+      description: Deletes a user's weight log entry with the given ID.
+      operationId: deleteWeightLog
+      parameters:
+      - $ref: '#/components/parameters/UserId_2'
+      - name: weight-log-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Weight log deleted.
+      tags:
+      - User
+  /1/user/{user-id}/body/log/fat/date/{date}.json:
+    get:
+      summary: Get Body Fat Logs By Date
+      description: Retrieves a list of all user's body fat log entries for a given day.
+      operationId: getBodyFatLogsByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_2'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Body fat logs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BodyFatLogList'
+      tags:
+      - User
+  /1/user/{user-id}/body/{resource-path}/date/{date}/{period}.json:
+    get:
+      summary: Get Body Time Series By Date
+      description: Retrieves the user's body data (weight, BMI, or fat) over a period of time.
+      operationId: getBodyTimeSeriesByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_2'
+      - name: resource-path
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - bmi
+          - fat
+          - weight
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: period
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - 1d
+          - 7d
+          - 30d
+          - 1w
+          - 1m
+          - 3m
+          - 6m
+          - 1y
+          - max
+      responses:
+        '200':
+          description: Body time series.
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - User
+  /1/user/{user-id}/body/log/weight/goal.json:
+    get:
+      summary: Get Body Weight Goal
+      description: Retrieves the user's current body weight goal.
+      operationId: getBodyWeightGoal
+      parameters:
+      - $ref: '#/components/parameters/UserId_2'
+      responses:
+        '200':
+          description: Body weight goal.
+      tags:
+      - User
+  /1/user/{user-id}/devices.json:
+    get:
+      summary: Get Devices
+      description: Returns a list of the Fitbit devices connected to a user's account.
+      operationId: getDevices
+      parameters:
+      - $ref: '#/components/parameters/UserId_3'
+      responses:
+        '200':
+          description: List of devices.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+      tags:
+      - User
+  /1/user/{user-id}/devices/tracker/{tracker-id}/alarms.json:
+    get:
+      summary: Get Alarms
+      description: Returns alarms for a device.
+      operationId: getAlarms
+      parameters:
+      - $ref: '#/components/parameters/UserId_3'
+      - name: tracker-id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of alarms.
+      tags:
+      - User
+    post:
+      summary: Add Alarm
+      description: Adds the alarm settings to a given device.
+      operationId: addAlarm
+      parameters:
+      - $ref: '#/components/parameters/UserId_3'
+      - name: tracker-id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: time
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: enabled
+        in: query
+        required: true
+        schema:
+          type: boolean
+      - name: recurring
+        in: query
+        required: true
+        schema:
+          type: boolean
+      - name: weekDays
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Alarm created.
+      tags:
+      - User
+  /1/user/{user-id}/devices/tracker/{tracker-id}/alarms/{alarm-id}.json:
+    delete:
+      summary: Delete Alarm
+      description: Deletes a specific alarm entry for the given tracker.
+      operationId: deleteAlarm
+      parameters:
+      - $ref: '#/components/parameters/UserId_3'
+      - name: tracker-id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: alarm-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Alarm deleted.
+      tags:
+      - User
+  /1/user/{user-id}/ecg/list.json:
+    get:
+      summary: Get ECG Log List
+      description: Returns a list of a user's ECG log entries before or after a given day with offset, limit, and sort order.
+      operationId: getEcgLogList
+      parameters:
+      - $ref: '#/components/parameters/UserId_4'
+      - name: beforeDate
+        in: query
+        schema:
+          type: string
+      - name: afterDate
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ECG log list.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ecgReadings:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EcgReading'
+      tags:
+      - User
+  /1/user/{user-id}/irn/alerts/list.json:
+    get:
+      summary: Get IRN Alerts List
+      description: Returns the user's Irregular Rhythm Notification alerts list.
+      operationId: getIrnAlertsList
+      parameters:
+      - $ref: '#/components/parameters/UserId_4'
+      - name: beforeDate
+        in: query
+        schema:
+          type: string
+      - name: afterDate
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: IRN alerts list.
+      tags:
+      - User
+  /1/user/{user-id}/irn/profile.json:
+    get:
+      summary: Get IRN Profile
+      description: Returns the user's IRN profile and enrollment status.
+      operationId: getIrnProfile
+      parameters:
+      - $ref: '#/components/parameters/UserId_4'
+      responses:
+        '200':
+          description: IRN profile.
+      tags:
+      - User
+  /1.1/user/{user-id}/friends.json:
+    get:
+      summary: Get Friends
+      description: Returns data of a user's friends.
+      operationId: getFriends
+      parameters:
+      - $ref: '#/components/parameters/UserId_5'
+      responses:
+        '200':
+          description: List of friends.
+      tags:
+      - User
+  /1.1/user/{user-id}/leaderboard/friends.json:
+    get:
+      summary: Get Friends Leaderboard
+      description: Returns the user's friends leaderboard ranked by activity.
+      operationId: getFriendsLeaderboard
+      parameters:
+      - $ref: '#/components/parameters/UserId_5'
+      responses:
+        '200':
+          description: Friends leaderboard.
+      tags:
+      - User
+  /1/user/{user-id}/activities/heart/date/{date}/{period}.json:
+    get:
+      summary: Get Heart Rate Time Series By Date
+      description: Retrieves a user's heart rate time series for the given date and period.
+      operationId: getHeartRateTimeSeriesByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_6'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: period
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - 1d
+          - 7d
+          - 30d
+          - 1w
+          - 1m
+      responses:
+        '200':
+          description: Heart rate time series.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeartRateTimeSeries'
+      tags:
+      - User
+  /1/user/{user-id}/activities/heart/date/{base-date}/{end-date}.json:
+    get:
+      summary: Get Heart Rate Time Series By Date Range
+      description: Retrieves a user's heart rate time series for the given date range.
+      operationId: getHeartRateTimeSeriesByDateRange
+      parameters:
+      - $ref: '#/components/parameters/UserId_6'
+      - name: base-date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end-date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Heart rate time series.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeartRateTimeSeries'
+      tags:
+      - User
+  /1/user/{user-id}/activities/heart/date/{date}/1d/{detail-level}.json:
+    get:
+      summary: Get Heart Rate Intraday Time Series
+      description: Retrieves the user's heart rate intraday time series at the requested detail level (1sec, 1min, 5min, or 15min). Requires Intraday access.
+      operationId: getHeartRateIntradayTimeSeries
+      parameters:
+      - $ref: '#/components/parameters/UserId_6'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: detail-level
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - 1sec
+          - 1min
+          - 5min
+          - 15min
+      responses:
+        '200':
+          description: Heart rate intraday data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeartRateIntraday'
+      tags:
+      - User
+  /1/user/{user-id}/foods/log/date/{date}.json:
+    get:
+      summary: Get Food Logs By Date
+      description: Retrieves a summary and list of a user's food log entries for a given day.
+      operationId: getFoodLogsByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_7'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Food log summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodLogResponse'
+      tags:
+      - User
+  /1/user/{user-id}/foods/log.json:
+    post:
+      summary: Log Food
+      description: Creates a food log entry for the user.
+      operationId: logFood
+      parameters:
+      - $ref: '#/components/parameters/UserId_7'
+      - name: foodId
+        in: query
+        schema:
+          type: integer
+      - name: foodName
+        in: query
+        schema:
+          type: string
+      - name: mealTypeId
+        in: query
+        required: true
+        schema:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+      - name: unitId
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: amount
+        in: query
+        required: true
+        schema:
+          type: number
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: calories
+        in: query
+        schema:
+          type: integer
+      - name: brandName
+        in: query
+        schema:
+          type: string
+      - name: nutritionValues
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Food log entry created.
+      tags:
+      - User
+  /1/user/{user-id}/foods/log/{food-log-id}.json:
+    delete:
+      summary: Delete Food Log
+      description: Deletes a user's food log entry with the given ID.
+      operationId: deleteFoodLog
+      parameters:
+      - $ref: '#/components/parameters/UserId_7'
+      - name: food-log-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Food log deleted.
+      tags:
+      - User
+  /1/user/{user-id}/foods/log/water/date/{date}.json:
+    get:
+      summary: Get Water Logs
+      description: Retrieves a list of a user's water log entries for a given day.
+      operationId: getWaterLogs
+      parameters:
+      - $ref: '#/components/parameters/UserId_7'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Water logs.
+      tags:
+      - User
+  /1/user/{user-id}/foods/log/water.json:
+    post:
+      summary: Log Water
+      description: Creates a water log entry.
+      operationId: logWater
+      parameters:
+      - $ref: '#/components/parameters/UserId_7'
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: amount
+        in: query
+        required: true
+        schema:
+          type: number
+      - name: unit
+        in: query
+        schema:
+          type: string
+          enum:
+          - ml
+          - fl oz
+          - cup
+      responses:
+        '201':
+          description: Water log created.
+      tags:
+      - User
+  /1/user/{user-id}/foods/log/goal.json:
+    get:
+      summary: Get Food Goals
+      description: Retrieves the user's current daily calorie consumption goal and/or food plan.
+      operationId: getFoodGoals
+      parameters:
+      - $ref: '#/components/parameters/UserId_7'
+      responses:
+        '200':
+          description: Food goals.
+      tags:
+      - User
+  /1.2/user/{user-id}/sleep/date/{date}.json:
+    get:
+      summary: Get Sleep Log By Date
+      description: Retrieves a list of a user's sleep log entries for a given date.
+      operationId: getSleepLogByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_8'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Sleep log.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepLog'
+      tags:
+      - User
+  /1.2/user/{user-id}/sleep/date/{base-date}/{end-date}.json:
+    get:
+      summary: Get Sleep Log By Date Range
+      description: Retrieves a list of a user's sleep log entries over a date range.
+      operationId: getSleepLogByDateRange
+      parameters:
+      - $ref: '#/components/parameters/UserId_8'
+      - name: base-date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end-date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Sleep log.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepLog'
+      tags:
+      - User
+  /1.2/user/{user-id}/sleep/list.json:
+    get:
+      summary: Get Sleep Log List
+      description: Retrieves a list of sleep log entries before or after a given date with offset, limit, and sort order.
+      operationId: getSleepLogList
+      parameters:
+      - $ref: '#/components/parameters/UserId_8'
+      - name: beforeDate
+        in: query
+        schema:
+          type: string
+      - name: afterDate
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          maximum: 100
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sleep log list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepLog'
+      tags:
+      - User
+  /1.2/user/{user-id}/sleep.json:
+    post:
+      summary: Log Sleep
+      description: Creates a sleep log entry for the user.
+      operationId: logSleep
+      parameters:
+      - $ref: '#/components/parameters/UserId_8'
+      - name: startTime
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: duration
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      responses:
+        '201':
+          description: Sleep log created.
+      tags:
+      - User
+  /1.2/user/{user-id}/sleep/{log-id}.json:
+    delete:
+      summary: Delete Sleep Log
+      description: Deletes a user's sleep log entry with the given ID.
+      operationId: deleteSleepLog
+      parameters:
+      - $ref: '#/components/parameters/UserId_8'
+      - name: log-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Sleep log deleted.
+      tags:
+      - User
+  /1/user/{user-id}/sleep/goal.json:
+    get:
+      summary: Get Sleep Goal
+      description: Retrieves the user's current sleep goal.
+      operationId: getSleepGoal
+      parameters:
+      - $ref: '#/components/parameters/UserId_8'
+      responses:
+        '200':
+          description: Sleep goal.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepGoal'
+      tags:
+      - User
+    post:
+      summary: Update Sleep Goal
+      description: Creates or updates the user's sleep goal.
+      operationId: updateSleepGoal
+      parameters:
+      - $ref: '#/components/parameters/UserId_8'
+      - name: minDuration
+        in: query
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Sleep goal updated.
+      tags:
+      - User
+  /1/user/{user-id}/spo2/date/{date}.json:
+    get:
+      summary: Get SpO2 Summary By Date
+      description: Returns the daily summary of SpO2 measurements for the user.
+      operationId: getSpo2SummaryByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_9'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SpO2 summary.
+      tags:
+      - User
+  /1/user/{user-id}/spo2/date/{base-date}/{end-date}.json:
+    get:
+      summary: Get SpO2 Summary By Date Range
+      description: Returns daily SpO2 summary for a date range.
+      operationId: getSpo2SummaryByDateRange
+      parameters:
+      - $ref: '#/components/parameters/UserId_9'
+      - name: base-date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end-date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: SpO2 summary.
+      tags:
+      - User
+  /1/user/{user-id}/br/date/{date}.json:
+    get:
+      summary: Get Breathing Rate Summary By Date
+      description: Returns average breathing rate (breaths per minute) during sleep for the date.
+      operationId: getBreathingRateByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_9'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Breathing rate summary.
+      tags:
+      - User
+  /1/user/{user-id}/temp/skin/date/{date}.json:
+    get:
+      summary: Get Skin Temperature Summary By Date
+      description: Returns skin temperature variation relative to the user's baseline.
+      operationId: getSkinTemperatureByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_9'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Skin temperature summary.
+      tags:
+      - User
+  /1/user/{user-id}/temp/core/date/{date}.json:
+    get:
+      summary: Get Core Temperature Summary By Date
+      description: Returns core temperature readings.
+      operationId: getCoreTemperatureByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_9'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Core temperature summary.
+      tags:
+      - User
+  /1/user/{user-id}/hrv/date/{date}.json:
+    get:
+      summary: Get Heart Rate Variability By Date
+      description: Returns daily Heart Rate Variability (RMSSD) values measured during the deep sleep stage.
+      operationId: getHrvByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_9'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: HRV summary.
+      tags:
+      - User
+  /1/user/{user-id}/cardioscore/date/{date}.json:
+    get:
+      summary: Get VO2 Max Summary By Date
+      description: Returns the Cardio Fitness Score (VO2 Max) for the user.
+      operationId: getVo2MaxByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId_9'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cardio fitness score.
+      tags:
+      - User
+  /1/user/{user-id}/{collection-path}/apiSubscriptions/{subscription-id}.json:
+    post:
+      summary: Create Subscription
+      description: Creates a subscription that triggers notifications when the user has new data of the requested type.
+      operationId: createSubscription
+      parameters:
+      - $ref: '#/components/parameters/UserId_10'
+      - name: collection-path
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - activities
+          - body
+          - foods
+          - sleep
+          - userRevokedAccess
+      - name: subscription-id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Fitbit-Subscriber-Id
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Subscription created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+      tags:
+      - User
+    delete:
+      summary: Delete Subscription
+      description: Deletes a subscription for a specific user.
+      operationId: deleteSubscription
+      parameters:
+      - $ref: '#/components/parameters/UserId_10'
+      - name: collection-path
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: subscription-id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Subscription deleted.
+      tags:
+      - User
+  /1/user/{user-id}/{collection-path}/apiSubscriptions.json:
+    get:
+      summary: Get Subscription List
+      description: Retrieves a list of a user's subscriptions.
+      operationId: getSubscriptionList
+      parameters:
+      - $ref: '#/components/parameters/UserId_10'
+      - name: collection-path
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of subscriptions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiSubscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscription'
+      tags:
+      - User
   /1/user/{user-id}/profile.json:
     get:
       summary: Get Profile
       description: Retrieves the user's profile data.
       operationId: getProfile
       parameters:
-      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/UserId_11'
       responses:
         '200':
           description: User profile.
@@ -28,12 +1223,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserProfile'
+      tags:
+      - User
     post:
       summary: Update Profile
       description: Updates a user's profile using a form.
       operationId: updateProfile
       parameters:
-      - $ref: '#/components/parameters/UserId'
+      - $ref: '#/components/parameters/UserId_11'
       - name: gender
         in: query
         schema:
@@ -94,26 +1291,218 @@ paths:
       responses:
         '200':
           description: Profile updated.
+      tags:
+      - User
 components:
   parameters:
-    UserId:
+    UserId_9:
       name: user-id
       in: path
       required: true
       schema:
         type: string
         default: '-'
-  securitySchemes:
-    OAuth2:
-      type: oauth2
-      flows:
-        authorizationCode:
-          authorizationUrl: https://www.fitbit.com/oauth2/authorize
-          tokenUrl: https://api.fitbit.com/oauth2/token
-          scopes:
-            profile: User profile
-            settings: Account settings
+    UserId_3:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_11:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_10:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_2:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_7:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      description: The user's encoded ID. Use '-' for the currently authorized user.
+      schema:
+        type: string
+        default: '-'
+    UserId_8:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_4:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_5:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_6:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
   schemas:
+    HeartRateTimeSeries:
+      type: object
+      properties:
+        activities-heart:
+          type: array
+          items:
+            type: object
+            properties:
+              dateTime:
+                type: string
+                format: date
+              value:
+                type: object
+                properties:
+                  customHeartRateZones:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HeartRateZone'
+                  heartRateZones:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HeartRateZone'
+                  restingHeartRate:
+                    type: integer
+    EcgReading:
+      type: object
+      properties:
+        startTime:
+          type: string
+        averageHeartRate:
+          type: integer
+        resultClassification:
+          type: string
+          enum:
+          - Normal Sinus Rhythm
+          - Atrial Fibrillation
+          - Inconclusive
+          - Inconclusive High
+          - Inconclusive Low
+        waveformSamples:
+          type: array
+          items:
+            type: number
+        samplingFrequencyHz:
+          type: string
+        scalingFactor:
+          type: integer
+        numberOfWaveformSamples:
+          type: integer
+        leadNumber:
+          type: integer
+        featureVersion:
+          type: string
+        deviceName:
+          type: string
+        firmwareVersion:
+          type: string
+    ActivityDailySummary:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityLog'
+        goals:
+          $ref: '#/components/schemas/ActivityGoals'
+        summary:
+          type: object
+          properties:
+            activeScore:
+              type: integer
+            activityCalories:
+              type: integer
+            caloriesOut:
+              type: integer
+            steps:
+              type: integer
+            distances:
+              type: array
+              items:
+                type: object
+                properties:
+                  activity:
+                    type: string
+                  distance:
+                    type: number
+            fairlyActiveMinutes:
+              type: integer
+            lightlyActiveMinutes:
+              type: integer
+            sedentaryMinutes:
+              type: integer
+            veryActiveMinutes:
+              type: integer
+            floors:
+              type: integer
+            elevation:
+              type: number
+            heartRateZones:
+              type: array
+              items:
+                type: object
+            restingHeartRate:
+              type: integer
+    SleepGoal:
+      type: object
+      properties:
+        goal:
+          type: object
+          properties:
+            minDuration:
+              type: integer
+            updatedOn:
+              type: string
+        consistency:
+          type: object
+    Subscription:
+      type: object
+      properties:
+        collectionType:
+          type: string
+        ownerId:
+          type: string
+        ownerType:
+          type: string
+        subscriberId:
+          type: string
+        subscriptionId:
+          type: string
     UserProfile:
       type: object
       properties:
@@ -223,3 +1612,330 @@ components:
               type: number
             weightUnit:
               type: string
+    HeartRateZone:
+      type: object
+      properties:
+        caloriesOut:
+          type: number
+        max:
+          type: integer
+        min:
+          type: integer
+        minutes:
+          type: integer
+        name:
+          type: string
+    WeightLogList:
+      type: object
+      properties:
+        weight:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeightLog'
+    ActivityLog:
+      type: object
+      properties:
+        activityId:
+          type: integer
+        activityParentId:
+          type: integer
+        calories:
+          type: integer
+        description:
+          type: string
+        distance:
+          type: number
+        duration:
+          type: integer
+        hasStartTime:
+          type: boolean
+        isFavorite:
+          type: boolean
+        logId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        startDate:
+          type: string
+          format: date
+        startTime:
+          type: string
+        steps:
+          type: integer
+    HeartRateIntraday:
+      type: object
+      properties:
+        activities-heart-intraday:
+          type: object
+          properties:
+            dataset:
+              type: array
+              items:
+                type: object
+                properties:
+                  time:
+                    type: string
+                  value:
+                    type: integer
+            datasetInterval:
+              type: integer
+            datasetType:
+              type: string
+    WeightLog:
+      type: object
+      properties:
+        bmi:
+          type: number
+        date:
+          type: string
+          format: date
+        fat:
+          type: number
+        logId:
+          type: integer
+          format: int64
+        source:
+          type: string
+        time:
+          type: string
+        weight:
+          type: number
+    BodyFatLogList:
+      type: object
+      properties:
+        fat:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+              fat:
+                type: number
+              logId:
+                type: integer
+                format: int64
+              source:
+                type: string
+              time:
+                type: string
+    SleepLog:
+      type: object
+      properties:
+        sleep:
+          type: array
+          items:
+            $ref: '#/components/schemas/SleepEntry'
+        summary:
+          type: object
+          properties:
+            stages:
+              type: object
+              properties:
+                deep:
+                  type: integer
+                light:
+                  type: integer
+                rem:
+                  type: integer
+                wake:
+                  type: integer
+            totalMinutesAsleep:
+              type: integer
+            totalSleepRecords:
+              type: integer
+            totalTimeInBed:
+              type: integer
+    FoodLogResponse:
+      type: object
+      properties:
+        foods:
+          type: array
+          items:
+            type: object
+        goals:
+          type: object
+        summary:
+          type: object
+          properties:
+            calories:
+              type: integer
+            carbs:
+              type: number
+            fat:
+              type: number
+            fiber:
+              type: number
+            protein:
+              type: number
+            sodium:
+              type: number
+            water:
+              type: number
+    ActivityLogList:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityLog'
+        pagination:
+          type: object
+          properties:
+            beforeDate:
+              type: string
+            limit:
+              type: integer
+            next:
+              type: string
+            offset:
+              type: integer
+            previous:
+              type: string
+            sort:
+              type: string
+    SleepEntry:
+      type: object
+      properties:
+        dateOfSleep:
+          type: string
+          format: date
+        duration:
+          type: integer
+        efficiency:
+          type: integer
+        endTime:
+          type: string
+        infoCode:
+          type: integer
+        isMainSleep:
+          type: boolean
+        levels:
+          type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                properties:
+                  dateTime:
+                    type: string
+                  level:
+                    type: string
+                  seconds:
+                    type: integer
+            summary:
+              type: object
+        logId:
+          type: integer
+          format: int64
+        minutesAfterWakeup:
+          type: integer
+        minutesAsleep:
+          type: integer
+        minutesAwake:
+          type: integer
+        minutesToFallAsleep:
+          type: integer
+        startTime:
+          type: string
+        timeInBed:
+          type: integer
+        type:
+          type: string
+          enum:
+          - stages
+          - classic
+    Device:
+      type: object
+      properties:
+        battery:
+          type: string
+          enum:
+          - High
+          - Medium
+          - Low
+          - Empty
+        batteryLevel:
+          type: integer
+        deviceVersion:
+          type: string
+        features:
+          type: array
+          items:
+            type: string
+        id:
+          type: string
+        lastSyncTime:
+          type: string
+          format: date-time
+        mac:
+          type: string
+        type:
+          type: string
+          enum:
+          - TRACKER
+          - SCALE
+    ActivityGoals:
+      type: object
+      properties:
+        goals:
+          type: object
+          properties:
+            activeMinutes:
+              type: integer
+            caloriesOut:
+              type: integer
+            distance:
+              type: number
+            floors:
+              type: integer
+            steps:
+              type: integer
+            activeZoneMinutes:
+              type: integer
+    AzmTimeSeries:
+      type: object
+      properties:
+        activities-active-zone-minutes:
+          type: array
+          items:
+            type: object
+            properties:
+              dateTime:
+                type: string
+              value:
+                type: object
+                properties:
+                  activeZoneMinutes:
+                    type: integer
+                  fatBurnActiveZoneMinutes:
+                    type: integer
+                  cardioActiveZoneMinutes:
+                    type: integer
+                  peakActiveZoneMinutes:
+                    type: integer
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            activity: Activity and exercise data
+            heartrate: Heart rate data
+            location: GPS and other location data
+            nutrition: Food and nutrition data
+            profile: User profile
+            settings: Account settings
+            sleep: Sleep data
+            social: Friends and leaderboard data
+            weight: Weight, BMI, and body fat data
+            oxygen_saturation: SpO2 data
+            respiratory_rate: Breathing rate data
+            temperature: Skin and core body temperature data
+            electrocardiogram: ECG readings
+            irregular_rhythm_notifications: IRN data
+            cardio_fitness: Cardio fitness (VO2 Max) data

@@ -1,23 +1,31 @@
 openapi: 3.0.3
 info:
-  title: Fitbit Authorization API
-  description: |
-    OAuth 2.0 authorization endpoints for the Fitbit Web API. Fitbit supports
-    Authorization Code Grant with PKCE (recommended for all clients),
-    Authorization Code Grant, Implicit Grant, and Client Credentials (for
-    Fitbit Commerce APIs that do not retrieve user data). Tokens can be
-    introspected, refreshed, or revoked. New integrations should plan for
-    migration to the Google Health API's Google OAuth 2.0 framework before the
-    legacy Web API turndown in September 2026.
+  title: Fitbit Activity Foods Oauth2 API
+  description: 'Read and write user activity, exercise, and Active Zone Minutes (AZM) data on
+
+    Fitbit. The Activity API exposes daily activity summaries (steps, distance,
+
+    calories, floors, elevation, activity minutes), per-activity logs, lifetime
+
+    totals, activity goals, the user''s exercise type catalog, and Active Zone
+
+    Minutes time series. Time-series endpoints accept a base-date and either an
+
+    end-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).
+
+    '
   version: '1'
   contact:
     name: Fitbit Developer
-    url: https://dev.fitbit.com/build/reference/web-api/authorization/
+    url: https://dev.fitbit.com/build/reference/web-api/activity/
 servers:
-- url: https://www.fitbit.com
-  description: Authorization endpoint host
 - url: https://api.fitbit.com
-  description: Token, introspect, and revoke endpoint host
+  description: Fitbit Web API
+security:
+- OAuth2:
+  - activity
+tags:
+- name: Oauth2
 paths:
   /oauth2/authorize:
     get:
@@ -32,7 +40,9 @@ paths:
         required: true
         schema:
           type: string
-          enum: [code, token]
+          enum:
+          - code
+          - token
       - name: client_id
         in: query
         required: true
@@ -57,7 +67,8 @@ paths:
         in: query
         schema:
           type: string
-          enum: [S256]
+          enum:
+          - S256
       - name: state
         in: query
         schema:
@@ -66,7 +77,11 @@ paths:
         in: query
         schema:
           type: string
-          enum: [consent, login, none, login consent]
+          enum:
+          - consent
+          - login
+          - none
+          - login consent
       - name: expires_in
         in: query
         schema:
@@ -74,6 +89,8 @@ paths:
       responses:
         '302':
           description: Redirect to the redirect_uri with an authorization code.
+      tags:
+      - Oauth2
   /oauth2/token:
     post:
       summary: Get Access Token
@@ -89,7 +106,10 @@ paths:
               properties:
                 grant_type:
                   type: string
-                  enum: [authorization_code, refresh_token, client_credentials]
+                  enum:
+                  - authorization_code
+                  - refresh_token
+                  - client_credentials
                 code:
                   type: string
                 client_id:
@@ -107,6 +127,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TokenResponse'
+      tags:
+      - Oauth2
   /1.1/oauth2/introspect:
     post:
       summary: Introspect Token
@@ -125,6 +147,8 @@ paths:
       responses:
         '200':
           description: Token introspection result.
+      tags:
+      - Oauth2
   /oauth2/revoke:
     post:
       summary: Revoke Token
@@ -143,6 +167,8 @@ paths:
       responses:
         '200':
           description: Token revoked.
+      tags:
+      - Oauth2
 components:
   schemas:
     TokenResponse:
@@ -158,6 +184,30 @@ components:
           type: string
         token_type:
           type: string
-          enum: [Bearer]
+          enum:
+          - Bearer
         user_id:
           type: string
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            activity: Activity and exercise data
+            heartrate: Heart rate data
+            location: GPS and other location data
+            nutrition: Food and nutrition data
+            profile: User profile
+            settings: Account settings
+            sleep: Sleep data
+            social: Friends and leaderboard data
+            weight: Weight, BMI, and body fat data
+            oxygen_saturation: SpO2 data
+            respiratory_rate: Breathing rate data
+            temperature: Skin and core body temperature data
+            electrocardiogram: ECG readings
+            irregular_rhythm_notifications: IRN data
+            cardio_fitness: Cardio fitness (VO2 Max) data

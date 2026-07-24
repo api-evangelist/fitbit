@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: Fitbit Activity Foods API
+  description: 'Read and write user activity, exercise, and Active Zone Minutes (AZM) data on
+
+    Fitbit. The Activity API exposes daily activity summaries (steps, distance,
+
+    calories, floors, elevation, activity minutes), per-activity logs, lifetime
+
+    totals, activity goals, the user''s exercise type catalog, and Active Zone
+
+    Minutes time series. Time-series endpoints accept a base-date and either an
+
+    end-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).
+
+    '
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/activity/
+servers:
+- url: https://api.fitbit.com
+  description: Fitbit Web API
+security:
+- OAuth2:
+  - activity
+tags:
+- name: Foods
+paths:
+  /1/foods/search.json:
+    get:
+      summary: Search Foods
+      description: Searches the Fitbit foods database for foods matching the query.
+      operationId: searchFoods
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foods:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Food'
+      tags:
+      - Foods
+components:
+  schemas:
+    Food:
+      type: object
+      properties:
+        accessLevel:
+          type: string
+        brand:
+          type: string
+        calories:
+          type: integer
+        defaultServingSize:
+          type: number
+        defaultUnit:
+          type: object
+        foodId:
+          type: integer
+        name:
+          type: string
+        units:
+          type: array
+          items:
+            type: integer
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            activity: Activity and exercise data
+            heartrate: Heart rate data
+            location: GPS and other location data
+            nutrition: Food and nutrition data
+            profile: User profile
+            settings: Account settings
+            sleep: Sleep data
+            social: Friends and leaderboard data
+            weight: Weight, BMI, and body fat data
+            oxygen_saturation: SpO2 data
+            respiratory_rate: Breathing rate data
+            temperature: Skin and core body temperature data
+            electrocardiogram: ECG readings
+            irregular_rhythm_notifications: IRN data
+            cardio_fitness: Cardio fitness (VO2 Max) data
