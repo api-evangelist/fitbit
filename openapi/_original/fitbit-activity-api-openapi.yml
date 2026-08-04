@@ -1,0 +1,385 @@
+openapi: 3.0.3
+info:
+  title: Fitbit Activity API
+  description: |
+    Read and write user activity, exercise, and Active Zone Minutes (AZM) data on
+    Fitbit. The Activity API exposes daily activity summaries (steps, distance,
+    calories, floors, elevation, activity minutes), per-activity logs, lifetime
+    totals, activity goals, the user's exercise type catalog, and Active Zone
+    Minutes time series. Time-series endpoints accept a base-date and either an
+    end-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/activity/
+servers:
+- url: https://api.fitbit.com
+  description: Fitbit Web API
+security:
+- OAuth2:
+  - activity
+paths:
+  /1/user/{user-id}/activities/date/{date}.json:
+    get:
+      summary: Get Daily Activity Summary
+      description: Retrieves a summary and list of a user's activities and activity log entries for a given day.
+      operationId: getDailyActivitySummary
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        description: The date in the format YYYY-MM-DD or 'today'.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Daily activity summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityDailySummary'
+  /1/user/{user-id}/activities.json:
+    post:
+      summary: Log Activity
+      description: Logs an activity or creates a manual activity log entry for the user.
+      operationId: logActivity
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: activityId
+        in: query
+        schema:
+          type: integer
+        description: The activity ID.
+      - name: activityName
+        in: query
+        schema:
+          type: string
+      - name: manualCalories
+        in: query
+        schema:
+          type: integer
+      - name: startTime
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: durationMillis
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: distance
+        in: query
+        schema:
+          type: number
+      - name: distanceUnit
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Activity log entry created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityLog'
+  /1/user/{user-id}/activities/{activity-log-id}.json:
+    delete:
+      summary: Delete Activity Log
+      description: Deletes a user's activity log entry with the given ID.
+      operationId: deleteActivityLog
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: activity-log-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Activity log deleted.
+  /1/user/{user-id}/activities/list.json:
+    get:
+      summary: Get Activity Log List
+      description: Retrieves a list of a user's activity log entries before or after a given day with offset, limit, and sort order.
+      operationId: getActivityLogList
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: beforeDate
+        in: query
+        schema:
+          type: string
+      - name: afterDate
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum: [asc, desc]
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          maximum: 100
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Paginated activity log list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityLogList'
+  /1/user/{user-id}/activities/goals/{period}.json:
+    get:
+      summary: Get Activity Goals
+      description: Retrieves a user's current daily or weekly activity goals.
+      operationId: getActivityGoals
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: period
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [daily, weekly]
+      responses:
+        '200':
+          description: Activity goals.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityGoals'
+  /1/user/{user-id}/activities/active-zone-minutes/date/{date}/{period}.json:
+    get:
+      summary: Get AZM Time Series By Date
+      description: Retrieves the user's Active Zone Minutes time series data for the given date and period.
+      operationId: getAzmTimeSeriesByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: period
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y]
+      responses:
+        '200':
+          description: Active Zone Minutes time series.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AzmTimeSeries'
+  /1/user/{user-id}/activities/steps/date/{base-date}/{end-date}.json:
+    get:
+      summary: Get Activity Time Series By Date Range
+      description: Retrieves activity (steps) data over a date range for the user.
+      operationId: getActivityTimeSeriesByDateRange
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: base-date
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: end-date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Steps time series.
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      description: The user's encoded ID. Use '-' for the currently authorized user.
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            activity: Activity and exercise data
+            heartrate: Heart rate data
+            location: GPS and other location data
+            nutrition: Food and nutrition data
+            profile: User profile
+            settings: Account settings
+            sleep: Sleep data
+            social: Friends and leaderboard data
+            weight: Weight, BMI, and body fat data
+            oxygen_saturation: SpO2 data
+            respiratory_rate: Breathing rate data
+            temperature: Skin and core body temperature data
+            electrocardiogram: ECG readings
+            irregular_rhythm_notifications: IRN data
+            cardio_fitness: Cardio fitness (VO2 Max) data
+  schemas:
+    ActivityDailySummary:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityLog'
+        goals:
+          $ref: '#/components/schemas/ActivityGoals'
+        summary:
+          type: object
+          properties:
+            activeScore:
+              type: integer
+            activityCalories:
+              type: integer
+            caloriesOut:
+              type: integer
+            steps:
+              type: integer
+            distances:
+              type: array
+              items:
+                type: object
+                properties:
+                  activity:
+                    type: string
+                  distance:
+                    type: number
+            fairlyActiveMinutes:
+              type: integer
+            lightlyActiveMinutes:
+              type: integer
+            sedentaryMinutes:
+              type: integer
+            veryActiveMinutes:
+              type: integer
+            floors:
+              type: integer
+            elevation:
+              type: number
+            heartRateZones:
+              type: array
+              items:
+                type: object
+            restingHeartRate:
+              type: integer
+    ActivityLog:
+      type: object
+      properties:
+        activityId:
+          type: integer
+        activityParentId:
+          type: integer
+        calories:
+          type: integer
+        description:
+          type: string
+        distance:
+          type: number
+        duration:
+          type: integer
+        hasStartTime:
+          type: boolean
+        isFavorite:
+          type: boolean
+        logId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        startDate:
+          type: string
+          format: date
+        startTime:
+          type: string
+        steps:
+          type: integer
+    ActivityLogList:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityLog'
+        pagination:
+          type: object
+          properties:
+            beforeDate:
+              type: string
+            limit:
+              type: integer
+            next:
+              type: string
+            offset:
+              type: integer
+            previous:
+              type: string
+            sort:
+              type: string
+    ActivityGoals:
+      type: object
+      properties:
+        goals:
+          type: object
+          properties:
+            activeMinutes:
+              type: integer
+            caloriesOut:
+              type: integer
+            distance:
+              type: number
+            floors:
+              type: integer
+            steps:
+              type: integer
+            activeZoneMinutes:
+              type: integer
+    AzmTimeSeries:
+      type: object
+      properties:
+        activities-active-zone-minutes:
+          type: array
+          items:
+            type: object
+            properties:
+              dateTime:
+                type: string
+              value:
+                type: object
+                properties:
+                  activeZoneMinutes:
+                    type: integer
+                  fatBurnActiveZoneMinutes:
+                    type: integer
+                  cardioActiveZoneMinutes:
+                    type: integer
+                  peakActiveZoneMinutes:
+                    type: integer

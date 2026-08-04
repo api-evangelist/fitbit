@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: Fitbit Subscriptions API
+  description: |
+    Webhook-based notification system. Subscribing to a user's collection causes
+    Fitbit to send a webhook POST to your registered Subscriber endpoint whenever
+    that user has new data available for the collection (activities, body,
+    foods, sleep, userRevokedAccess). Eliminates polling for sync events.
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/subscription/
+servers:
+- url: https://api.fitbit.com
+security:
+- OAuth2: []
+paths:
+  /1/user/{user-id}/{collection-path}/apiSubscriptions/{subscription-id}.json:
+    post:
+      summary: Create Subscription
+      description: Creates a subscription that triggers notifications when the user has new data of the requested type.
+      operationId: createSubscription
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: collection-path
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [activities, body, foods, sleep, userRevokedAccess]
+      - name: subscription-id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: X-Fitbit-Subscriber-Id
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Subscription created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+    delete:
+      summary: Delete Subscription
+      description: Deletes a subscription for a specific user.
+      operationId: deleteSubscription
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: collection-path
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: subscription-id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Subscription deleted.
+  /1/user/{user-id}/{collection-path}/apiSubscriptions.json:
+    get:
+      summary: Get Subscription List
+      description: Retrieves a list of a user's subscriptions.
+      operationId: getSubscriptionList
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: collection-path
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of subscriptions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiSubscriptions:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subscription'
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            activity: Activity data
+            heartrate: Heart rate data
+            nutrition: Nutrition data
+            sleep: Sleep data
+            weight: Body and weight data
+  schemas:
+    Subscription:
+      type: object
+      properties:
+        collectionType:
+          type: string
+        ownerId:
+          type: string
+        ownerType:
+          type: string
+        subscriberId:
+          type: string
+        subscriptionId:
+          type: string

@@ -1,0 +1,163 @@
+openapi: 3.0.3
+info:
+  title: Fitbit Authorization API
+  description: |
+    OAuth 2.0 authorization endpoints for the Fitbit Web API. Fitbit supports
+    Authorization Code Grant with PKCE (recommended for all clients),
+    Authorization Code Grant, Implicit Grant, and Client Credentials (for
+    Fitbit Commerce APIs that do not retrieve user data). Tokens can be
+    introspected, refreshed, or revoked. New integrations should plan for
+    migration to the Google Health API's Google OAuth 2.0 framework before the
+    legacy Web API turndown in September 2026.
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/authorization/
+servers:
+- url: https://www.fitbit.com
+  description: Authorization endpoint host
+- url: https://api.fitbit.com
+  description: Token, introspect, and revoke endpoint host
+paths:
+  /oauth2/authorize:
+    get:
+      summary: Authorize
+      description: Initiates the OAuth 2.0 authorization flow by presenting the consent screen to the user.
+      operationId: authorize
+      servers:
+      - url: https://www.fitbit.com
+      parameters:
+      - name: response_type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum: [code, token]
+      - name: client_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: redirect_uri
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: scope
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Space-separated list of scopes.
+      - name: code_challenge
+        in: query
+        schema:
+          type: string
+      - name: code_challenge_method
+        in: query
+        schema:
+          type: string
+          enum: [S256]
+      - name: state
+        in: query
+        schema:
+          type: string
+      - name: prompt
+        in: query
+        schema:
+          type: string
+          enum: [consent, login, none, login consent]
+      - name: expires_in
+        in: query
+        schema:
+          type: integer
+      responses:
+        '302':
+          description: Redirect to the redirect_uri with an authorization code.
+  /oauth2/token:
+    post:
+      summary: Get Access Token
+      description: Exchanges the authorization code for the initial access token and refresh token.
+      operationId: getAccessToken
+      servers:
+      - url: https://api.fitbit.com
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                grant_type:
+                  type: string
+                  enum: [authorization_code, refresh_token, client_credentials]
+                code:
+                  type: string
+                client_id:
+                  type: string
+                redirect_uri:
+                  type: string
+                code_verifier:
+                  type: string
+                refresh_token:
+                  type: string
+      responses:
+        '200':
+          description: Access and refresh tokens issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+  /1.1/oauth2/introspect:
+    post:
+      summary: Introspect Token
+      description: Returns the active state and metadata for an OAuth 2.0 access token.
+      operationId: introspectToken
+      servers:
+      - url: https://api.fitbit.com
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          description: Token introspection result.
+  /oauth2/revoke:
+    post:
+      summary: Revoke Token
+      description: Disables a user's authorization and all associated tokens.
+      operationId: revokeToken
+      servers:
+      - url: https://api.fitbit.com
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          description: Token revoked.
+components:
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        scope:
+          type: string
+        token_type:
+          type: string
+          enum: [Bearer]
+        user_id:
+          type: string

@@ -1,0 +1,596 @@
+{
+  "info": {
+    "_postman_id": "efa62460-9bb5-4e6a-b02c-a7d711b91b2b",
+    "name": "Fitbit Activity Foods Oauth2 API",
+    "description": "Read and write user activity, exercise, and Active Zone Minutes (AZM) data on\nFitbit. The Activity API exposes daily activity summaries (steps, distance,\ncalories, floors, elevation, activity minutes), per-activity logs, lifetime\ntotals, activity goals, the user's exercise type catalog, and Active Zone\nMinutes time series. Time-series endpoints accept a base-date and either an\nend-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).\n\n\nContact Support:\n Name: Fitbit Developer",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:40:03.000Z",
+    "updatedAt": "2026-07-28T01:40:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-efa62460-9bb5-4e6a-b02c-a7d711b91b2b"
+  },
+  "item": [
+    {
+      "name": "oauth2",
+      "item": [
+        {
+          "name": "authorize",
+          "item": [
+            {
+              "name": "Authorize",
+              "id": "b0e1985e-464d-40be-a8d5-3724f8c772e6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=<string>&redirect_uri=<string>&scope=<string>&code_challenge=<string>&code_challenge_method=S256&state=<string>&prompt=consent&expires_in=<integer>",
+                  "protocol": "https",
+                  "host": [
+                    "www",
+                    "fitbit",
+                    "com"
+                  ],
+                  "path": [
+                    "oauth2",
+                    "authorize"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "response_type",
+                      "value": "code"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "redirect_uri",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code_challenge",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code_challenge_method",
+                      "value": "S256"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prompt",
+                      "value": "consent"
+                    },
+                    {
+                      "key": "expires_in",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Initiates the OAuth 2.0 authorization flow by presenting the consent screen to the user."
+              },
+              "response": [
+                {
+                  "id": "be9f5681-717b-4701-916a-cc96e14b1a32",
+                  "name": "Redirect to the redirect_uri with an authorization code.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=<string>&redirect_uri=<string>&scope=<string>&code_challenge=<string>&code_challenge_method=S256&state=<string>&prompt=consent&expires_in=<integer>",
+                      "protocol": "https",
+                      "host": [
+                        "www",
+                        "fitbit",
+                        "com"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "authorize"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "response_type",
+                          "value": "code"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "redirect_uri",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "scope",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "code_challenge",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "code_challenge_method",
+                          "value": "S256"
+                        },
+                        {
+                          "key": "state",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "prompt",
+                          "value": "consent"
+                        },
+                        {
+                          "key": "expires_in",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Found",
+                  "code": 302,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:40:04.000Z",
+                  "updatedAt": "2026-07-28T01:40:04.000Z",
+                  "uid": "35240-be9f5681-717b-4701-916a-cc96e14b1a32"
+                }
+              ],
+              "createdAt": "2026-07-28T01:40:04.000Z",
+              "updatedAt": "2026-07-28T01:40:04.000Z",
+              "uid": "35240-b0e1985e-464d-40be-a8d5-3724f8c772e6"
+            }
+          ],
+          "id": "712a1046-d4a5-463b-8e9d-4ef52b60a33a",
+          "createdAt": "2026-07-28T01:40:04.000Z",
+          "updatedAt": "2026-07-28T01:40:04.000Z",
+          "uid": "35240-712a1046-d4a5-463b-8e9d-4ef52b60a33a"
+        },
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Get Access Token",
+              "id": "df42bc9f-96f1-409d-a6de-0efedb41f188",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "grant_type",
+                      "value": "authorization_code"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code_verifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "https://api.fitbit.com/oauth2/token",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "fitbit",
+                    "com"
+                  ],
+                  "path": [
+                    "oauth2",
+                    "token"
+                  ]
+                },
+                "description": "Exchanges the authorization code for the initial access token and refresh token."
+              },
+              "response": [
+                {
+                  "id": "ed033b3e-9b96-4564-ae9f-0c67e09b7017",
+                  "name": "Access and refresh tokens issued.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code"
+                        },
+                        {
+                          "key": "code",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "code_verifier",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "https://api.fitbit.com/oauth2/token",
+                      "protocol": "https",
+                      "host": [
+                        "api",
+                        "fitbit",
+                        "com"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"refresh_token\": \"<string>\",\n  \"scope\": \"<string>\",\n  \"token_type\": \"Bearer\",\n  \"user_id\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:40:04.000Z",
+                  "updatedAt": "2026-07-28T01:40:04.000Z",
+                  "uid": "35240-ed033b3e-9b96-4564-ae9f-0c67e09b7017"
+                }
+              ],
+              "createdAt": "2026-07-28T01:40:04.000Z",
+              "updatedAt": "2026-07-28T01:40:04.000Z",
+              "uid": "35240-df42bc9f-96f1-409d-a6de-0efedb41f188"
+            }
+          ],
+          "id": "ea2e2544-2fab-4db8-b075-da016a911b6b",
+          "createdAt": "2026-07-28T01:40:04.000Z",
+          "updatedAt": "2026-07-28T01:40:04.000Z",
+          "uid": "35240-ea2e2544-2fab-4db8-b075-da016a911b6b"
+        },
+        {
+          "name": "revoke",
+          "item": [
+            {
+              "name": "Revoke Token",
+              "id": "438ab01b-8af1-41fa-91f6-47a10b68247a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "https://api.fitbit.com/oauth2/revoke",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "fitbit",
+                    "com"
+                  ],
+                  "path": [
+                    "oauth2",
+                    "revoke"
+                  ]
+                },
+                "description": "Disables a user's authorization and all associated tokens."
+              },
+              "response": [
+                {
+                  "id": "f0968c40-943f-4ac1-88f8-b297c8861207",
+                  "name": "Token revoked.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "token",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "https://api.fitbit.com/oauth2/revoke",
+                      "protocol": "https",
+                      "host": [
+                        "api",
+                        "fitbit",
+                        "com"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "revoke"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:40:04.000Z",
+                  "updatedAt": "2026-07-28T01:40:04.000Z",
+                  "uid": "35240-f0968c40-943f-4ac1-88f8-b297c8861207"
+                }
+              ],
+              "createdAt": "2026-07-28T01:40:04.000Z",
+              "updatedAt": "2026-07-28T01:40:04.000Z",
+              "uid": "35240-438ab01b-8af1-41fa-91f6-47a10b68247a"
+            }
+          ],
+          "id": "6cb3f339-9e40-4344-ba72-8873bea9d20a",
+          "createdAt": "2026-07-28T01:40:04.000Z",
+          "updatedAt": "2026-07-28T01:40:04.000Z",
+          "uid": "35240-6cb3f339-9e40-4344-ba72-8873bea9d20a"
+        }
+      ],
+      "id": "bc623d5e-a4e0-4ec4-9c21-df9bb0cf7ef7",
+      "createdAt": "2026-07-28T01:40:04.000Z",
+      "updatedAt": "2026-07-28T01:40:04.000Z",
+      "uid": "35240-bc623d5e-a4e0-4ec4-9c21-df9bb0cf7ef7"
+    },
+    {
+      "name": "1.1",
+      "item": [
+        {
+          "name": "oauth2",
+          "item": [
+            {
+              "name": "introspect",
+              "item": [
+                {
+                  "name": "Introspect Token",
+                  "id": "a12fa7d2-638d-496f-984d-0503dbde84ed",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "key": "token",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "https://api.fitbit.com/1.1/oauth2/introspect",
+                      "protocol": "https",
+                      "host": [
+                        "api",
+                        "fitbit",
+                        "com"
+                      ],
+                      "path": [
+                        "1.1",
+                        "oauth2",
+                        "introspect"
+                      ]
+                    },
+                    "description": "Returns the active state and metadata for an OAuth 2.0 access token."
+                  },
+                  "response": [
+                    {
+                      "id": "8fd42a3c-4652-44e2-9838-141eb272be2e",
+                      "name": "Token introspection result.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "key": "token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "https://api.fitbit.com/1.1/oauth2/introspect",
+                          "protocol": "https",
+                          "host": [
+                            "api",
+                            "fitbit",
+                            "com"
+                          ],
+                          "path": [
+                            "1.1",
+                            "oauth2",
+                            "introspect"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:40:04.000Z",
+                      "updatedAt": "2026-07-28T01:40:04.000Z",
+                      "uid": "35240-8fd42a3c-4652-44e2-9838-141eb272be2e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:40:04.000Z",
+                  "updatedAt": "2026-07-28T01:40:04.000Z",
+                  "uid": "35240-a12fa7d2-638d-496f-984d-0503dbde84ed"
+                }
+              ],
+              "id": "219fa955-ade6-406e-af48-34de4b58fb22",
+              "createdAt": "2026-07-28T01:40:04.000Z",
+              "updatedAt": "2026-07-28T01:40:04.000Z",
+              "uid": "35240-219fa955-ade6-406e-af48-34de4b58fb22"
+            }
+          ],
+          "id": "b75ffe19-5bb9-4355-97c1-1b26c6dad8a4",
+          "createdAt": "2026-07-28T01:40:04.000Z",
+          "updatedAt": "2026-07-28T01:40:04.000Z",
+          "uid": "35240-b75ffe19-5bb9-4355-97c1-1b26c6dad8a4"
+        }
+      ],
+      "id": "05a30c4b-a7f8-45ac-95b7-67834df6b58d",
+      "createdAt": "2026-07-28T01:40:04.000Z",
+      "updatedAt": "2026-07-28T01:40:04.000Z",
+      "uid": "35240-05a30c4b-a7f8-45ac-95b7-67834df6b58d"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "activity heartrate location nutrition profile settings sleep social weight oxygen_saturation respiratory_rate temperature electrocardiogram irregular_rhythm_notifications cardio_fitness",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.fitbit.com"
+    }
+  ]
+}

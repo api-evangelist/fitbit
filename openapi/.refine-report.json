@@ -1,0 +1,18 @@
+{
+  "provider": "fitbit",
+  "sources": [
+    "fitbit-foods-api-openapi.yml",
+    "fitbit-oauth2-api-openapi.yml",
+    "fitbit-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "fitbit-foods-api-openapi.yml",
+    "fitbit-oauth2-api-openapi.yml",
+    "fitbit-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

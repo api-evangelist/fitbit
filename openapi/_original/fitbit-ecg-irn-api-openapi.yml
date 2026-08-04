@@ -1,0 +1,148 @@
+openapi: 3.0.3
+info:
+  title: Fitbit ECG and Irregular Rhythm Notifications API
+  description: |
+    Access Electrocardiogram (ECG) readings and Irregular Rhythm Notifications
+    (IRN) data collected on Fitbit Sense, Sense 2, Charge 5/6, and other
+    supported devices. ECG readings produce waveform data classified by the
+    device algorithm. IRN data captures the user's enrollment, alerts, and
+    feature engagement.
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/electrocardiogram/
+servers:
+- url: https://api.fitbit.com
+security:
+- OAuth2:
+  - electrocardiogram
+  - irregular_rhythm_notifications
+paths:
+  /1/user/{user-id}/ecg/list.json:
+    get:
+      summary: Get ECG Log List
+      description: Returns a list of a user's ECG log entries before or after a given day with offset, limit, and sort order.
+      operationId: getEcgLogList
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: beforeDate
+        in: query
+        schema:
+          type: string
+      - name: afterDate
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+          enum: [asc, desc]
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ECG log list.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ecgReadings:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EcgReading'
+  /1/user/{user-id}/irn/alerts/list.json:
+    get:
+      summary: Get IRN Alerts List
+      description: Returns the user's Irregular Rhythm Notification alerts list.
+      operationId: getIrnAlertsList
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: beforeDate
+        in: query
+        schema:
+          type: string
+      - name: afterDate
+        in: query
+        schema:
+          type: string
+      - name: sort
+        in: query
+        schema:
+          type: string
+      - name: limit
+        in: query
+        schema:
+          type: integer
+      - name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: IRN alerts list.
+  /1/user/{user-id}/irn/profile.json:
+    get:
+      summary: Get IRN Profile
+      description: Returns the user's IRN profile and enrollment status.
+      operationId: getIrnProfile
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: IRN profile.
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            electrocardiogram: ECG readings
+            irregular_rhythm_notifications: IRN data
+  schemas:
+    EcgReading:
+      type: object
+      properties:
+        startTime:
+          type: string
+        averageHeartRate:
+          type: integer
+        resultClassification:
+          type: string
+          enum: ['Normal Sinus Rhythm', 'Atrial Fibrillation', 'Inconclusive', 'Inconclusive High', 'Inconclusive Low']
+        waveformSamples:
+          type: array
+          items:
+            type: number
+        samplingFrequencyHz:
+          type: string
+        scalingFactor:
+          type: integer
+        numberOfWaveformSamples:
+          type: integer
+        leadNumber:
+          type: integer
+        featureVersion:
+          type: string
+        deviceName:
+          type: string
+        firmwareVersion:
+          type: string

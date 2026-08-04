@@ -1,0 +1,244 @@
+openapi: 3.0.3
+info:
+  title: Fitbit Nutrition API
+  description: |
+    Read and write food, water, meal, and nutrition data for Fitbit users.
+    Provides access to the Fitbit food database, user food logs and favorites,
+    water logs, meal goals, daily food summaries with macronutrient breakdowns,
+    and food/water time series.
+  version: '1'
+  contact:
+    name: Fitbit Developer
+    url: https://dev.fitbit.com/build/reference/web-api/nutrition/
+servers:
+- url: https://api.fitbit.com
+security:
+- OAuth2:
+  - nutrition
+paths:
+  /1/user/{user-id}/foods/log/date/{date}.json:
+    get:
+      summary: Get Food Logs By Date
+      description: Retrieves a summary and list of a user's food log entries for a given day.
+      operationId: getFoodLogsByDate
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Food log summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FoodLogResponse'
+  /1/user/{user-id}/foods/log.json:
+    post:
+      summary: Log Food
+      description: Creates a food log entry for the user.
+      operationId: logFood
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: foodId
+        in: query
+        schema:
+          type: integer
+      - name: foodName
+        in: query
+        schema:
+          type: string
+      - name: mealTypeId
+        in: query
+        required: true
+        schema:
+          type: integer
+          enum: [1, 2, 3, 4, 5, 6, 7]
+      - name: unitId
+        in: query
+        required: true
+        schema:
+          type: integer
+      - name: amount
+        in: query
+        required: true
+        schema:
+          type: number
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: calories
+        in: query
+        schema:
+          type: integer
+      - name: brandName
+        in: query
+        schema:
+          type: string
+      - name: nutritionValues
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Food log entry created.
+  /1/user/{user-id}/foods/log/{food-log-id}.json:
+    delete:
+      summary: Delete Food Log
+      description: Deletes a user's food log entry with the given ID.
+      operationId: deleteFoodLog
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: food-log-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Food log deleted.
+  /1/user/{user-id}/foods/log/water/date/{date}.json:
+    get:
+      summary: Get Water Logs
+      description: Retrieves a list of a user's water log entries for a given day.
+      operationId: getWaterLogs
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Water logs.
+  /1/user/{user-id}/foods/log/water.json:
+    post:
+      summary: Log Water
+      description: Creates a water log entry.
+      operationId: logWater
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      - name: date
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: amount
+        in: query
+        required: true
+        schema:
+          type: number
+      - name: unit
+        in: query
+        schema:
+          type: string
+          enum: [ml, fl oz, cup]
+      responses:
+        '201':
+          description: Water log created.
+  /1/foods/search.json:
+    get:
+      summary: Search Foods
+      description: Searches the Fitbit foods database for foods matching the query.
+      operationId: searchFoods
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  foods:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Food'
+  /1/user/{user-id}/foods/log/goal.json:
+    get:
+      summary: Get Food Goals
+      description: Retrieves the user's current daily calorie consumption goal and/or food plan.
+      operationId: getFoodGoals
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: Food goals.
+components:
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.fitbit.com/oauth2/authorize
+          tokenUrl: https://api.fitbit.com/oauth2/token
+          scopes:
+            nutrition: Food and nutrition data
+  schemas:
+    Food:
+      type: object
+      properties:
+        accessLevel:
+          type: string
+        brand:
+          type: string
+        calories:
+          type: integer
+        defaultServingSize:
+          type: number
+        defaultUnit:
+          type: object
+        foodId:
+          type: integer
+        name:
+          type: string
+        units:
+          type: array
+          items:
+            type: integer
+    FoodLogResponse:
+      type: object
+      properties:
+        foods:
+          type: array
+          items:
+            type: object
+        goals:
+          type: object
+        summary:
+          type: object
+          properties:
+            calories:
+              type: integer
+            carbs:
+              type: number
+            fat:
+              type: number
+            fiber:
+              type: number
+            protein:
+              type: number
+            sodium:
+              type: number
+            water:
+              type: number
