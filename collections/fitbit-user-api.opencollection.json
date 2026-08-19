@@ -1,7 +1,7 @@
 {
   "opencollection": "1.0.0",
   "info": {
-    "name": "Fitbit User API",
+    "name": "Fitbit Activity Foods User API",
     "version": "1"
   },
   "request": {
@@ -19,109 +19,1466 @@
   "items": [
     {
       "info": {
-        "name": "Get Profile",
-        "type": "http"
+        "name": "User",
+        "type": "folder"
       },
-      "http": {
-        "method": "GET",
-        "url": "https://api.fitbit.com/1/user/:user-id/profile.json",
-        "params": [
-          {
-            "name": "user-id",
-            "value": "",
-            "type": "path"
-          }
-        ]
-      },
-      "docs": "Retrieves the user's profile data."
-    },
-    {
-      "info": {
-        "name": "Update Profile",
-        "type": "http"
-      },
-      "http": {
-        "method": "POST",
-        "url": "https://api.fitbit.com/1/user/:user-id/profile.json",
-        "params": [
-          {
-            "name": "user-id",
-            "value": "",
-            "type": "path"
+      "items": [
+        {
+          "info": {
+            "name": "Get Daily Activity Summary",
+            "type": "http"
           },
-          {
-            "name": "gender",
-            "value": "",
-            "type": "query"
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The user's encoded ID. Use '-' for the currently authorized user."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "The date in the format YYYY-MM-DD or 'today'."
+              }
+            ]
           },
-          {
-            "name": "birthday",
-            "value": "",
-            "type": "query"
+          "docs": "Retrieves a summary and list of a user's activities and activity log entries for a given day."
+        },
+        {
+          "info": {
+            "name": "Log Activity",
+            "type": "http"
           },
-          {
-            "name": "height",
-            "value": "",
-            "type": "query"
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The user's encoded ID. Use '-' for the currently authorized user."
+              },
+              {
+                "name": "activityId",
+                "value": "",
+                "type": "query",
+                "description": "The activity ID."
+              },
+              {
+                "name": "activityName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "manualCalories",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "durationMillis",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distance",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "distanceUnit",
+                "value": "",
+                "type": "query"
+              }
+            ]
           },
-          {
-            "name": "aboutMe",
-            "value": "",
-            "type": "query"
+          "docs": "Logs an activity or creates a manual activity log entry for the user."
+        },
+        {
+          "info": {
+            "name": "Delete Activity Log",
+            "type": "http"
           },
-          {
-            "name": "fullname",
-            "value": "",
-            "type": "query"
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/:activity-log-id.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The user's encoded ID. Use '-' for the currently authorized user."
+              },
+              {
+                "name": "activity-log-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
           },
-          {
-            "name": "country",
-            "value": "",
-            "type": "query"
+          "docs": "Deletes a user's activity log entry with the given ID."
+        },
+        {
+          "info": {
+            "name": "Get Activity Log List",
+            "type": "http"
           },
-          {
-            "name": "state",
-            "value": "",
-            "type": "query"
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/list.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The user's encoded ID. Use '-' for the currently authorized user."
+              },
+              {
+                "name": "beforeDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "afterDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
           },
-          {
-            "name": "city",
-            "value": "",
-            "type": "query"
+          "docs": "Retrieves a list of a user's activity log entries before or after a given day with offset, limit, and sort order."
+        },
+        {
+          "info": {
+            "name": "Get Activity Goals",
+            "type": "http"
           },
-          {
-            "name": "timezone",
-            "value": "",
-            "type": "query"
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/goals/:period.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The user's encoded ID. Use '-' for the currently authorized user."
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              }
+            ]
           },
-          {
-            "name": "foodsLocale",
-            "value": "",
-            "type": "query"
+          "docs": "Retrieves a user's current daily or weekly activity goals."
+        },
+        {
+          "info": {
+            "name": "Get AZM Time Series By Date",
+            "type": "http"
           },
-          {
-            "name": "locale",
-            "value": "",
-            "type": "query"
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/active-zone-minutes/date/:date/:period.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The user's encoded ID. Use '-' for the currently authorized user."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              }
+            ]
           },
-          {
-            "name": "localeLang",
-            "value": "",
-            "type": "query"
+          "docs": "Retrieves the user's Active Zone Minutes time series data for the given date and period."
+        },
+        {
+          "info": {
+            "name": "Get Activity Time Series By Date Range",
+            "type": "http"
           },
-          {
-            "name": "localeCountry",
-            "value": "",
-            "type": "query"
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/steps/date/:base-date/:end-date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path",
+                "description": "The user's encoded ID. Use '-' for the currently authorized user."
+              },
+              {
+                "name": "base-date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "path"
+              }
+            ]
           },
-          {
-            "name": "startDayOfWeek",
-            "value": "",
-            "type": "query"
-          }
-        ]
-      },
-      "docs": "Updates a user's profile using a form."
+          "docs": "Retrieves activity (steps) data over a date range for the user."
+        },
+        {
+          "info": {
+            "name": "Get Weight Logs By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/body/log/weight/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of all user's weight log entries for a given day."
+        },
+        {
+          "info": {
+            "name": "Log Weight",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1/user/:user-id/body/log/weight/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "weight",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Creates a log entry for a body weight."
+        },
+        {
+          "info": {
+            "name": "Delete Weight Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fitbit.com/1/user/:user-id/body/log/weight/:weight-log-id.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "weight-log-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a user's weight log entry with the given ID."
+        },
+        {
+          "info": {
+            "name": "Get Body Fat Logs By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/body/log/fat/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of all user's body fat log entries for a given day."
+        },
+        {
+          "info": {
+            "name": "Get Body Time Series By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/body/:resource-path/date/:date/:period.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource-path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the user's body data (weight, BMI, or fat) over a period of time."
+        },
+        {
+          "info": {
+            "name": "Get Body Weight Goal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/body/log/weight/goal.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the user's current body weight goal."
+        },
+        {
+          "info": {
+            "name": "Get Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/devices.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a list of the Fitbit devices connected to a user's account."
+        },
+        {
+          "info": {
+            "name": "Get Alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/devices/tracker/:tracker-id/alarms.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tracker-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns alarms for a device."
+        },
+        {
+          "info": {
+            "name": "Add Alarm",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1/user/:user-id/devices/tracker/:tracker-id/alarms.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tracker-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "enabled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "recurring",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "weekDays",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Adds the alarm settings to a given device."
+        },
+        {
+          "info": {
+            "name": "Delete Alarm",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fitbit.com/1/user/:user-id/devices/tracker/:tracker-id/alarms/:alarm-id.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tracker-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alarm-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a specific alarm entry for the given tracker."
+        },
+        {
+          "info": {
+            "name": "Get ECG Log List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/ecg/list.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "beforeDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "afterDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of a user's ECG log entries before or after a given day with offset, limit, and sort order."
+        },
+        {
+          "info": {
+            "name": "Get IRN Alerts List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/irn/alerts/list.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "beforeDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "afterDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the user's Irregular Rhythm Notification alerts list."
+        },
+        {
+          "info": {
+            "name": "Get IRN Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/irn/profile.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the user's IRN profile and enrollment status."
+        },
+        {
+          "info": {
+            "name": "Get Friends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1.1/user/:user-id/friends.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns data of a user's friends."
+        },
+        {
+          "info": {
+            "name": "Get Friends Leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1.1/user/:user-id/leaderboard/friends.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the user's friends leaderboard ranked by activity."
+        },
+        {
+          "info": {
+            "name": "Get Heart Rate Time Series By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/heart/date/:date/:period.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a user's heart rate time series for the given date and period."
+        },
+        {
+          "info": {
+            "name": "Get Heart Rate Time Series By Date Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/heart/date/:base-date/:end-date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "base-date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a user's heart rate time series for the given date range."
+        },
+        {
+          "info": {
+            "name": "Get Heart Rate Intraday Time Series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/activities/heart/date/:date/1d/:detail-level.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "detail-level",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the user's heart rate intraday time series at the requested detail level (1sec, 1min, 5min, or 15min). Requires Intraday access."
+        },
+        {
+          "info": {
+            "name": "Get Food Logs By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/foods/log/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a summary and list of a user's food log entries for a given day."
+        },
+        {
+          "info": {
+            "name": "Log Food",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1/user/:user-id/foods/log.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "foodId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "foodName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "mealTypeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "unitId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "calories",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "brandName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "nutritionValues",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Creates a food log entry for the user."
+        },
+        {
+          "info": {
+            "name": "Delete Food Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fitbit.com/1/user/:user-id/foods/log/:food-log-id.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "food-log-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a user's food log entry with the given ID."
+        },
+        {
+          "info": {
+            "name": "Get Water Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/foods/log/water/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of a user's water log entries for a given day."
+        },
+        {
+          "info": {
+            "name": "Log Water",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1/user/:user-id/foods/log/water.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Creates a water log entry."
+        },
+        {
+          "info": {
+            "name": "Get Food Goals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/foods/log/goal.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the user's current daily calorie consumption goal and/or food plan."
+        },
+        {
+          "info": {
+            "name": "Get Sleep Log By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1.2/user/:user-id/sleep/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of a user's sleep log entries for a given date."
+        },
+        {
+          "info": {
+            "name": "Get Sleep Log By Date Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1.2/user/:user-id/sleep/date/:base-date/:end-date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "base-date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of a user's sleep log entries over a date range."
+        },
+        {
+          "info": {
+            "name": "Get Sleep Log List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1.2/user/:user-id/sleep/list.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "beforeDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "afterDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of sleep log entries before or after a given date with offset, limit, and sort order."
+        },
+        {
+          "info": {
+            "name": "Log Sleep",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1.2/user/:user-id/sleep.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "duration",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Creates a sleep log entry for the user."
+        },
+        {
+          "info": {
+            "name": "Delete Sleep Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fitbit.com/1.2/user/:user-id/sleep/:log-id.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "log-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a user's sleep log entry with the given ID."
+        },
+        {
+          "info": {
+            "name": "Get Sleep Goal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/sleep/goal.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the user's current sleep goal."
+        },
+        {
+          "info": {
+            "name": "Update Sleep Goal",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1/user/:user-id/sleep/goal.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "minDuration",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Creates or updates the user's sleep goal."
+        },
+        {
+          "info": {
+            "name": "Get SpO2 Summary By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/spo2/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the daily summary of SpO2 measurements for the user."
+        },
+        {
+          "info": {
+            "name": "Get SpO2 Summary By Date Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/spo2/date/:base-date/:end-date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "base-date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "end-date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns daily SpO2 summary for a date range."
+        },
+        {
+          "info": {
+            "name": "Get Breathing Rate Summary By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/br/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns average breathing rate (breaths per minute) during sleep for the date."
+        },
+        {
+          "info": {
+            "name": "Get Skin Temperature Summary By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/temp/skin/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns skin temperature variation relative to the user's baseline."
+        },
+        {
+          "info": {
+            "name": "Get Core Temperature Summary By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/temp/core/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns core temperature readings."
+        },
+        {
+          "info": {
+            "name": "Get Heart Rate Variability By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/hrv/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns daily Heart Rate Variability (RMSSD) values measured during the deep sleep stage."
+        },
+        {
+          "info": {
+            "name": "Get VO2 Max Summary By Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/cardioscore/date/:date.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the Cardio Fitness Score (VO2 Max) for the user."
+        },
+        {
+          "info": {
+            "name": "Create Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1/user/:user-id/:collection-path/apiSubscriptions/:subscription-id.json",
+            "headers": [
+              {
+                "name": "X-Fitbit-Subscriber-Id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "collection-path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscription-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Creates a subscription that triggers notifications when the user has new data of the requested type."
+        },
+        {
+          "info": {
+            "name": "Delete Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fitbit.com/1/user/:user-id/:collection-path/apiSubscriptions/:subscription-id.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "collection-path",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "subscription-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a subscription for a specific user."
+        },
+        {
+          "info": {
+            "name": "Get Subscription List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/:collection-path/apiSubscriptions.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "collection-path",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of a user's subscriptions."
+        },
+        {
+          "info": {
+            "name": "Get Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fitbit.com/1/user/:user-id/profile.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the user's profile data."
+        },
+        {
+          "info": {
+            "name": "Update Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fitbit.com/1/user/:user-id/profile.json",
+            "params": [
+              {
+                "name": "user-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "gender",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "birthday",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "height",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "aboutMe",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "fullname",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "timezone",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "foodsLocale",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "localeLang",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "localeCountry",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDayOfWeek",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Updates a user's profile using a form."
+        }
+      ]
     }
   ],
   "bundled": true

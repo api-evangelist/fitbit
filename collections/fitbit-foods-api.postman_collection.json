@@ -1,0 +1,147 @@
+{
+  "item": [
+    {
+      "id": "9961ba18-aa48-4f9f-97da-0ed8c64cb76f",
+      "name": "Foods",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "774695b0-41f2-4fba-8eab-805772655911",
+          "name": "Search Foods",
+          "request": {
+            "name": "Search Foods",
+            "description": {
+              "content": "Searches the Fitbit foods database for foods matching the query.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1",
+                "foods",
+                "search.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7cc1b130-fa77-4258-a667-076da0fce267",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "foods",
+                    "search.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"foods\": [\n    {\n      \"accessLevel\": \"string\",\n      \"brand\": \"string\",\n      \"calories\": 8314,\n      \"defaultServingSize\": 9544.537758836623,\n      \"defaultUnit\": {},\n      \"foodId\": 5293,\n      \"name\": \"string\",\n      \"units\": [\n        6709,\n        6050\n      ]\n    },\n    {\n      \"accessLevel\": \"string\",\n      \"brand\": \"string\",\n      \"calories\": 1107,\n      \"defaultServingSize\": 763.9407279564603,\n      \"defaultUnit\": {},\n      \"foodId\": 2475,\n      \"name\": \"string\",\n      \"units\": [\n        1697,\n        1656\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fitbit.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "activity heartrate location nutrition profile settings sleep social weight oxygen_saturation respiratory_rate temperature electrocardiogram irregular_rhythm_notifications cardio_fitness"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.fitbit.com/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://www.fitbit.com/oauth2/authorize"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "407eb07b-d980-4b41-9f35-8cf17c8b64e9",
+    "name": "Fitbit Activity Foods API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Read and write user activity, exercise, and Active Zone Minutes (AZM) data on\nFitbit. The Activity API exposes daily activity summaries (steps, distance,\ncalories, floors, elevation, activity minutes), per-activity logs, lifetime\ntotals, activity goals, the user's exercise type catalog, and Active Zone\nMinutes time series. Time-series endpoints accept a base-date and either an\nend-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).\n\n\nContact Support:\n Name: Fitbit Developer",
+      "type": "text/plain"
+    }
+  }
+}
