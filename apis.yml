@@ -76,6 +76,8 @@ apis:
   description: The Oauth2 API from Fitbit — 4 operation(s) for oauth2.
   humanURL: https://dev.fitbit.com/build/reference/web-api/activity/
   tags:
+  - Authentication
+  tags_raw:
   - Oauth2
   properties:
   - type: OpenAPI
