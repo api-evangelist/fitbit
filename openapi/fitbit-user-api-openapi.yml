@@ -1,29 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Fitbit Activity Foods User API
-  description: 'Read and write user activity, exercise, and Active Zone Minutes (AZM) data on
-
-    Fitbit. The Activity API exposes daily activity summaries (steps, distance,
-
-    calories, floors, elevation, activity minutes), per-activity logs, lifetime
-
-    totals, activity goals, the user''s exercise type catalog, and Active Zone
-
-    Minutes time series. Time-series endpoints accept a base-date and either an
-
-    end-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).
-
-    '
-  version: '1'
-  contact:
-    name: Fitbit Developer
-    url: https://dev.fitbit.com/build/reference/web-api/activity/
+  title: Fitbit User API
+  version: '1.0'
+  description: 'Operations tagged User across 10 of this provider''s published API definitions: fitbit-activity-api-openapi.yml, fitbit-body-api-openapi.yml, fitbit-devices-api-openapi.yml, fitbit-ecg-irn-api-openapi.yml, fitbit-friends-api-openapi.yml, fitbit-heart-rate-api-openapi.yml, fitbit-nutrition-api-openapi.yml, fitbit-sleep-api-openapi.yml, fitbit-spo2-breathing-temperature-api-openapi.yml, fitbit-subscriptions-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.fitbit.com
   description: Fitbit Web API
-security:
-- OAuth2:
-  - activity
 tags:
 - name: User
 paths:
@@ -49,6 +31,12 @@ paths:
                 $ref: '#/components/schemas/ActivityDailySummary'
       tags:
       - User
+      security:
+      - OAuth2:
+        - activity
+    servers:
+    - url: https://api.fitbit.com
+      description: Fitbit Web API
   /1/user/{user-id}/activities.json:
     post:
       summary: Log Activity
@@ -102,6 +90,12 @@ paths:
                 $ref: '#/components/schemas/ActivityLog'
       tags:
       - User
+      security:
+      - OAuth2:
+        - activity
+    servers:
+    - url: https://api.fitbit.com
+      description: Fitbit Web API
   /1/user/{user-id}/activities/{activity-log-id}.json:
     delete:
       summary: Delete Activity Log
@@ -119,6 +113,12 @@ paths:
           description: Activity log deleted.
       tags:
       - User
+      security:
+      - OAuth2:
+        - activity
+    servers:
+    - url: https://api.fitbit.com
+      description: Fitbit Web API
   /1/user/{user-id}/activities/list.json:
     get:
       summary: Get Activity Log List
@@ -159,6 +159,12 @@ paths:
                 $ref: '#/components/schemas/ActivityLogList'
       tags:
       - User
+      security:
+      - OAuth2:
+        - activity
+    servers:
+    - url: https://api.fitbit.com
+      description: Fitbit Web API
   /1/user/{user-id}/activities/goals/{period}.json:
     get:
       summary: Get Activity Goals
@@ -183,6 +189,12 @@ paths:
                 $ref: '#/components/schemas/ActivityGoals'
       tags:
       - User
+      security:
+      - OAuth2:
+        - activity
+    servers:
+    - url: https://api.fitbit.com
+      description: Fitbit Web API
   /1/user/{user-id}/activities/active-zone-minutes/date/{date}/{period}.json:
     get:
       summary: Get AZM Time Series By Date
@@ -218,6 +230,12 @@ paths:
                 $ref: '#/components/schemas/AzmTimeSeries'
       tags:
       - User
+      security:
+      - OAuth2:
+        - activity
+    servers:
+    - url: https://api.fitbit.com
+      description: Fitbit Web API
   /1/user/{user-id}/activities/steps/date/{base-date}/{end-date}.json:
     get:
       summary: Get Activity Time Series By Date Range
@@ -244,6 +262,12 @@ paths:
                 type: object
       tags:
       - User
+      security:
+      - OAuth2:
+        - activity
+    servers:
+    - url: https://api.fitbit.com
+      description: Fitbit Web API
   /1/user/{user-id}/body/log/weight/date/{date}.json:
     get:
       summary: Get Weight Logs By Date
@@ -265,6 +289,9 @@ paths:
                 $ref: '#/components/schemas/WeightLogList'
       tags:
       - User
+      security:
+      - OAuth2:
+        - weight
     post:
       summary: Log Weight
       description: Creates a log entry for a body weight.
@@ -291,6 +318,11 @@ paths:
           description: Weight log created.
       tags:
       - User
+      security:
+      - OAuth2:
+        - weight
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/body/log/weight/{weight-log-id}.json:
     delete:
       summary: Delete Weight Log
@@ -308,6 +340,11 @@ paths:
           description: Weight log deleted.
       tags:
       - User
+      security:
+      - OAuth2:
+        - weight
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/body/log/fat/date/{date}.json:
     get:
       summary: Get Body Fat Logs By Date
@@ -329,6 +366,11 @@ paths:
                 $ref: '#/components/schemas/BodyFatLogList'
       tags:
       - User
+      security:
+      - OAuth2:
+        - weight
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/body/{resource-path}/date/{date}/{period}.json:
     get:
       summary: Get Body Time Series By Date
@@ -374,6 +416,11 @@ paths:
                 type: object
       tags:
       - User
+      security:
+      - OAuth2:
+        - weight
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/body/log/weight/goal.json:
     get:
       summary: Get Body Weight Goal
@@ -386,6 +433,11 @@ paths:
           description: Body weight goal.
       tags:
       - User
+      security:
+      - OAuth2:
+        - weight
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/devices.json:
     get:
       summary: Get Devices
@@ -404,6 +456,11 @@ paths:
                   $ref: '#/components/schemas/Device'
       tags:
       - User
+      security:
+      - OAuth2:
+        - settings
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/devices/tracker/{tracker-id}/alarms.json:
     get:
       summary: Get Alarms
@@ -421,6 +478,9 @@ paths:
           description: List of alarms.
       tags:
       - User
+      security:
+      - OAuth2:
+        - settings
     post:
       summary: Add Alarm
       description: Adds the alarm settings to a given device.
@@ -456,6 +516,11 @@ paths:
           description: Alarm created.
       tags:
       - User
+      security:
+      - OAuth2:
+        - settings
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/devices/tracker/{tracker-id}/alarms/{alarm-id}.json:
     delete:
       summary: Delete Alarm
@@ -478,6 +543,11 @@ paths:
           description: Alarm deleted.
       tags:
       - User
+      security:
+      - OAuth2:
+        - settings
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/ecg/list.json:
     get:
       summary: Get ECG Log List
@@ -522,6 +592,12 @@ paths:
                       $ref: '#/components/schemas/EcgReading'
       tags:
       - User
+      security:
+      - OAuth2:
+        - electrocardiogram
+        - irregular_rhythm_notifications
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/irn/alerts/list.json:
     get:
       summary: Get IRN Alerts List
@@ -554,6 +630,12 @@ paths:
           description: IRN alerts list.
       tags:
       - User
+      security:
+      - OAuth2:
+        - electrocardiogram
+        - irregular_rhythm_notifications
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/irn/profile.json:
     get:
       summary: Get IRN Profile
@@ -566,6 +648,12 @@ paths:
           description: IRN profile.
       tags:
       - User
+      security:
+      - OAuth2:
+        - electrocardiogram
+        - irregular_rhythm_notifications
+    servers:
+    - url: https://api.fitbit.com
   /1.1/user/{user-id}/friends.json:
     get:
       summary: Get Friends
@@ -578,6 +666,11 @@ paths:
           description: List of friends.
       tags:
       - User
+      security:
+      - OAuth2:
+        - social
+    servers:
+    - url: https://api.fitbit.com
   /1.1/user/{user-id}/leaderboard/friends.json:
     get:
       summary: Get Friends Leaderboard
@@ -590,6 +683,11 @@ paths:
           description: Friends leaderboard.
       tags:
       - User
+      security:
+      - OAuth2:
+        - social
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/activities/heart/date/{date}/{period}.json:
     get:
       summary: Get Heart Rate Time Series By Date
@@ -622,6 +720,11 @@ paths:
                 $ref: '#/components/schemas/HeartRateTimeSeries'
       tags:
       - User
+      security:
+      - OAuth2:
+        - heartrate
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/activities/heart/date/{base-date}/{end-date}.json:
     get:
       summary: Get Heart Rate Time Series By Date Range
@@ -648,6 +751,11 @@ paths:
                 $ref: '#/components/schemas/HeartRateTimeSeries'
       tags:
       - User
+      security:
+      - OAuth2:
+        - heartrate
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/activities/heart/date/{date}/1d/{detail-level}.json:
     get:
       summary: Get Heart Rate Intraday Time Series
@@ -679,6 +787,11 @@ paths:
                 $ref: '#/components/schemas/HeartRateIntraday'
       tags:
       - User
+      security:
+      - OAuth2:
+        - heartrate
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/foods/log/date/{date}.json:
     get:
       summary: Get Food Logs By Date
@@ -700,6 +813,11 @@ paths:
                 $ref: '#/components/schemas/FoodLogResponse'
       tags:
       - User
+      security:
+      - OAuth2:
+        - nutrition
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/foods/log.json:
     post:
       summary: Log Food
@@ -761,6 +879,11 @@ paths:
           description: Food log entry created.
       tags:
       - User
+      security:
+      - OAuth2:
+        - nutrition
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/foods/log/{food-log-id}.json:
     delete:
       summary: Delete Food Log
@@ -778,6 +901,11 @@ paths:
           description: Food log deleted.
       tags:
       - User
+      security:
+      - OAuth2:
+        - nutrition
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/foods/log/water/date/{date}.json:
     get:
       summary: Get Water Logs
@@ -795,6 +923,11 @@ paths:
           description: Water logs.
       tags:
       - User
+      security:
+      - OAuth2:
+        - nutrition
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/foods/log/water.json:
     post:
       summary: Log Water
@@ -826,6 +959,11 @@ paths:
           description: Water log created.
       tags:
       - User
+      security:
+      - OAuth2:
+        - nutrition
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/foods/log/goal.json:
     get:
       summary: Get Food Goals
@@ -838,6 +976,11 @@ paths:
           description: Food goals.
       tags:
       - User
+      security:
+      - OAuth2:
+        - nutrition
+    servers:
+    - url: https://api.fitbit.com
   /1.2/user/{user-id}/sleep/date/{date}.json:
     get:
       summary: Get Sleep Log By Date
@@ -859,6 +1002,11 @@ paths:
                 $ref: '#/components/schemas/SleepLog'
       tags:
       - User
+      security:
+      - OAuth2:
+        - sleep
+    servers:
+    - url: https://api.fitbit.com
   /1.2/user/{user-id}/sleep/date/{base-date}/{end-date}.json:
     get:
       summary: Get Sleep Log By Date Range
@@ -885,6 +1033,11 @@ paths:
                 $ref: '#/components/schemas/SleepLog'
       tags:
       - User
+      security:
+      - OAuth2:
+        - sleep
+    servers:
+    - url: https://api.fitbit.com
   /1.2/user/{user-id}/sleep/list.json:
     get:
       summary: Get Sleep Log List
@@ -925,6 +1078,11 @@ paths:
                 $ref: '#/components/schemas/SleepLog'
       tags:
       - User
+      security:
+      - OAuth2:
+        - sleep
+    servers:
+    - url: https://api.fitbit.com
   /1.2/user/{user-id}/sleep.json:
     post:
       summary: Log Sleep
@@ -953,6 +1111,11 @@ paths:
           description: Sleep log created.
       tags:
       - User
+      security:
+      - OAuth2:
+        - sleep
+    servers:
+    - url: https://api.fitbit.com
   /1.2/user/{user-id}/sleep/{log-id}.json:
     delete:
       summary: Delete Sleep Log
@@ -970,6 +1133,11 @@ paths:
           description: Sleep log deleted.
       tags:
       - User
+      security:
+      - OAuth2:
+        - sleep
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/sleep/goal.json:
     get:
       summary: Get Sleep Goal
@@ -986,6 +1154,9 @@ paths:
                 $ref: '#/components/schemas/SleepGoal'
       tags:
       - User
+      security:
+      - OAuth2:
+        - sleep
     post:
       summary: Update Sleep Goal
       description: Creates or updates the user's sleep goal.
@@ -1002,6 +1173,11 @@ paths:
           description: Sleep goal updated.
       tags:
       - User
+      security:
+      - OAuth2:
+        - sleep
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/spo2/date/{date}.json:
     get:
       summary: Get SpO2 Summary By Date
@@ -1019,6 +1195,15 @@ paths:
           description: SpO2 summary.
       tags:
       - User
+      security:
+      - OAuth2:
+        - oxygen_saturation
+        - respiratory_rate
+        - temperature
+        - heartrate
+        - cardio_fitness
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/spo2/date/{base-date}/{end-date}.json:
     get:
       summary: Get SpO2 Summary By Date Range
@@ -1041,6 +1226,15 @@ paths:
           description: SpO2 summary.
       tags:
       - User
+      security:
+      - OAuth2:
+        - oxygen_saturation
+        - respiratory_rate
+        - temperature
+        - heartrate
+        - cardio_fitness
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/br/date/{date}.json:
     get:
       summary: Get Breathing Rate Summary By Date
@@ -1058,6 +1252,15 @@ paths:
           description: Breathing rate summary.
       tags:
       - User
+      security:
+      - OAuth2:
+        - oxygen_saturation
+        - respiratory_rate
+        - temperature
+        - heartrate
+        - cardio_fitness
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/temp/skin/date/{date}.json:
     get:
       summary: Get Skin Temperature Summary By Date
@@ -1075,6 +1278,15 @@ paths:
           description: Skin temperature summary.
       tags:
       - User
+      security:
+      - OAuth2:
+        - oxygen_saturation
+        - respiratory_rate
+        - temperature
+        - heartrate
+        - cardio_fitness
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/temp/core/date/{date}.json:
     get:
       summary: Get Core Temperature Summary By Date
@@ -1092,6 +1304,15 @@ paths:
           description: Core temperature summary.
       tags:
       - User
+      security:
+      - OAuth2:
+        - oxygen_saturation
+        - respiratory_rate
+        - temperature
+        - heartrate
+        - cardio_fitness
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/hrv/date/{date}.json:
     get:
       summary: Get Heart Rate Variability By Date
@@ -1109,6 +1330,15 @@ paths:
           description: HRV summary.
       tags:
       - User
+      security:
+      - OAuth2:
+        - oxygen_saturation
+        - respiratory_rate
+        - temperature
+        - heartrate
+        - cardio_fitness
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/cardioscore/date/{date}.json:
     get:
       summary: Get VO2 Max Summary By Date
@@ -1126,6 +1356,15 @@ paths:
           description: Cardio fitness score.
       tags:
       - User
+      security:
+      - OAuth2:
+        - oxygen_saturation
+        - respiratory_rate
+        - temperature
+        - heartrate
+        - cardio_fitness
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/{collection-path}/apiSubscriptions/{subscription-id}.json:
     post:
       summary: Create Subscription
@@ -1162,6 +1401,8 @@ paths:
                 $ref: '#/components/schemas/Subscription'
       tags:
       - User
+      security:
+      - OAuth2: []
     delete:
       summary: Delete Subscription
       description: Deletes a subscription for a specific user.
@@ -1183,6 +1424,10 @@ paths:
           description: Subscription deleted.
       tags:
       - User
+      security:
+      - OAuth2: []
+    servers:
+    - url: https://api.fitbit.com
   /1/user/{user-id}/{collection-path}/apiSubscriptions.json:
     get:
       summary: Get Subscription List
@@ -1209,228 +1454,30 @@ paths:
                       $ref: '#/components/schemas/Subscription'
       tags:
       - User
-  /1/user/{user-id}/profile.json:
-    get:
-      summary: Get Profile
-      description: Retrieves the user's profile data.
-      operationId: getProfile
-      parameters:
-      - $ref: '#/components/parameters/UserId_11'
-      responses:
-        '200':
-          description: User profile.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserProfile'
-      tags:
-      - User
-    post:
-      summary: Update Profile
-      description: Updates a user's profile using a form.
-      operationId: updateProfile
-      parameters:
-      - $ref: '#/components/parameters/UserId_11'
-      - name: gender
-        in: query
-        schema:
-          type: string
-      - name: birthday
-        in: query
-        schema:
-          type: string
-          format: date
-      - name: height
-        in: query
-        schema:
-          type: number
-      - name: aboutMe
-        in: query
-        schema:
-          type: string
-      - name: fullname
-        in: query
-        schema:
-          type: string
-      - name: country
-        in: query
-        schema:
-          type: string
-      - name: state
-        in: query
-        schema:
-          type: string
-      - name: city
-        in: query
-        schema:
-          type: string
-      - name: timezone
-        in: query
-        schema:
-          type: string
-      - name: foodsLocale
-        in: query
-        schema:
-          type: string
-      - name: locale
-        in: query
-        schema:
-          type: string
-      - name: localeLang
-        in: query
-        schema:
-          type: string
-      - name: localeCountry
-        in: query
-        schema:
-          type: string
-      - name: startDayOfWeek
-        in: query
-        schema:
-          type: string
-      responses:
-        '200':
-          description: Profile updated.
-      tags:
-      - User
+      security:
+      - OAuth2: []
+    servers:
+    - url: https://api.fitbit.com
 components:
-  parameters:
-    UserId_9:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId_3:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId_11:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId_10:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId_2:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId_7:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId:
-      name: user-id
-      in: path
-      required: true
-      description: The user's encoded ID. Use '-' for the currently authorized user.
-      schema:
-        type: string
-        default: '-'
-    UserId_8:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId_4:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId_5:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
-    UserId_6:
-      name: user-id
-      in: path
-      required: true
-      schema:
-        type: string
-        default: '-'
   schemas:
-    HeartRateTimeSeries:
+    ActivityGoals:
       type: object
       properties:
-        activities-heart:
-          type: array
-          items:
-            type: object
-            properties:
-              dateTime:
-                type: string
-                format: date
-              value:
-                type: object
-                properties:
-                  customHeartRateZones:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/HeartRateZone'
-                  heartRateZones:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/HeartRateZone'
-                  restingHeartRate:
-                    type: integer
-    EcgReading:
-      type: object
-      properties:
-        startTime:
-          type: string
-        averageHeartRate:
-          type: integer
-        resultClassification:
-          type: string
-          enum:
-          - Normal Sinus Rhythm
-          - Atrial Fibrillation
-          - Inconclusive
-          - Inconclusive High
-          - Inconclusive Low
-        waveformSamples:
-          type: array
-          items:
-            type: number
-        samplingFrequencyHz:
-          type: string
-        scalingFactor:
-          type: integer
-        numberOfWaveformSamples:
-          type: integer
-        leadNumber:
-          type: integer
-        featureVersion:
-          type: string
-        deviceName:
-          type: string
-        firmwareVersion:
-          type: string
+        goals:
+          type: object
+          properties:
+            activeMinutes:
+              type: integer
+            caloriesOut:
+              type: integer
+            distance:
+              type: number
+            floors:
+              type: integer
+            steps:
+              type: integer
+            activeZoneMinutes:
+              type: integer
     ActivityDailySummary:
       type: object
       properties:
@@ -1478,160 +1525,28 @@ components:
                 type: object
             restingHeartRate:
               type: integer
-    SleepGoal:
+    ActivityLogList:
       type: object
       properties:
-        goal:
-          type: object
-          properties:
-            minDuration:
-              type: integer
-            updatedOn:
-              type: string
-        consistency:
-          type: object
-    Subscription:
-      type: object
-      properties:
-        collectionType:
-          type: string
-        ownerId:
-          type: string
-        ownerType:
-          type: string
-        subscriberId:
-          type: string
-        subscriptionId:
-          type: string
-    UserProfile:
-      type: object
-      properties:
-        user:
-          type: object
-          properties:
-            aboutMe:
-              type: string
-            age:
-              type: integer
-            ambassador:
-              type: boolean
-            autoStrideEnabled:
-              type: boolean
-            avatar:
-              type: string
-            avatar150:
-              type: string
-            avatar640:
-              type: string
-            averageDailySteps:
-              type: integer
-            challengesBeta:
-              type: boolean
-            city:
-              type: string
-            clockTimeDisplayFormat:
-              type: string
-            country:
-              type: string
-            corporate:
-              type: boolean
-            corporateAdmin:
-              type: boolean
-            dateOfBirth:
-              type: string
-              format: date
-            displayName:
-              type: string
-            displayNameSetting:
-              type: string
-            distanceUnit:
-              type: string
-            encodedId:
-              type: string
-            features:
-              type: object
-            firstName:
-              type: string
-            fullName:
-              type: string
-            gender:
-              type: string
-            glucoseUnit:
-              type: string
-            height:
-              type: number
-            heightUnit:
-              type: string
-            isBugReportEnabled:
-              type: boolean
-            isChild:
-              type: boolean
-            isCoach:
-              type: boolean
-            languageLocale:
-              type: string
-            lastName:
-              type: string
-            legalTermsAcceptRequired:
-              type: boolean
-            locale:
-              type: string
-            memberSince:
-              type: string
-            mfaEnabled:
-              type: boolean
-            offsetFromUTCMillis:
-              type: integer
-            startDayOfWeek:
-              type: string
-            state:
-              type: string
-            strideLengthRunning:
-              type: number
-            strideLengthRunningType:
-              type: string
-            strideLengthWalking:
-              type: number
-            strideLengthWalkingType:
-              type: string
-            swimUnit:
-              type: string
-            temperatureUnit:
-              type: string
-            timezone:
-              type: string
-            topBadges:
-              type: array
-              items:
-                type: object
-            waterUnit:
-              type: string
-            waterUnitName:
-              type: string
-            weight:
-              type: number
-            weightUnit:
-              type: string
-    HeartRateZone:
-      type: object
-      properties:
-        caloriesOut:
-          type: number
-        max:
-          type: integer
-        min:
-          type: integer
-        minutes:
-          type: integer
-        name:
-          type: string
-    WeightLogList:
-      type: object
-      properties:
-        weight:
+        activities:
           type: array
           items:
-            $ref: '#/components/schemas/WeightLog'
+            $ref: '#/components/schemas/ActivityLog'
+        pagination:
+          type: object
+          properties:
+            beforeDate:
+              type: string
+            limit:
+              type: integer
+            next:
+              type: string
+            offset:
+              type: integer
+            previous:
+              type: string
+            sort:
+              type: string
     ActivityLog:
       type: object
       properties:
@@ -1663,25 +1578,27 @@ components:
           type: string
         steps:
           type: integer
-    HeartRateIntraday:
+    AzmTimeSeries:
       type: object
       properties:
-        activities-heart-intraday:
-          type: object
-          properties:
-            dataset:
-              type: array
-              items:
+        activities-active-zone-minutes:
+          type: array
+          items:
+            type: object
+            properties:
+              dateTime:
+                type: string
+              value:
                 type: object
                 properties:
-                  time:
-                    type: string
-                  value:
+                  activeZoneMinutes:
                     type: integer
-            datasetInterval:
-              type: integer
-            datasetType:
-              type: string
+                  fatBurnActiveZoneMinutes:
+                    type: integer
+                  cardioActiveZoneMinutes:
+                    type: integer
+                  peakActiveZoneMinutes:
+                    type: integer
     WeightLog:
       type: object
       properties:
@@ -1701,6 +1618,13 @@ components:
           type: string
         weight:
           type: number
+    WeightLogList:
+      type: object
+      properties:
+        weight:
+          type: array
+          items:
+            $ref: '#/components/schemas/WeightLog'
     BodyFatLogList:
       type: object
       properties:
@@ -1720,33 +1644,125 @@ components:
                 type: string
               time:
                 type: string
-    SleepLog:
+    Device:
       type: object
       properties:
-        sleep:
+        battery:
+          type: string
+          enum:
+          - High
+          - Medium
+          - Low
+          - Empty
+        batteryLevel:
+          type: integer
+        deviceVersion:
+          type: string
+        features:
           type: array
           items:
-            $ref: '#/components/schemas/SleepEntry'
-        summary:
+            type: string
+        id:
+          type: string
+        lastSyncTime:
+          type: string
+          format: date-time
+        mac:
+          type: string
+        type:
+          type: string
+          enum:
+          - TRACKER
+          - SCALE
+    EcgReading:
+      type: object
+      properties:
+        startTime:
+          type: string
+        averageHeartRate:
+          type: integer
+        resultClassification:
+          type: string
+          enum:
+          - Normal Sinus Rhythm
+          - Atrial Fibrillation
+          - Inconclusive
+          - Inconclusive High
+          - Inconclusive Low
+        waveformSamples:
+          type: array
+          items:
+            type: number
+        samplingFrequencyHz:
+          type: string
+        scalingFactor:
+          type: integer
+        numberOfWaveformSamples:
+          type: integer
+        leadNumber:
+          type: integer
+        featureVersion:
+          type: string
+        deviceName:
+          type: string
+        firmwareVersion:
+          type: string
+    HeartRateTimeSeries:
+      type: object
+      properties:
+        activities-heart:
+          type: array
+          items:
+            type: object
+            properties:
+              dateTime:
+                type: string
+                format: date
+              value:
+                type: object
+                properties:
+                  customHeartRateZones:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HeartRateZone'
+                  heartRateZones:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/HeartRateZone'
+                  restingHeartRate:
+                    type: integer
+    HeartRateZone:
+      type: object
+      properties:
+        caloriesOut:
+          type: number
+        max:
+          type: integer
+        min:
+          type: integer
+        minutes:
+          type: integer
+        name:
+          type: string
+    HeartRateIntraday:
+      type: object
+      properties:
+        activities-heart-intraday:
           type: object
           properties:
-            stages:
-              type: object
-              properties:
-                deep:
-                  type: integer
-                light:
-                  type: integer
-                rem:
-                  type: integer
-                wake:
-                  type: integer
-            totalMinutesAsleep:
+            dataset:
+              type: array
+              items:
+                type: object
+                properties:
+                  time:
+                    type: string
+                  value:
+                    type: integer
+            datasetInterval:
               type: integer
-            totalSleepRecords:
-              type: integer
-            totalTimeInBed:
-              type: integer
+            datasetType:
+              type: string
     FoodLogResponse:
       type: object
       properties:
@@ -1773,28 +1789,18 @@ components:
               type: number
             water:
               type: number
-    ActivityLogList:
+    SleepGoal:
       type: object
       properties:
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActivityLog'
-        pagination:
+        goal:
           type: object
           properties:
-            beforeDate:
-              type: string
-            limit:
+            minDuration:
               type: integer
-            next:
+            updatedOn:
               type: string
-            offset:
-              type: integer
-            previous:
-              type: string
-            sort:
-              type: string
+        consistency:
+          type: object
     SleepEntry:
       type: object
       properties:
@@ -1847,75 +1853,118 @@ components:
           enum:
           - stages
           - classic
-    Device:
+    SleepLog:
       type: object
       properties:
-        battery:
-          type: string
-          enum:
-          - High
-          - Medium
-          - Low
-          - Empty
-        batteryLevel:
-          type: integer
-        deviceVersion:
-          type: string
-        features:
+        sleep:
           type: array
           items:
-            type: string
-        id:
-          type: string
-        lastSyncTime:
-          type: string
-          format: date-time
-        mac:
-          type: string
-        type:
-          type: string
-          enum:
-          - TRACKER
-          - SCALE
-    ActivityGoals:
-      type: object
-      properties:
-        goals:
+            $ref: '#/components/schemas/SleepEntry'
+        summary:
           type: object
           properties:
-            activeMinutes:
+            stages:
+              type: object
+              properties:
+                deep:
+                  type: integer
+                light:
+                  type: integer
+                rem:
+                  type: integer
+                wake:
+                  type: integer
+            totalMinutesAsleep:
               type: integer
-            caloriesOut:
+            totalSleepRecords:
               type: integer
-            distance:
-              type: number
-            floors:
+            totalTimeInBed:
               type: integer
-            steps:
-              type: integer
-            activeZoneMinutes:
-              type: integer
-    AzmTimeSeries:
+    Subscription:
       type: object
       properties:
-        activities-active-zone-minutes:
-          type: array
-          items:
-            type: object
-            properties:
-              dateTime:
-                type: string
-              value:
-                type: object
-                properties:
-                  activeZoneMinutes:
-                    type: integer
-                  fatBurnActiveZoneMinutes:
-                    type: integer
-                  cardioActiveZoneMinutes:
-                    type: integer
-                  peakActiveZoneMinutes:
-                    type: integer
+        collectionType:
+          type: string
+        ownerId:
+          type: string
+        ownerType:
+          type: string
+        subscriberId:
+          type: string
+        subscriptionId:
+          type: string
+  parameters:
+    UserId:
+      name: user-id
+      in: path
+      required: true
+      description: The user's encoded ID. Use '-' for the currently authorized user.
+      schema:
+        type: string
+        default: '-'
+    UserId_2:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_3:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_4:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_5:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_6:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_7:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_8:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_9:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
+    UserId_10:
+      name: user-id
+      in: path
+      required: true
+      schema:
+        type: string
+        default: '-'
   securitySchemes:
     OAuth2:
       type: oauth2
@@ -1939,3 +1988,14 @@ components:
             electrocardiogram: ECG readings
             irregular_rhythm_notifications: IRN data
             cardio_fitness: Cardio fitness (VO2 Max) data
+x-refined-from:
+- fitbit-activity-api-openapi.yml
+- fitbit-body-api-openapi.yml
+- fitbit-devices-api-openapi.yml
+- fitbit-ecg-irn-api-openapi.yml
+- fitbit-friends-api-openapi.yml
+- fitbit-heart-rate-api-openapi.yml
+- fitbit-nutrition-api-openapi.yml
+- fitbit-sleep-api-openapi.yml
+- fitbit-spo2-breathing-temperature-api-openapi.yml
+- fitbit-subscriptions-api-openapi.yml

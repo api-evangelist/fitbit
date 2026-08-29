@@ -1,29 +1,24 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Fitbit Activity Foods API
-  description: 'Read and write user activity, exercise, and Active Zone Minutes (AZM) data on
+  title: Fitbit Nutrition Foods API
+  description: 'Read and write food, water, meal, and nutrition data for Fitbit users.
 
-    Fitbit. The Activity API exposes daily activity summaries (steps, distance,
+    Provides access to the Fitbit food database, user food logs and favorites,
 
-    calories, floors, elevation, activity minutes), per-activity logs, lifetime
+    water logs, meal goals, daily food summaries with macronutrient breakdowns,
 
-    totals, activity goals, the user''s exercise type catalog, and Active Zone
-
-    Minutes time series. Time-series endpoints accept a base-date and either an
-
-    end-date or a period (1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y).
+    and food/water time series.
 
     '
   version: '1'
   contact:
     name: Fitbit Developer
-    url: https://dev.fitbit.com/build/reference/web-api/activity/
+    url: https://dev.fitbit.com/build/reference/web-api/nutrition/
 servers:
 - url: https://api.fitbit.com
-  description: Fitbit Web API
 security:
 - OAuth2:
-  - activity
+  - nutrition
 tags:
 - name: Foods
 paths:
@@ -83,18 +78,4 @@ components:
           authorizationUrl: https://www.fitbit.com/oauth2/authorize
           tokenUrl: https://api.fitbit.com/oauth2/token
           scopes:
-            activity: Activity and exercise data
-            heartrate: Heart rate data
-            location: GPS and other location data
             nutrition: Food and nutrition data
-            profile: User profile
-            settings: Account settings
-            sleep: Sleep data
-            social: Friends and leaderboard data
-            weight: Weight, BMI, and body fat data
-            oxygen_saturation: SpO2 data
-            respiratory_rate: Breathing rate data
-            temperature: Skin and core body temperature data
-            electrocardiogram: ECG readings
-            irregular_rhythm_notifications: IRN data
-            cardio_fitness: Cardio fitness (VO2 Max) data
