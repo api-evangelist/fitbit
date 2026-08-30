@@ -10,7 +10,10 @@
     },
     {
       "source": "https://community.fitbit.com/t5/Web-API-Development/Introducing-the-next-phase-of-the-Fitbit-Web-API/td-p/5821061",
-      "error": "TimeoutError"
+      "feed_url": "https://community.fitbit.com/t5/Web-API-Development/Introducing-the-next-phase-of-the-Fitbit-Web-API/td-p/5821061",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     },
     {
       "source": "https://blog.google/products/fitbit/",
@@ -20,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 21,
-  "fetched": "2026-08-22T20:20:02Z"
+  "post_count": 22,
+  "fetched": "2026-08-30T22:33:40Z"
 }
