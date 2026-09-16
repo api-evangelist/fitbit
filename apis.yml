@@ -13,9 +13,8 @@ apis:
     type: Documentation
   - url: openapi/fitbit-user-api-openapi.yml
     type: OpenAPI
-  description: >-
-    Read and update the authorized Fitbit user's profile including display name, gender, birthday, height,
-    weight, locale, timezone, and unit preferences (distance, weight, water, glucose, temperature).
+  description: Read and update the authorized Fitbit user's profile including display name, gender, birthday,
+    height, weight, locale, timezone, and unit preferences (distance, weight, water, glucose, temperature).
 - aid: fitbit:fitbit-foods-api
   name: Fitbit Foods API
   description: The Foods API from Fitbit — 1 operation(s) for foods.
@@ -167,6 +166,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fitbit.png
 access: 3rd-Party
 common:
+- type: Website
+  url: https://fitbit.com
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/fitbit/overview
 - type: AgenticAccess
@@ -296,39 +297,33 @@ common:
   type: FinOps
 - type: Features
   data:
-  - Wearable-native API surface covering activity, exercise, heart rate, sleep, body,
-    nutrition, devices, and social
-  - Advanced sensor data — SpO2, breathing rate, skin and core temperature, heart
-    rate variability (RMSSD), VO2 Max
-  - Electrocardiogram (ECG) readings and Irregular Rhythm Notifications (IRN) on supported
-    devices
+  - Wearable-native API surface covering activity, exercise, heart rate, sleep, body, nutrition, devices,
+    and social
+  - Advanced sensor data — SpO2, breathing rate, skin and core temperature, heart rate variability (RMSSD),
+    VO2 Max
+  - Electrocardiogram (ECG) readings and Irregular Rhythm Notifications (IRN) on supported devices
   - Active Zone Minutes (AZM) as Fitbit's modern engagement metric
   - Time-series endpoints with day, week, month, quarter, half-year, and year periods
-  - Intraday endpoints (1-second / 1-minute / 5-minute / 15-minute resolution) on
-    case-by-case approval
-  - Webhook subscriptions for activities, body, foods, sleep, and userRevokedAccess
-    — eliminates polling
-  - OAuth 2.0 Authorization Code Grant with PKCE, plus Implicit Grant and Client Credentials
-    (Commerce only)
-  - Fine-grained scopes — activity, heartrate, location, nutrition, profile, settings,
-    sleep, social, weight, oxygen_saturation, respiratory_rate, temperature, electrocardiogram,
-    irregular_rhythm_notifications, cardio_fitness
-  - Three application types — Personal (developer's own data), Client (mobile/single-page),
-    Server (multi-user backend)
+  - Intraday endpoints (1-second / 1-minute / 5-minute / 15-minute resolution) on case-by-case approval
+  - Webhook subscriptions for activities, body, foods, sleep, and userRevokedAccess — eliminates polling
+  - OAuth 2.0 Authorization Code Grant with PKCE, plus Implicit Grant and Client Credentials (Commerce
+    only)
+  - Fine-grained scopes — activity, heartrate, location, nutrition, profile, settings, sleep, social,
+    weight, oxygen_saturation, respiratory_rate, temperature, electrocardiogram, irregular_rhythm_notifications,
+    cardio_fitness
+  - Three application types — Personal (developer's own data), Client (mobile/single-page), Server (multi-user
+    backend)
   - Default 150 requests-per-hour-per-user quota; 429 + Retry-After on overage
   - Fitbit OS SDK (JavaScript/CSS/SVG) for on-device apps and clock faces on Versa/Sense/Inspire/Charge
     devices
-  - Fitbit SDK toolchain (TypeScript) and create-fitbit-app scaffolder published on
-    GitHub
-  - Fitbit Premium consumer tier ($9.99/month, $79.99/year) adds Daily Readiness,
-    advanced sleep, mindfulness, workouts
+  - Fitbit SDK toolchain (TypeScript) and create-fitbit-app scaffolder published on GitHub
+  - Fitbit Premium consumer tier ($9.99/month, $79.99/year) adds Daily Readiness, advanced sleep, mindfulness,
+    workouts
   - Cross-platform mobile apps (iOS, Android) and Fitbit web dashboard
-  - Acquired by Google in January 2021; now part of Google's hardware portfolio alongside
-    Pixel Watch
-  - Successor platform — Google Health API — launched on Google's modern infrastructure
-    with Google OAuth 2.0
-  - Legacy Fitbit Web API scheduled for turndown in September 2026; migration guides
-    published on developers.google.com/health
+  - Acquired by Google in January 2021; now part of Google's hardware portfolio alongside Pixel Watch
+  - Successor platform — Google Health API — launched on Google's modern infrastructure with Google OAuth
+    2.0
+  - Legacy Fitbit Web API scheduled for turndown in September 2026; migration guides published on developers.google.com/health
   sources:
   - https://dev.fitbit.com/
   - https://dev.fitbit.com/build/reference/web-api/
@@ -340,43 +335,37 @@ common:
   - https://github.com/Fitbit
   updated: '2026-05-25'
 created: '2026-05-25T00:00:00.000Z'
-modified: '2026-05-30'
+modified: '2026-09-16'
 position: Consuming
-description: 'Fitbit is a wearable health and fitness platform — devices (trackers,
-  smartwatches, smart scales) plus a
+description: 'Fitbit is a wearable health and fitness platform — devices (trackers, smartwatches, smart
+  scales) plus a
 
-  companion mobile app and cloud data services. Founded in 2007 and acquired by Google
-  in January 2021,
+  companion mobile app and cloud data services. Founded in 2007 and acquired by Google in January 2021,
 
-  Fitbit is now operated as part of Google''s hardware portfolio alongside the Pixel
-  Watch. The Fitbit Web API
+  Fitbit is now operated as part of Google''s hardware portfolio alongside the Pixel Watch. The Fitbit
+  Web API
 
-  exposes user activity, exercise, heart rate (including intraday and HRV), sleep
-  with stage breakdowns, body
+  exposes user activity, exercise, heart rate (including intraday and HRV), sleep with stage breakdowns,
+  body
 
-  and weight, nutrition and water, devices, friends and leaderboards, and advanced
-  sensor metrics — SpO2,
+  and weight, nutrition and water, devices, friends and leaderboards, and advanced sensor metrics — SpO2,
 
-  breathing rate, skin and core temperature, ECG, Irregular Rhythm Notifications,
-  and Cardio Fitness Score
+  breathing rate, skin and core temperature, ECG, Irregular Rhythm Notifications, and Cardio Fitness Score
 
-  (VO2 Max). Authentication is OAuth 2.0 Authorization Code Grant with PKCE; default
-  quota is 150 requests
+  (VO2 Max). Authentication is OAuth 2.0 Authorization Code Grant with PKCE; default quota is 150 requests
 
-  per hour per authorized user per app. A webhook subscription system streams sync
-  notifications for the
+  per hour per authorized user per app. A webhook subscription system streams sync notifications for the
 
-  activities, body, foods, sleep, and userRevokedAccess collections. The Fitbit OS
-  SDK lets developers ship
+  activities, body, foods, sleep, and userRevokedAccess collections. The Fitbit OS SDK lets developers
+  ship
 
-  apps and clock faces directly to Versa, Sense, and other Fitbit devices using JavaScript/CSS/SVG.
-  The
+  apps and clock faces directly to Versa, Sense, and other Fitbit devices using JavaScript/CSS/SVG. The
 
-  legacy Fitbit Web API is scheduled for deprecation in September 2026; new and migrated
-  integrations should
+  legacy Fitbit Web API is scheduled for deprecation in September 2026; new and migrated integrations
+  should
 
-  target the successor Google Health API at developers.google.com/health, which uses
-  Google OAuth 2.0 and
+  target the successor Google Health API at developers.google.com/health, which uses Google OAuth 2.0
+  and
 
   Google''s modern infrastructure.
 
