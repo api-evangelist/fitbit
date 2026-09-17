@@ -13,8 +13,9 @@ apis:
     type: Documentation
   - url: openapi/fitbit-user-api-openapi.yml
     type: OpenAPI
-  description: Read and update the authorized Fitbit user's profile including display name, gender, birthday,
-    height, weight, locale, timezone, and unit preferences (distance, weight, water, glucose, temperature).
+  description: >-
+    Read and update the authorized Fitbit user's profile including display name, gender, birthday, height,
+    weight, locale, timezone, and unit preferences (distance, weight, water, glucose, temperature).
 - aid: fitbit:fitbit-foods-api
   name: Fitbit Foods API
   description: The Foods API from Fitbit — 1 operation(s) for foods.
@@ -73,10 +74,8 @@ apis:
 - aid: fitbit:fitbit-oauth2-api
   name: Fitbit Oauth2 API
   description: The Oauth2 API from Fitbit — 4 operation(s) for oauth2.
-  humanURL: https://dev.fitbit.com/build/reference/web-api/activity/
+  humanURL: https://dev.fitbit.com/build/reference/web-api/user/
   tags:
-  - Authentication
-  tags_raw:
   - Oauth2
   properties:
   - type: OpenAPI
