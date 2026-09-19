@@ -5,6 +5,10 @@ apis:
   name: Fitbit User API
   tags:
   - User
+  - Profiles
+  - Settings
+  tags_raw:
+  - User
   - Profile
   - Settings
   humanURL: https://dev.fitbit.com/build/reference/web-api/user/
@@ -21,6 +25,8 @@ apis:
   description: The Foods API from Fitbit — 1 operation(s) for foods.
   humanURL: https://dev.fitbit.com/build/reference/web-api/activity/
   tags:
+  - Food
+  tags_raw:
   - Foods
   properties:
   - type: OpenAPI
@@ -76,6 +82,8 @@ apis:
   description: The Oauth2 API from Fitbit — 4 operation(s) for oauth2.
   humanURL: https://dev.fitbit.com/build/reference/web-api/user/
   tags:
+  - Authentication
+  tags_raw:
   - Oauth2
   properties:
   - type: OpenAPI
@@ -128,6 +136,15 @@ apis:
     url: https://dev.fitbit.com/build/reference/web-api/authorization/
 name: Fitbit
 tags:
+- Wearables
+- Health
+- Fitness
+- Activity Tracking
+- Heart Rate
+- Sleep
+- Google
+- IoT
+tags_raw:
 - Wearable
 - Health
 - Fitness
