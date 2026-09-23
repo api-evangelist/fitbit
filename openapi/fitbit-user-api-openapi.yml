@@ -1460,6 +1460,37 @@ paths:
     - url: https://api.fitbit.com
 components:
   schemas:
+    ActivityLog:
+      type: object
+      properties:
+        activityId:
+          type: integer
+        activityParentId:
+          type: integer
+        calories:
+          type: integer
+        description:
+          type: string
+        distance:
+          type: number
+        duration:
+          type: integer
+        hasStartTime:
+          type: boolean
+        isFavorite:
+          type: boolean
+        logId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        startDate:
+          type: string
+          format: date
+        startTime:
+          type: string
+        steps:
+          type: integer
     ActivityGoals:
       type: object
       properties:
@@ -1478,6 +1509,49 @@ components:
               type: integer
             activeZoneMinutes:
               type: integer
+    ActivityLogList:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityLog'
+        pagination:
+          type: object
+          properties:
+            beforeDate:
+              type: string
+            limit:
+              type: integer
+            next:
+              type: string
+            offset:
+              type: integer
+            previous:
+              type: string
+            sort:
+              type: string
+    AzmTimeSeries:
+      type: object
+      properties:
+        activities-active-zone-minutes:
+          type: array
+          items:
+            type: object
+            properties:
+              dateTime:
+                type: string
+              value:
+                type: object
+                properties:
+                  activeZoneMinutes:
+                    type: integer
+                  fatBurnActiveZoneMinutes:
+                    type: integer
+                  cardioActiveZoneMinutes:
+                    type: integer
+                  peakActiveZoneMinutes:
+                    type: integer
     ActivityDailySummary:
       type: object
       properties:
@@ -1525,80 +1599,25 @@ components:
                 type: object
             restingHeartRate:
               type: integer
-    ActivityLogList:
+    BodyFatLogList:
       type: object
       properties:
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/ActivityLog'
-        pagination:
-          type: object
-          properties:
-            beforeDate:
-              type: string
-            limit:
-              type: integer
-            next:
-              type: string
-            offset:
-              type: integer
-            previous:
-              type: string
-            sort:
-              type: string
-    ActivityLog:
-      type: object
-      properties:
-        activityId:
-          type: integer
-        activityParentId:
-          type: integer
-        calories:
-          type: integer
-        description:
-          type: string
-        distance:
-          type: number
-        duration:
-          type: integer
-        hasStartTime:
-          type: boolean
-        isFavorite:
-          type: boolean
-        logId:
-          type: integer
-          format: int64
-        name:
-          type: string
-        startDate:
-          type: string
-          format: date
-        startTime:
-          type: string
-        steps:
-          type: integer
-    AzmTimeSeries:
-      type: object
-      properties:
-        activities-active-zone-minutes:
+        fat:
           type: array
           items:
             type: object
             properties:
-              dateTime:
+              date:
                 type: string
-              value:
-                type: object
-                properties:
-                  activeZoneMinutes:
-                    type: integer
-                  fatBurnActiveZoneMinutes:
-                    type: integer
-                  cardioActiveZoneMinutes:
-                    type: integer
-                  peakActiveZoneMinutes:
-                    type: integer
+              fat:
+                type: number
+              logId:
+                type: integer
+                format: int64
+              source:
+                type: string
+              time:
+                type: string
     WeightLog:
       type: object
       properties:
@@ -1625,25 +1644,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WeightLog'
-    BodyFatLogList:
-      type: object
-      properties:
-        fat:
-          type: array
-          items:
-            type: object
-            properties:
-              date:
-                type: string
-              fat:
-                type: number
-              logId:
-                type: integer
-                format: int64
-              source:
-                type: string
-              time:
-                type: string
     Device:
       type: object
       properties:
@@ -1789,18 +1789,6 @@ components:
               type: number
             water:
               type: number
-    SleepGoal:
-      type: object
-      properties:
-        goal:
-          type: object
-          properties:
-            minDuration:
-              type: integer
-            updatedOn:
-              type: string
-        consistency:
-          type: object
     SleepEntry:
       type: object
       properties:
@@ -1880,6 +1868,18 @@ components:
               type: integer
             totalTimeInBed:
               type: integer
+    SleepGoal:
+      type: object
+      properties:
+        goal:
+          type: object
+          properties:
+            minDuration:
+              type: integer
+            updatedOn:
+              type: string
+        consistency:
+          type: object
     Subscription:
       type: object
       properties:

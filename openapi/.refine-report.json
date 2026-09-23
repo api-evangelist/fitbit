@@ -18,7 +18,9 @@
     "fitbit-oauth2-api-openapi.yml",
     "fitbit-foods-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -99,11 +101,13 @@
     "fitbit-subscriptions-api-openapi.yml: tagged paths DELETE /1/user/{user-id}/{collection-path}/apiSubscriptions/{subscription-id}.json -> User",
     "fitbit-subscriptions-api-openapi.yml: tagged paths GET /1/user/{user-id}/{collection-path}/apiSubscriptions.json -> User",
     "fitbit-subscriptions-api-openapi.yml: declared missing tag: User",
-    "tag 'User' spans 10 source specs (fitbit-activity-api-openapi.yml, fitbit-body-api-openapi.yml, fitbit-devices-api-openapi.yml, fitbit-ecg-irn-api-openapi.yml, fitbit-friends-api-openapi.yml, fitbit-heart-rate-api-openapi.yml, fitbit-nutrition-api-openapi.yml, fitbit-sleep-api-openapi.yml, fitbit-spo2-breathing-temperature-api-openapi.yml, fitbit-subscriptions-api-openapi.yml): per-path servers applied"
+    "tag 'User' spans 10 source specs (fitbit-activity-api-openapi.yml, fitbit-body-api-openapi.yml, fitbit-devices-api-openapi.yml, fitbit-ecg-irn-api-openapi.yml, fitbit-friends-api-openapi.yml, fitbit-heart-rate-api-openapi.yml, fitbit-nutrition-api-openapi.yml, fitbit-sleep-api-openapi.yml, fitbit-spo2-breathing-temperature-api-openapi.yml, fitbit-subscriptions-api-openapi.yml): per-path servers applied",
+    "superseded outputs removed: fitbit-o-auth2-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 3 total)"
   ],
   "skipped": [
     "fitbit-foods-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "fitbit-oauth2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fitbit-o-auth2-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "fitbit-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

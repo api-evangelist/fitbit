@@ -7,9 +7,7 @@ info:
 
     water logs, meal goals, daily food summaries with macronutrient breakdowns,
 
-    and food/water time series.
-
-    '
+    and food/water time series.'
   version: '1'
   contact:
     name: Fitbit Developer

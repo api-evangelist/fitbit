@@ -13,9 +13,7 @@ info:
 
     migration to the Google Health API''s Google OAuth 2.0 framework before the
 
-    legacy Web API turndown in September 2026.
-
-    '
+    legacy Web API turndown in September 2026.'
   version: '1'
   contact:
     name: Fitbit Developer
@@ -26,7 +24,7 @@ servers:
 - url: https://api.fitbit.com
   description: Token, introspect, and revoke endpoint host
 tags:
-- name: Oauth2
+- name: OAuth2
 paths:
   /oauth2/authorize:
     get:
@@ -91,7 +89,7 @@ paths:
         '302':
           description: Redirect to the redirect_uri with an authorization code.
       tags:
-      - Oauth2
+      - OAuth2
   /oauth2/token:
     post:
       summary: Get Access Token
@@ -129,7 +127,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TokenResponse'
       tags:
-      - Oauth2
+      - OAuth2
   /1.1/oauth2/introspect:
     post:
       summary: Introspect Token
@@ -149,7 +147,7 @@ paths:
         '200':
           description: Token introspection result.
       tags:
-      - Oauth2
+      - OAuth2
   /oauth2/revoke:
     post:
       summary: Revoke Token
@@ -169,7 +167,7 @@ paths:
         '200':
           description: Token revoked.
       tags:
-      - Oauth2
+      - OAuth2
 components:
   schemas:
     TokenResponse:
