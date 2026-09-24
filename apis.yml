@@ -39,8 +39,6 @@ apis:
     url: json-schema/fitbit-activity-summary-schema.json
   - type: JSONLD
     url: json-ld/fitbit-context.jsonld
-  - type: GraphQL
-    url: graphql/fitbit-graphql.md
   - type: Documentation
     url: https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/
   - type: Documentation
@@ -96,8 +94,6 @@ apis:
     url: json-schema/fitbit-activity-summary-schema.json
   - type: JSONLD
     url: json-ld/fitbit-context.jsonld
-  - type: GraphQL
-    url: graphql/fitbit-graphql.md
   - type: Documentation
     url: https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/
   - type: Documentation
@@ -144,6 +140,7 @@ tags:
 - Sleep
 - Google
 - IoT
+- Wellness
 tags_raw:
 - Wearable
 - Health
