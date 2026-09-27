@@ -150,6 +150,7 @@ tags_raw:
 - Sleep
 - Google
 - IoT
+- Wellness
 kind: contract
 deliveryModel:
   model: saas

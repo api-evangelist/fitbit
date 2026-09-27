@@ -1460,55 +1460,6 @@ paths:
     - url: https://api.fitbit.com
 components:
   schemas:
-    ActivityLog:
-      type: object
-      properties:
-        activityId:
-          type: integer
-        activityParentId:
-          type: integer
-        calories:
-          type: integer
-        description:
-          type: string
-        distance:
-          type: number
-        duration:
-          type: integer
-        hasStartTime:
-          type: boolean
-        isFavorite:
-          type: boolean
-        logId:
-          type: integer
-          format: int64
-        name:
-          type: string
-        startDate:
-          type: string
-          format: date
-        startTime:
-          type: string
-        steps:
-          type: integer
-    ActivityGoals:
-      type: object
-      properties:
-        goals:
-          type: object
-          properties:
-            activeMinutes:
-              type: integer
-            caloriesOut:
-              type: integer
-            distance:
-              type: number
-            floors:
-              type: integer
-            steps:
-              type: integer
-            activeZoneMinutes:
-              type: integer
     ActivityLogList:
       type: object
       properties:
@@ -1552,6 +1503,37 @@ components:
                     type: integer
                   peakActiveZoneMinutes:
                     type: integer
+    ActivityLog:
+      type: object
+      properties:
+        activityId:
+          type: integer
+        activityParentId:
+          type: integer
+        calories:
+          type: integer
+        description:
+          type: string
+        distance:
+          type: number
+        duration:
+          type: integer
+        hasStartTime:
+          type: boolean
+        isFavorite:
+          type: boolean
+        logId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        startDate:
+          type: string
+          format: date
+        startTime:
+          type: string
+        steps:
+          type: integer
     ActivityDailySummary:
       type: object
       properties:
@@ -1599,25 +1581,24 @@ components:
                 type: object
             restingHeartRate:
               type: integer
-    BodyFatLogList:
+    ActivityGoals:
       type: object
       properties:
-        fat:
-          type: array
-          items:
-            type: object
-            properties:
-              date:
-                type: string
-              fat:
-                type: number
-              logId:
-                type: integer
-                format: int64
-              source:
-                type: string
-              time:
-                type: string
+        goals:
+          type: object
+          properties:
+            activeMinutes:
+              type: integer
+            caloriesOut:
+              type: integer
+            distance:
+              type: number
+            floors:
+              type: integer
+            steps:
+              type: integer
+            activeZoneMinutes:
+              type: integer
     WeightLog:
       type: object
       properties:
@@ -1644,6 +1625,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WeightLog'
+    BodyFatLogList:
+      type: object
+      properties:
+        fat:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+              fat:
+                type: number
+              logId:
+                type: integer
+                format: int64
+              source:
+                type: string
+              time:
+                type: string
     Device:
       type: object
       properties:
@@ -1707,6 +1707,38 @@ components:
           type: string
         firmwareVersion:
           type: string
+    HeartRateIntraday:
+      type: object
+      properties:
+        activities-heart-intraday:
+          type: object
+          properties:
+            dataset:
+              type: array
+              items:
+                type: object
+                properties:
+                  time:
+                    type: string
+                  value:
+                    type: integer
+            datasetInterval:
+              type: integer
+            datasetType:
+              type: string
+    HeartRateZone:
+      type: object
+      properties:
+        caloriesOut:
+          type: number
+        max:
+          type: integer
+        min:
+          type: integer
+        minutes:
+          type: integer
+        name:
+          type: string
     HeartRateTimeSeries:
       type: object
       properties:
@@ -1731,38 +1763,6 @@ components:
                       $ref: '#/components/schemas/HeartRateZone'
                   restingHeartRate:
                     type: integer
-    HeartRateZone:
-      type: object
-      properties:
-        caloriesOut:
-          type: number
-        max:
-          type: integer
-        min:
-          type: integer
-        minutes:
-          type: integer
-        name:
-          type: string
-    HeartRateIntraday:
-      type: object
-      properties:
-        activities-heart-intraday:
-          type: object
-          properties:
-            dataset:
-              type: array
-              items:
-                type: object
-                properties:
-                  time:
-                    type: string
-                  value:
-                    type: integer
-            datasetInterval:
-              type: integer
-            datasetType:
-              type: string
     FoodLogResponse:
       type: object
       properties:
@@ -1789,6 +1789,33 @@ components:
               type: number
             water:
               type: number
+    SleepLog:
+      type: object
+      properties:
+        sleep:
+          type: array
+          items:
+            $ref: '#/components/schemas/SleepEntry'
+        summary:
+          type: object
+          properties:
+            stages:
+              type: object
+              properties:
+                deep:
+                  type: integer
+                light:
+                  type: integer
+                rem:
+                  type: integer
+                wake:
+                  type: integer
+            totalMinutesAsleep:
+              type: integer
+            totalSleepRecords:
+              type: integer
+            totalTimeInBed:
+              type: integer
     SleepEntry:
       type: object
       properties:
@@ -1841,33 +1868,6 @@ components:
           enum:
           - stages
           - classic
-    SleepLog:
-      type: object
-      properties:
-        sleep:
-          type: array
-          items:
-            $ref: '#/components/schemas/SleepEntry'
-        summary:
-          type: object
-          properties:
-            stages:
-              type: object
-              properties:
-                deep:
-                  type: integer
-                light:
-                  type: integer
-                rem:
-                  type: integer
-                wake:
-                  type: integer
-            totalMinutesAsleep:
-              type: integer
-            totalSleepRecords:
-              type: integer
-            totalTimeInBed:
-              type: integer
     SleepGoal:
       type: object
       properties:
