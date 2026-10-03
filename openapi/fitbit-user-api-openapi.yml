@@ -1599,6 +1599,25 @@ components:
               type: integer
             activeZoneMinutes:
               type: integer
+    BodyFatLogList:
+      type: object
+      properties:
+        fat:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+              fat:
+                type: number
+              logId:
+                type: integer
+                format: int64
+              source:
+                type: string
+              time:
+                type: string
     WeightLog:
       type: object
       properties:
@@ -1625,25 +1644,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/WeightLog'
-    BodyFatLogList:
-      type: object
-      properties:
-        fat:
-          type: array
-          items:
-            type: object
-            properties:
-              date:
-                type: string
-              fat:
-                type: number
-              logId:
-                type: integer
-                format: int64
-              source:
-                type: string
-              time:
-                type: string
     Device:
       type: object
       properties:
@@ -1707,6 +1707,19 @@ components:
           type: string
         firmwareVersion:
           type: string
+    HeartRateZone:
+      type: object
+      properties:
+        caloriesOut:
+          type: number
+        max:
+          type: integer
+        min:
+          type: integer
+        minutes:
+          type: integer
+        name:
+          type: string
     HeartRateIntraday:
       type: object
       properties:
@@ -1726,19 +1739,6 @@ components:
               type: integer
             datasetType:
               type: string
-    HeartRateZone:
-      type: object
-      properties:
-        caloriesOut:
-          type: number
-        max:
-          type: integer
-        min:
-          type: integer
-        minutes:
-          type: integer
-        name:
-          type: string
     HeartRateTimeSeries:
       type: object
       properties:
