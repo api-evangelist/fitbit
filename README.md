@@ -1,4 +1,4 @@
-# Fitbit (fitbit)
+# Fitbit
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -78,328 +78,186 @@ legacy Fitbit Web API is scheduled for deprecation in September 2026; new and mi
 target the successor Google Health API at developers.google.com/health, which uses Google OAuth 2.0 and
 Google's modern infrastructure.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/fitbit/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/fitbit/refs/heads/main/apis.yml)
+**Areas:** Wearables · Health · Fitness · Activity Tracking · Heart Rate · Sleep · Google · IoT · Wellness
 
-## Scope
+## Fitbit on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Fitbit is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fitbit/](https://apis.io/providers/fitbit/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Wearable
-- Health
-- Fitness
-- Activity Tracking
-- Heart Rate
-- Sleep
-- Google
-- IoT
+- [Fitbit User API](https://apis.io/apis/fitbit/fitbit-user-api/) — Read and update the authorized Fitbit user's profile including display name, gender, birthday, height, weight, locale, timezone, and unit preferences…
+- [Fitbit Foods API](https://apis.io/apis/fitbit/fitbit-foods-api/) — The Foods API from Fitbit — 1 operation(s) for foods.
+- [Fitbit Oauth2 API](https://apis.io/apis/fitbit/fitbit-oauth2-api/) — The Oauth2 API from Fitbit — 4 operation(s) for oauth2.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25T00:00:00.000Z
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Fitbit Activity API
+Event-driven and webhook contracts.
 
-Read and write user activity, exercise logs, daily activity summaries (steps, distance, calories, floors, elevation), activity goals, the Fitbit exercise catalog, and Active Zone Minutes (AZM) time series. Supports per-day, per-period, and per-date-range queries.
+- [Fitbit Subscriptions Webhooks](https://apis.io/asyncapis/fitbit/fitbit-subscriptions-asyncapi/)
 
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/activity/](https://dev.fitbit.com/build/reference/web-api/activity/)
+#### Event channels (2)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- Activity
-- Fitness
-- Steps
-- Active Zone Minutes
-- Wearable
+- [/subscriber](https://apis.io/channels/fitbit/subscriber/)
+- [/subscriber/verify](https://apis.io/channels/fitbit/subscriber-verify/)
 
-#### Properties
+#### GraphQL (1)
 
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/activity/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/active-zone-minutes-timeseries/)
-- [OpenAPI](openapi/fitbit-activity-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-activity-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-activity-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/fitbit-activity-summary-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/fitbit-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+GraphQL schemas.
 
-### Fitbit Heart Rate API
+- [Moved to /providers/fitbit/](https://apis.io/graphqls/fitbit/fitbit-graphql/)
 
-Retrieve heart rate time series including resting heart rate, custom and default heart rate zones, and zone-minute breakdowns. Intraday endpoints expose 1-second, 1-minute, 5-minute, or 15-minute detail-level series and require explicit Intraday access approval.
+#### Agentic access (1)
 
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/](https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Fitbit Agentic Access](https://apis.io/agentic-access/fitbit/fitbit-agentic-access/)
 
-- Heart Rate
-- Cardiovascular
-- Wearable
+#### JSON Schema (2)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/heartrate-timeseries/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/intraday/)
-- [OpenAPI](openapi/fitbit-heart-rate-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-heart-rate-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-heart-rate-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Fitbit Activity Daily Summary](https://apis.io/schemas/fitbit/fitbit-activity-summary/)
+- [Fitbit Sleep Log](https://apis.io/schemas/fitbit/fitbit-sleep-log/)
 
-### Fitbit Sleep API
+#### JSON-LD (1)
 
-Read, log, and delete sleep records with stage breakdowns (light, deep, REM, wake), sleep efficiency, time in bed, minutes asleep, minutes awake, and minutes to fall asleep. Supports paginated list queries, date queries, date-range queries, and sleep goal management.
+Linked-data contexts for the provider's vocabulary.
 
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/sleep/](https://dev.fitbit.com/build/reference/web-api/sleep/)
+- [Fitbit Context](https://apis.io/jsonld/fitbit/fitbit-context/)
 
-#### Tags
+#### Collections (17)
 
-- Sleep
-- Sleep Stages
-- Wearable
+Postman and Open Collection request collections.
 
-#### Properties
+- [Fitbit Activity API](https://apis.io/collections/fitbit/open-fitbit-activity-api/)
+- [Fitbit Authorization API](https://apis.io/collections/fitbit/open-fitbit-authorization-api/)
+- [Fitbit Body API](https://apis.io/collections/fitbit/open-fitbit-body-api/)
+- [Fitbit Devices API](https://apis.io/collections/fitbit/open-fitbit-devices-api/)
+- [Fitbit ECG and Irregular Rhythm Notifications API](https://apis.io/collections/fitbit/open-fitbit-ecg-irn-api/)
+- [Fitbit Activity Foods API](https://apis.io/collections/fitbit/open-fitbit-foods-api/)
+- [Fitbit Friends API](https://apis.io/collections/fitbit/open-fitbit-friends-api/)
+- [Fitbit Heart Rate API](https://apis.io/collections/fitbit/open-fitbit-heart-rate-api/)
+- [Fitbit Nutrition API](https://apis.io/collections/fitbit/open-fitbit-nutrition-api/)
+- [Fitbit Activity Foods Oauth2 API](https://apis.io/collections/fitbit/open-fitbit-oauth2-api/)
+- [Fitbit Sleep API](https://apis.io/collections/fitbit/open-fitbit-sleep-api/)
+- [Fitbit SpO2 / Breathing Rate / Temperature / HRV / VO2 Max API](https://apis.io/collections/fitbit/open-fitbit-spo2-breathing-temperature-api/)
+- [Fitbit Subscriptions API](https://apis.io/collections/fitbit/open-fitbit-subscriptions-api/)
+- [Fitbit Activity Foods User API](https://apis.io/collections/fitbit/open-fitbit-user-api/)
+- [Fitbit Activity Foods API](https://apis.io/collections/fitbit/postman-fitbit-foods-api/)
+- [Fitbit Activity Foods Oauth2 API](https://apis.io/collections/fitbit/postman-fitbit-oauth2-api/)
+- [Fitbit Activity Foods User API](https://apis.io/collections/fitbit/postman-fitbit-user-api/)
 
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/sleep/)
-- [OpenAPI](openapi/fitbit-sleep-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-sleep-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-sleep-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/fitbit-sleep-log-schema.json) — [JSON Schema](https://json-schema.org/specification)
+#### Governance rules (2)
 
-### Fitbit Body API
+Spectral rulesets for the provider's contracts.
 
-Read and write weight and body fat log entries, BMI time series, and body weight / body fat goals. Aria scales and manual logs both flow into this surface.
+- [Fitbit — asyncapi rules](https://apis.io/rules/fitbit/fitbit-asyncapi-spectral-rules/)
+- [Fitbit — jsonschema rules](https://apis.io/rules/fitbit/fitbit-jsonschema-spectral-rules/)
 
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/body/](https://dev.fitbit.com/build/reference/web-api/body/)
+#### Security (2)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Body
-- Weight
-- BMI
-- Body Fat
+- [Fitbit Authentication](https://apis.io/security/fitbit/fitbit-authentication/)
+- [Fitbit Domain Security](https://apis.io/security/fitbit/fitbit-domain-security/)
 
-#### Properties
+#### OAuth scopes (1)
 
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/body/)
-- [OpenAPI](openapi/fitbit-body-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-body-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-body-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The permissions the API asks for.
 
-### Fitbit Nutrition API
+- [Fitbit Scopes](https://apis.io/scopes/fitbit/fitbit-scopes/)
 
-Read and write food, water, and meal logs; access the Fitbit foods database (search, get by ID, create custom foods); manage meal goals, favorites, and frequent foods; and read daily macronutrient summaries (calories, carbs, fat, fiber, protein, sodium, water).
+#### Plans and pricing (1)
 
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/nutrition/](https://dev.fitbit.com/build/reference/web-api/nutrition/)
+Published plans, tiers and prices.
 
-#### Tags
+- [Fitbit Plans Pricing](https://apis.io/plans/fitbit/fitbit-plans-pricing/)
 
-- Nutrition
-- Food
-- Water
-- Calories
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/nutrition/)
-- [OpenAPI](openapi/fitbit-nutrition-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-nutrition-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-nutrition-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Fitbit Rate Limits](https://apis.io/rate-limits/fitbit/fitbit-rate-limits/)
 
-### Fitbit User API
+#### FinOps (1)
 
-Read and update the authorized Fitbit user's profile including display name, gender, birthday, height, weight, locale, timezone, and unit preferences (distance, weight, water, glucose, temperature).
+What the API costs to run, by operation.
 
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/user/](https://dev.fitbit.com/build/reference/web-api/user/)
+- [Fitbit Finops](https://apis.io/finops/fitbit/fitbit-finops/)
 
-#### Tags
+## Where to find this API
 
-- User
-- Profile
-- Settings
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/user/)
-- [OpenAPI](openapi/fitbit-user-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-user-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-user-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Fitbit Devices API
-
-List paired Fitbit devices, retrieve battery level and last sync timestamps, identify the device model (deviceVersion), and create, update, and delete tracker alarms.
-
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/devices/](https://dev.fitbit.com/build/reference/web-api/devices/)
-
-#### Tags
-
-- Devices
-- Wearable
-- Alarms
-
-#### Properties
-
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/devices/)
-- [OpenAPI](openapi/fitbit-devices-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-devices-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-devices-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Fitbit Subscriptions API
-
-Webhook-based notification system. Subscribe per user to the activities, body, foods, sleep, or userRevokedAccess collections; Fitbit POSTs to your registered Subscriber endpoint when new data is available, eliminating polling.
-
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/subscription/](https://dev.fitbit.com/build/reference/web-api/subscription/)
-
-#### Tags
-
-- Webhooks
-- Subscriptions
-- Notifications
-
-#### Properties
-
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/subscription/)
-- [OpenAPI](openapi/fitbit-subscriptions-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-subscriptions-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-subscriptions-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/fitbit-subscriptions-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-
-### Fitbit Friends API
-
-Read the authorized user's Fitbit friends list and weekly friends leaderboard rankings.
-
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/friends/](https://dev.fitbit.com/build/reference/web-api/friends/)
-
-#### Tags
-
-- Social
-- Friends
-- Leaderboard
-
-#### Properties
-
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/friends/)
-- [OpenAPI](openapi/fitbit-friends-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-friends-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-friends-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Fitbit SpO2, Breathing Rate, Temperature, HRV, and Cardio Fitness API
-
-Advanced sensor readings from supported Fitbit devices — SpO2 (blood oxygen saturation), Breathing Rate, Skin Temperature and Core Temperature variation, Heart Rate Variability (RMSSD), and Cardio Fitness Score (VO2 Max). Each metric supports per-day and per-date-range summary queries; SpO2, breathing rate, and HRV additionally support intraday detail with Intraday access approval.
-
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/spo2/](https://dev.fitbit.com/build/reference/web-api/spo2/)
-
-#### Tags
-
-- SpO2
-- Breathing Rate
-- Temperature
-- HRV
-- VO2 Max
-- Cardio Fitness
-
-#### Properties
-
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/spo2/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/breathing-rate/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/temperature/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/heartrate-variability/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/cardio-fitness-score/)
-- [OpenAPI](openapi/fitbit-spo2-breathing-temperature-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-spo2-breathing-temperature-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-spo2-breathing-temperature-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Fitbit ECG and Irregular Rhythm Notifications API
-
-Access Electrocardiogram (ECG) readings recorded on Fitbit Sense, Sense 2, and Charge 5/6 devices, and access Irregular Rhythm Notifications (IRN) including alerts and feature enrollment. ECG readings include waveform samples, sampling frequency, lead number, and the algorithm's result classification (Normal Sinus Rhythm, Atrial Fibrillation, Inconclusive).
-
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/electrocardiogram/](https://dev.fitbit.com/build/reference/web-api/electrocardiogram/)
-
-#### Tags
-
-- ECG
-- Electrocardiogram
-- Irregular Rhythm Notifications
-- Atrial Fibrillation
-- Cardiac Health
-
-#### Properties
-
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/electrocardiogram/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/irregular-rhythm-notifications/)
-- [OpenAPI](openapi/fitbit-ecg-irn-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-ecg-irn-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-ecg-irn-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Fitbit Authorization API
-
-OAuth 2.0 authorization endpoints. Supports Authorization Code Grant with PKCE (recommended), Authorization Code Grant, Implicit Grant, and Client Credentials (for Fitbit Commerce APIs that do not retrieve user data). Tokens can be introspected, refreshed, or revoked.
-
-- **Human URL:** [https://dev.fitbit.com/build/reference/web-api/authorization/](https://dev.fitbit.com/build/reference/web-api/authorization/)
-
-#### Tags
-
-- OAuth
-- Authentication
-- Authorization
-- Security
-
-#### Properties
-
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/authorization/)
-- [OpenAPI](openapi/fitbit-authorization-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fitbit-authorization-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fitbit-authorization-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://www.fitbit.com)
-- [Portal](https://dev.fitbit.com/)
+- [Website](https://fitbit.com)
 - [Documentation](https://dev.fitbit.com/build/reference/web-api/)
-- [Documentation](https://dev.fitbit.com/build/reference/device-api/)
-- [Getting Started](https://dev.fitbit.com/getting-started/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/authorization/)
-- [Support](https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/)
-- [Errors](https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/error-handling/)
-- [Errors](https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/error-messages/)
-- [Rate Limits](https://dev.fitbit.com/build/reference/web-api/rate-limits/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/intraday/)
-- [Documentation](https://dev.fitbit.com/build/reference/web-api/subscription/)
-- [Sign Up](https://dev.fitbit.com/apps/)
-- [GitHub Organization](https://github.com/Fitbit)
-- [SDK](https://github.com/Fitbit/fitbit-sdk-toolchain)
-- [SDK](https://github.com/Fitbit/create-fitbit-app)
-- [Tool](https://github.com/Fitbit/developer-bridge)
-- [Code Examples](https://github.com/Fitbit/sdk-oauth)
-- [Code Examples](https://github.com/Fitbit/sdk-hr-meter)
-- [Code Examples](https://github.com/Fitbit/ossapps)
-- [Tool](https://github.com/Fitbit/golden-gate)
-- [Tool](https://github.com/Fitbit/bitgatt)
-- [Plans](https://www.fitbit.com/global/us/products/premium)
+- [Getting started](https://dev.fitbit.com/getting-started/)
 - [Pricing](https://store.google.com/category/watches_trackers)
-- [LinkedIn](https://www.linkedin.com/company/fitbit)
-- [Twitter](https://twitter.com/fitbit)
-- [YouTube](https://www.youtube.com/user/fitbit)
-- [Support](https://help.fitbit.com/)
-- [Forum](https://community.fitbit.com/)
-- [Forum](https://community.fitbit.com/t5/Web-API-Development/bd-p/dev)
-- [Terms of Service](https://www.fitbit.com/global/us/legal/terms-of-service)
-- [Privacy Policy](https://www.fitbit.com/global/us/legal/privacy-policy)
-- [Terms of Service](https://dev.fitbit.com/legal/platform-terms-of-service/)
-- [Documentation](https://developers.google.com/health)
-- [Documentation](https://developers.google.com/health/migration)
+- [Support](https://dev.fitbit.com/build/reference/web-api/troubleshooting-guide/)
 - [Changelog](https://developers.google.com/health/release-notes)
 - [Blog](https://community.fitbit.com/t5/Web-API-Development/Introducing-the-next-phase-of-the-Fitbit-Web-API/td-p/5821061)
-- [Portal](https://about.google/intl/en/products/devices-services/fitbit/)
-- [Blog](https://blog.google/products/fitbit/)
-- [Plans](plans/fitbit-plans-pricing.yml)
-- [Rate Limits](rate-limits/fitbit-rate-limits.yml)
-- [Fin Ops](finops/fitbit-finops.yml)
-- [Features](undefined)
+- [Terms of service](https://www.fitbit.com/global/us/legal/terms-of-service)
+- [Privacy policy](https://www.fitbit.com/global/us/legal/privacy-policy)
+- [GitHub](https://github.com/Fitbit)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 54.3** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 67.2 |
+| Contract governance | 13.6 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 58.3 |
+| Access clarity | 60.5 |
+
+**Agent readiness 30.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 32.8** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fitbit/](https://apis.io/providers/fitbit/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Fitbit: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fitbit/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
